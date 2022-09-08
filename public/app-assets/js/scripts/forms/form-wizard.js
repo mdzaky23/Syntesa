@@ -141,7 +141,7 @@ $(function () {
       .on('click', function () {
         var isValid = $(this).parent().siblings('form').valid();
         if (isValid) {
-          alert('Submitted..!!');
+          alert('Yakin Ingin Menginput Data?');
         }
       });
   }
@@ -166,7 +166,7 @@ $(function () {
     $(verticalWizard)
       .find('.btn-submit')
       .on('click', function () {
-        alert('Submitted..!!');
+        alert('Yakin Ingin Menginput Data?');
       });
   }
 
@@ -190,7 +190,7 @@ $(function () {
     $(modernWizard)
       .find('.btn-submit')
       .on('click', function () {
-        alert('Submitted..!!');
+        alert('Yakin Ingin Menginput Data?');
       });
   }
 
@@ -214,7 +214,7 @@ $(function () {
     $(modernVerticalWizard)
       .find('.btn-submit')
       .on('click', function () {
-        alert('Submitted..!!');
+        alert('Yakin Ingin Menginput Data?');
       });
   }
 });

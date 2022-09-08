@@ -2,9 +2,11 @@
 
 namespace Modules\Inventory\Http\Controllers;
 
-use Illuminate\Contracts\Support\Renderable;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
+use Illuminate\Contracts\Support\Renderable;
+use Modules\Inventory\Entities\Tambahbarang;
 
 class InventoryController extends Controller
 {
@@ -14,7 +16,21 @@ class InventoryController extends Controller
      */
     public function index()
     {
-        return view('inventory::index');
+        $terbaru = Tambahbarang::select()->latest()->first();
+        $cek = Carbon::parse($terbaru->tgl_beli);
+
+        if ($cek->format('Y') != Carbon::now()->format('Y')) {
+            $no = 1;
+        } elseif ($cek->format('Y') == Carbon::now()->format('Y')) {
+            $no = $terbaru->nomer_inventaris + 1;
+        }
+        $nomer_invetaris = $no . '/IN/SWB/' . $cek->format('m') . '/' . $cek->format('Y');
+
+        $jumlah_brg = Tambahbarang::all()->count();
+        return view('inventory::index', [
+            'nomer_inventaris' => $nomer_invetaris,
+            'barangs' => Tambahbarang::all(),
+        ])->with('jumlah_brg', $jumlah_brg);
     }
 
     /**
@@ -53,7 +69,9 @@ class InventoryController extends Controller
      */
     public function edit($id)
     {
-        return view('inventory::edit');
+        return view('inventory::Recordinventory.editbarang', [
+            'barang' => Tambahbarang::select()->where('id', $id)->get(),
+        ]);
     }
 
     /**

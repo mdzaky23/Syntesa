@@ -1,8 +1,22 @@
   <!-- BEGIN: Header-->
-  <nav class="header-navbar navbar-expand-lg navbar navbar-fixed  navbar-shadow navbar-brand-center " data-nav="brand-left">
+  
+  <nav class="header-navbar navbar-expand-lg navbar navbar-fixed align-items-center navbar-shadow navbar-brand-center" data-nav="brand-center">
+      <div class="navbar-header d-xl-block d-none">
+        <ul class="nav navbar-nav">
+      </div>
+      <div class="navbar-container d-flex content">
+        <div class="bookmark-wrapper d-flex align-items-center">
+          <ul class="nav navbar-nav d-xl-none">
+            <li class="nav-item"><a class="nav-link menu-toggle" href="#"><i class="ficon" data-feather="menu"></i></a></li>
+          </ul>
+          <ul class="nav navbar-nav bookmark-icons">
+          <li class="dropdown nav-item" data-menu="dropdown"><a class="dropdown-toggle nav-link d-flex align-items-center mt-1" href="/home" data-bs-toggle="dropdown">
+          <span data-i18n="Dashboards">
+            <h3>Dashboards</h3>
+          </span></a></li>
   <div class="navbar-header">
     <ul class="nav navbar-nav">
-        <h1 class ="brand-text mb-0">Sistem Kerja Terpadu</h1>
+        <h1 class ="brand-text mt-1">Sistem Kerja Terpadu</h1>
       </li>
     </ul>
   </div>
@@ -47,46 +61,3 @@
     </div>
   </nav>
   
-  <!-- END: Header-->
-
-  
-    <div class="horizontal-menu-wrapper">
-  <div class="header-navbar navbar-expand-sm navbar navbar-horizontal
-  floating-nav
-  navbar-light
-  navbar-shadow menu-border
-  "
-  role="navigation"
-  data-menu="menu-wrapper"
-  data-menu-type="floating-nav">
-    <div class="navbar-header">
-      <ul class="nav navbar-nav flex-row">
-        <li class="nav-item me-auto">
-          <a class="navbar-brand" href="https://pixinvent.com/demo/vuexy-bootstrap-laravel-admin-template/demo-5">
-            <span class="brand-logo">
-            <h2 class="brand-text mb-0">Sistem Kerja Terpadu</h2>
-          </a>
-        </li>
-        <li class="nav-item nav-toggle">
-          <a class="nav-link modern-nav-toggle pe-0" data-bs-toggle="collapse">
-            <i class="d-block d-xl-none text-primary toggle-icon font-medium-4" data-feather="x"></i>
-          </a>
-        </li>
-      </ul>
-    </div>
-    <div class="shadow-bottom"></div>
-    <!-- Horizontal menu content-->
-    <div class="navbar-container main-menu-content" data-menu="menu-container">
-      <ul class="nav navbar-nav" id="main-menu-navigation" data-menu="menu-navigation">
-      
-         <li class="nav-item dropdown  "
-         data-menu=d>
-          <a href="javascript:void(0)" class="nav-link d-flex align-items-center " target="_self"  data-bs-toggle=dropdown>
-            <i data-feather="home"></i>
-            <span>Dashboards</span>
-          </a>  
-     </ul>
-    </div>
-  </div>
-</div>
- 

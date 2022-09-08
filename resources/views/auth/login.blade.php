@@ -99,7 +99,7 @@ License: You must have a valid license purchased only from themeforest(the above
               <!-- Login-->
               <div class="d-flex col-lg-4 align-items-center auth-bg px-2 p-lg-5">
                 <div class="col-12 col-sm-8 col-md-6 col-lg-12 px-xl-2 mx-auto">
-                  <h2 class="card-title fw-bold mb-1">Selamat Datang di Syntesa 👋</h2>
+                  <h2 class="card-title brand-text text-primary mb-1">Selamat Datang di Syntesa 👋</h2>
                   <p class="card-text mb-2">Silahkan Login Terlebih Dahulu</p>
                   <form class="auth-login-form mt-2" action="{{ route('login') }}" method="POST">
                   @csrf

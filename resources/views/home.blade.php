@@ -3,9 +3,6 @@
 
 @section('content')
 
-
-
- 
   <!-- BEGIN: Content-->
   <div class="app-content content ">
     <div class="content-overlay"></div>
@@ -219,7 +216,7 @@
     <!-- personalization -->
     <div class="col-md-3 col-sm-6 col-12 kb-search-content">
       <div class="card">
-        <a href="page-kb-category.html">
+        <a href="/inventory">
           <img
             src="../../../app-assets/images/illustration/personalization.svg"
             class="card-img-top"
