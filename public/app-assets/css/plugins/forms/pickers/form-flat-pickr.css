@@ -3,7 +3,7 @@
 }
 
 .flatpickr-calendar .flatpickr-day.today {
-    border-color: #006b0d;
+    border-color: #7367f0;
 }
 
 .flatpickr-calendar .flatpickr-day.today:hover {
@@ -13,9 +13,9 @@
 
 .flatpickr-calendar .flatpickr-day.selected,
 .flatpickr-calendar .flatpickr-day.selected:hover {
-    background: #006b0d;
+    background: #7367f0;
     color: #fff;
-    border-color: #006b0d;
+    border-color: #7367f0;
 }
 
 .flatpickr-calendar .flatpickr-day.inRange,
@@ -29,15 +29,15 @@
 .flatpickr-calendar .flatpickr-day.endRange,
 .flatpickr-calendar .flatpickr-day.startRange:hover,
 .flatpickr-calendar .flatpickr-day.endRange:hover {
-    background: #006b0d;
+    background: #7367f0;
     color: #fff;
-    border-color: #006b0d;
+    border-color: #7367f0;
 }
 
 .flatpickr-calendar .flatpickr-day.selected.startRange+.endRange:not(:nth-child(7n + 1)),
 .flatpickr-calendar .flatpickr-day.startRange.startRange+.endRange:not(:nth-child(7n + 1)),
 .flatpickr-calendar .flatpickr-day.endRange.startRange+.endRange:not(:nth-child(7n + 1)) {
-    box-shadow: -10px 0 0 #006b0d;
+    box-shadow: -10px 0 0 #7367f0;
 }
 
 .flatpickr-calendar .flatpickr-day.flatpickr-disabled,
@@ -64,7 +64,7 @@
 .flatpickr-calendar .flatpickr-months .flatpickr-prev-month:hover svg,
 .flatpickr-calendar .flatpickr-months .flatpickr-next-month:hover i,
 .flatpickr-calendar .flatpickr-months .flatpickr-next-month:hover svg {
-    fill: #006b0d;
+    fill: #7367f0;
 }
 
 .flatpickr-calendar .flatpickr-current-month span.cur-month {

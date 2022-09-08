@@ -7,7 +7,7 @@
 .ql-toolbar .ql-formats button.ql-active,
 .ql-toolbar .ql-formats button:focus,
 .ql-toolbar .ql-formats button:hover {
-    color: #006b0d !important
+    color: #7367f0 !important
 }
 
 .ql-container,
@@ -68,14 +68,14 @@
 .ql-toolbar .ql-formats .ql-picker-label:hover .ql-stroke,
 .ql-toolbar .ql-formats button:focus .ql-stroke,
 .ql-toolbar .ql-formats button:hover .ql-stroke {
-    stroke: #006b0d !important
+    stroke: #7367f0 !important
 }
 
 .ql-toolbar .ql-formats .ql-picker-label:focus .ql-fill,
 .ql-toolbar .ql-formats .ql-picker-label:hover .ql-fill,
 .ql-toolbar .ql-formats button:focus .ql-fill,
 .ql-toolbar .ql-formats button:hover .ql-fill {
-    fill: #006b0d !important
+    fill: #7367f0 !important
 }
 
 .ql-bubble .ql-picker {
@@ -95,7 +95,7 @@
 }
 
 .ql-editor a {
-    color: #006b0d
+    color: #7367f0
 }
 
 .ql-picker {
@@ -107,11 +107,11 @@
 }
 
 .ql-active .ql-stroke {
-    stroke: #006b0d !important
+    stroke: #7367f0 !important
 }
 
 .ql-active .ql-fill {
-    fill: #006b0d !important
+    fill: #7367f0 !important
 }
 
 .ql-fill {
@@ -164,15 +164,15 @@
 .dark-layout .ql-toolbar .ql-picker-options .ql-active,
 .dark-layout .quill-toolbar .ql-picker-label .ql-active,
 .dark-layout .quill-toolbar .ql-picker-options .ql-active {
-    color: #006b0d !important
+    color: #7367f0 !important
 }
 
 .dark-layout .ql-active .ql-stroke {
-    stroke: #006b0d !important
+    stroke: #7367f0 !important
 }
 
 .dark-layout .ql-active .ql-fill {
-    fill: #006b0d !important
+    fill: #7367f0 !important
 }
 
 .dark-layout .ql-bubble .ql-toolbar {

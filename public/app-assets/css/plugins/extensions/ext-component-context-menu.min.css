@@ -20,13 +20,13 @@
 .context-menu-list .context-menu-item:focus,
 .context-menu-list .context-menu-item:hover {
     background-color: rgba(115, 103, 240, .12) !important;
-    color: #006b0d
+    color: #7367f0
 }
 
 .context-menu-list .context-menu-item.context-menu-hover.context-menu-submenu:after,
 .context-menu-list .context-menu-item:focus.context-menu-submenu:after,
 .context-menu-list .context-menu-item:hover.context-menu-submenu:after {
-    border-color: transparent transparent transparent #006b0d !important
+    border-color: transparent transparent transparent #7367f0 !important
 }
 
 .context-menu-list .context-menu-item:focus {
@@ -47,7 +47,7 @@
 }
 
 .dark-layout .context-menu-list .context-menu-item.context-menu-hover>span {
-    color: #006b0d
+    color: #7367f0
 }
 
 .dark-layout .context-menu-list .context-menu-item.context-menu-submenu:after {
@@ -69,7 +69,7 @@
 }
 
 [data-textdirection=rtl] .context-menu-list .context-menu-item.context-menu-hover.context-menu-submenu:after {
-    border-color: transparent #006b0d transparent transparent !important
+    border-color: transparent #7367f0 transparent transparent !important
 }
 
 [data-textdirection=rtl] .context-menu-list .context-menu-item>.context-menu-list {

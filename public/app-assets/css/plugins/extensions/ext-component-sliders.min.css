@@ -48,7 +48,7 @@
 .noUi-handle {
     border-radius: 50%;
     background: #FFF;
-    border: 2px solid #006b0d
+    border: 2px solid #7367f0
 }
 
 .noUi-handle:after,
@@ -57,7 +57,7 @@
 }
 
 .noUi-connect {
-    background: #006b0d
+    background: #7367f0
 }
 
 .noUi-tooltip {

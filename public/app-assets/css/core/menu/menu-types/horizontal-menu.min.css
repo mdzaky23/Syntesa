@@ -87,7 +87,7 @@
 }
 
 .horizontal-menu .header-navbar.navbar-brand-center .navbar-header .navbar-brand .brand-text {
-    color: #006b0d;
+    color: #7367f0;
     padding-left: 1rem;
     margin-bottom: 0;
     font-weight: 600;
@@ -199,7 +199,7 @@
 
 .horizontal-menu .header-navbar.navbar-horizontal ul#main-menu-navigation>li>.dropdown-menu .active>a {
     background: #F8F8F8;
-    color: #006b0d;
+    color: #7367f0;
     font-weight: 500
 }
 
@@ -231,8 +231,8 @@
 }
 
 .horizontal-menu .header-navbar.navbar-horizontal ul#main-menu-navigation>li.active>a {
-    background: -webkit-linear-gradient(332deg, #006b0d, rgba(115, 103, 240, .7));
-    background: linear-gradient(118deg, #006b0d, rgba(115, 103, 240, .7));
+    background: -webkit-linear-gradient(332deg, #7367f0, rgba(115, 103, 240, .7));
+    background: linear-gradient(118deg, #7367f0, rgba(115, 103, 240, .7));
     box-shadow: 0 0 6px 1px rgba(115, 103, 240, .6);
     color: #FFF;
     border-radius: 4px
@@ -247,7 +247,7 @@
 }
 
 .horizontal-menu .navbar-dark .nav-item.active>a {
-    border-bottom: 2px solid #006b0d;
+    border-bottom: 2px solid #7367f0;
     background-color: #313C50
 }
 
