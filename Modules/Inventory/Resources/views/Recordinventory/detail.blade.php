@@ -32,6 +32,7 @@
             <div class=" col-12">
                 <div class="card">
                     <div class="card-header d-flex justify-content align-items-start mb-1 pb-1">
+                        <img src="{{ asset('storage/' . $barang->lampiran)}}" width="300px">
                         @php
                         $barang = Modules\Inventory\Entities\Tambahbarang::select()
                         ->where('id', $barang->id)
@@ -40,33 +41,22 @@
                         $bulan = Carbon\Carbon::parse($barang->tanggal_beli)->format('m');
                         $tahun = Carbon\Carbon::parse($barang->tanggal_beli)->format('Y');
                         $tanggal = Carbon\Carbon::parse($barang->tanggal_beli)->format('d-m-Y');
-                        $array_bln = [
-                        '01' => 'I',
-                        '02' => 'II',
-                        '03' => 'III',
-                        '04' => 'IV',
-                        '05' => 'V',
-                        '06' => 'VI',
-                        '07' => 'VII',
-                        '08' => 'VIII',
-                        '09' => 'IX',
-                        '10' => 'X',
-                        '11' => 'XI',
-                        '12' => 'XII',
-                        ];
-                        $bln =$array_bln[$bulan];
                         @endphp
-
                         <div>
-                            <h1 class="card-title mb-1">No Inventaris : {{$barang->nomer_inventaris}}/IN/SWB/{{ $bln}}/{{$tahun}}</h1>
-                            <h1 class="card-title mb-1">Nama Barang : {{ $barang -> nama_brg }}</h1>
-                            <p class="card-text">Kategori Barang :{{ $barang -> kategori_brg }}</p>
-                            <a class="btn btn-success" href="/inventory/print" target="blank"><span data-feather="printer"></span></a>
+                            <h1 class="card-title mb-1">No Inventaris : {{$barang->nomer_inventaris}}.IN.SWB.{{ $bulan}}.{{$tahun}}</h1>
+                            <p class="card-text">Nama Barang : {{ $barang -> nama_brg }}</p>
+                            <p class="card-text">Kategori Barang : {{ $barang -> kategori_brg }}</p>
+                            <p class="card-text">Jumlah Barang : {{ $barang -> jumlah_brg }}</p>
+                            <p class="card-text">Harga Barang : {{ $barang -> harga_brg }}</p>
+                            <p class="card-text">Lokasi Barang : {{ $barang -> kategori_lokasi }}</p>
+                            <p class="card-text">Ruangan : {{ $barang -> ruangan_lokasi}}</p>
+                            <p class="card-text">Lantai : {{ $barang -> lantai_lokasi }}</p>
+
                         </div>
-                        <div class="visible-print text-center">
-                            {!! QrCode::size(200)->generate(Request::url()); !!}
+                        <div class="visible-print text-center mt-3">
+                            {!! QrCode::size(170)->generate(Request::url()); !!}
+                            <p><a class="btn btn-success mt-2" href="/inventory/print" target="blank"><span data-feather="printer"></span></a></p>
                         </div>
-                        <!-- <i data-feather="more-vertical" class="font-medium-3 cursor-pointer"></i> -->
                     </div>
                 </div>
             </div>

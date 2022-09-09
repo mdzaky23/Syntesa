@@ -15,8 +15,6 @@
                                     <th>No Inventaris</th>
                                     <th>Nama Barang</th>
                                     <th>Tipe Barang</th>
-                                    <th>Jumlah Barang</th>
-                                    <th>Harga Barang</th>
                                     <th>Tanggal Beli</th>
                                     <th>Umur Ekonomi</th>
                                     <th>Tanggal Peremajaan</th>
@@ -39,34 +37,15 @@
                                 $bulan = Carbon\Carbon::parse($barang->tanggal_beli)->format('m');
                                 $tahun = Carbon\Carbon::parse($barang->tanggal_beli)->format('Y');
                                 $tanggal = Carbon\Carbon::parse($barang->tanggal_beli)->format('d-m-Y');
-                                $array_bln = [
-                                '01' => 'I',
-                                '02' => 'II',
-                                '03' => 'III',
-                                '04' => 'IV',
-                                '05' => 'V',
-                                '06' => 'VI',
-                                '07' => 'VII',
-                                '08' => 'VIII',
-                                '09' => 'IX',
-                                '10' => 'X',
-                                '11' => 'XI',
-                                '12' => 'XII',
-                                ];
-                                $bln =$array_bln[$bulan];
                                 @endphp
 
                                 <tr>
                                     <td></td>
 
-                                    <td> {{$barang->nomer_inventaris}}/IN/SWB/{{ $bln}}/{{$tahun}} </td>
+                                    <td> {{$barang->nomer_inventaris}}/IN/SWB/{{ $bulan}}/{{$tahun}} </td>
                                     <td>{{$barang->nama_brg}}</td>
                                     <td>{{$barang->tipe_brg}}</td>
-
-                                    <td>{{$barang->jumlah_brg}}</td>
-                                    <td>{{$barang->harga_brg}}</td>
                                     <td>{{$barang->tgl_beli}}</td>
-
                                     <td>{{$barang->umur_ekonomi}}</td>
                                     <td>{{$barang->tgl_peremajaan}}</td>
                                     <td>{{$barang->kategori_lokasi}}</td>

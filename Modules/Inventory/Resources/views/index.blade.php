@@ -81,7 +81,7 @@
                           <tr>
                             <th>No Inventaris</th>
                             <th>Nama Barang</th>
-                            <th>Jumlah Barang</th>
+
                             <th>kategori Barang</th>
                             <th>Tanggal beli</th>
                             <th>Umur Ekonomi</th>
@@ -121,7 +121,6 @@
 
                             <td> {{$barang->nomer_inventaris}}/IN/SWB/{{ $bln}}/{{$tahun}} </td>
                             <td>{{$barang->nama_brg}}</td>
-                            <td>{{$barang->jumlah_brg}}</td>
 
                             <td>{{$barang->kategori_brg}}</td>
                             <td>{{$barang->tgl_beli}}</td>
