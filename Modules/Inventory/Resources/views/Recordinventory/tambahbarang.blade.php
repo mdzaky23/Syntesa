@@ -112,7 +112,7 @@
                     </div>
                     <div class="mb-1 col-md-6">
                       <label class="form-label" for="tgl_peremajaan">Tanggal Peremajaan</label>
-                      <input type="date" id="tgl_peremajaan" class="form-control" name="tgl_peremajaan" placeholder=" Masukan Umur Ekonomi" />
+                      <input type="text" id="tgl_peremajaan" class="form-control" name="tgl_peremajaan" placeholder="mm/dd/yyyy" />
                     </div>
                     <div class="mb-1 col-md-6">
                       <label class="form-label" for="lampiran">Lampiran</label>

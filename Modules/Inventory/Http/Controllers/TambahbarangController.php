@@ -50,6 +50,7 @@ class TambahbarangController extends Controller
      */
     public function store(Request $request)
     {
+
         $terbaru = Tambahbarang::select()->latest()->first();
         $cek = Carbon::parse($terbaru->tgl_beli);
 

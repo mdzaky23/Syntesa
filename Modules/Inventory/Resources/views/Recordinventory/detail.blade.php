@@ -32,7 +32,7 @@
             <div class=" col-12">
                 <div class="card">
                     <div class="card-header d-flex justify-content align-items-start mb-1 pb-1">
-                        <img src="{{ asset('storage/' . $barang->lampiran)}}" width="300px">
+                        <img src="{{ asset('storage/' . $barang->lampiran)}}" width="250px">
                         @php
                         $barang = Modules\Inventory\Entities\Tambahbarang::select()
                         ->where('id', $barang->id)
