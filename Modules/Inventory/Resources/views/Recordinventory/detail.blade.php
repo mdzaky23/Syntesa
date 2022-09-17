@@ -31,8 +31,8 @@
             </div>
             <div class=" col-12">
                 <div class="card">
-                    <div class="card-header d-flex justify-content align-items-start mb-1 pb-1">
-                        <img src="{{ asset('storage/' . $barang->lampiran)}}" width="250px">
+                    <div class="card-header d-flex justify-content align-items mb-1 pb-1">
+                        <img src="{{ asset('storage/' . $barang->lampiran)}}" width="300px">
                         @php
                         $barang = Modules\Inventory\Entities\Tambahbarang::select()
                         ->where('id', $barang->id)
@@ -43,9 +43,18 @@
                         $tanggal = Carbon\Carbon::parse($barang->tanggal_beli)->format('d-m-Y');
                         @endphp
                         <div>
-                            <h1 class="card-title mb-1">No Inventaris : {{$barang->nomer_inventaris}}.IN.SWB.{{ $bulan}}.{{$tahun}}</h1>
+                            <h1 class="card-title-left mb-1">No Inventaris : {{$barang->nomer_inventaris}}.IN.SWB.{{ $bulan}}.{{$tahun}}</h1>
                             <p class="card-text">Nama Barang : {{ $barang -> nama_brg }}</p>
-                            <p class="card-text">Kategori Barang : {{ $barang -> kategori_brg }}</p>
+                            <p class="card-text">Kategori Barang : @if ($barang->kategori_id == 1)
+                                Alat Kerja
+                                @elseif ($barang->kategori_id == 2)
+                                Kebutuhan Oprasional
+                                @elseif ($barang->kategori_id == 3)
+                                Elektronik
+                                @else
+                                Furniture
+                                @endif
+                            </p>
                             <p class="card-text">Jumlah Barang : {{ $barang -> jumlah_brg }}</p>
                             <p class="card-text">Harga Barang : {{ $barang -> harga_brg }}</p>
                             <p class="card-text">Lokasi Barang : {{ $barang -> kategori_lokasi }}</p>
@@ -54,12 +63,11 @@
 
                         </div>
                         <div class="visible-print text-center mt-3">
-                            {!! QrCode::size(170)->generate(Request::url()); !!}
-                            <p><a class="btn btn-success mt-2" href="/inventory/print" target="blank"><span data-feather="printer"></span></a></p>
+                            {!! QrCode::size(180)->generate($barang->kategori_lokasi); !!}
+                            <p><a class="btn btn-success mt-2" href="/inventory/print/ {{$barang->id}}" target="blank"><span data-feather="printer"></span></a></p>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-
         @endsection

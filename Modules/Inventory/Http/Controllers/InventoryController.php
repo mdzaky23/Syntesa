@@ -6,6 +6,7 @@ use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Illuminate\Contracts\Support\Renderable;
+use Modules\Inventory\Entities\KategoriBarang;
 use Modules\Inventory\Entities\Tambahbarang;
 
 class InventoryController extends Controller
@@ -30,6 +31,7 @@ class InventoryController extends Controller
         return view('inventory::index', [
             'nomer_inventaris' => $nomer_invetaris,
             'barangs' => Tambahbarang::all(),
+            'kategori_barangs' => KategoriBarang::all(),
         ])->with('jumlah_brg', $jumlah_brg);
     }
 

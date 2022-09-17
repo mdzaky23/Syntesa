@@ -83,13 +83,13 @@
                       <input type="string" id="harga_brg" class="form-control" name="harga_brg" placeholder=" Masukan harga Barang" value="{{$barang->harga_brg}}" />
                     </div>
                     <div class="mb-1 col-md-6">
-                      <label class="form-label" for="kategori_brg">Kategori Barang</label>
-                      <select class="select2 w-100" id="kategori_brg" name="kategori_brg" value="{{$barang->kategori_brg}}">
-                        <option label=" ">{{$barang->kategori_brg}}</option>
-                        <option>Alat Kerja</option>
-                        <option>Kebutuhan Oprasional</option>
-                        <option>Elektronik</option>
-                        <option>furniture</option>
+                      <label class="form-label" for="kategori_id">Kategori Barang</label>
+                      <select class="select2 w-100" id="kategori_id" name="kategori_id" value="{{$barang->kategori_id}}">
+                        <option label=" ">{{$barang->kategori_id}}</option>
+                        <option value="1">Alat Kerja</option>
+                        <option value="2">Kebutuhan Oprasional</option>
+                        <option value="3">Elektronik</option>
+                        <option value="4">furniture</option>
                       </select>
                     </div>
                   </div>

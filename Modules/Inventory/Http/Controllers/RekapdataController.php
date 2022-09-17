@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Illuminate\Contracts\Support\Renderable;
 use Modules\Inventory\Entities\Tambahbarang;
+use Modules\Inventory\Entities\KategoriBarang;
 
 class RekapdataController extends Controller
 {
@@ -27,7 +28,8 @@ class RekapdataController extends Controller
         $nomer_invetaris = $no . '/IN/SWB/' . $cek->format('m') . '/' . $cek->format('Y');
         return view('inventory::Datainventory.rekapdata', [
             'barangs' => Tambahbarang::all(),
-            'nomer_inventaris' => $nomer_invetaris
+            'nomer_inventaris' => $nomer_invetaris,
+            'kategori_barangs' => KategoriBarang::all(),
         ]);
     }
 

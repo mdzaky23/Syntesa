@@ -86,13 +86,13 @@
                       <input type="string" id="harga_brg" class="form-control" name="harga_brg" placeholder=" Masukan Jenis Barang" />
                     </div>
                     <div class="mb-1 col-md-6">
-                      <label class="form-label" for="kategori_brg">Kategori Barang</label>
-                      <select class="select2 w-100" id="kategori_brg" name="kategori_brg">
+                      <label class="form-label" for="kategori_id">Kategori Barang</label>
+                      <select class="select2 w-100" id="kategori_id" name="kategori_id">
                         <option label=" "></option>
-                        <option>Alat Kerja</option>
-                        <option>Kebutuhan Oprasional</option>
-                        <option>Elektronik</option>
-                        <option>furniture</option>
+                        <option value="1">Alat Kerja</option>
+                        <option value="2">Kebutuhan Oprasional</option>
+                        <option value="3">Elektronik</option>
+                        <option value="4">Furniture</option>
                       </select>
                     </div>
                     <div class="mb-1 col-md-6">
@@ -106,13 +106,15 @@
                       <select class="select2 w-100" id="umur_ekonomi" name="umur_ekonomi">
                         <option label=" "></option>
                         <option>1 Tahun</option>
+                        <option>2 Tahun</option>
                         <option>3 Tahun</option>
+                        <option>4 Tahun</option>
                         <option>5 Tahun</option>
                       </select>
                     </div>
                     <div class="mb-1 col-md-6">
                       <label class="form-label" for="tgl_peremajaan">Tanggal Peremajaan</label>
-                      <input type="text" id="tgl_peremajaan" class="form-control" name="tgl_peremajaan" placeholder="mm/dd/yyyy" />
+                      <input type="date" id="tgl_peremajaan" class="form-control" name="tgl_peremajaan" placeholder="mm/dd/yyyy" />
                     </div>
                     <div class="mb-1 col-md-6">
                       <label class="form-label" for="lampiran">Lampiran</label>

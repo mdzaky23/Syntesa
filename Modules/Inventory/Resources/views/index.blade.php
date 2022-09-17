@@ -81,7 +81,6 @@
                           <tr>
                             <th>No Inventaris</th>
                             <th>Nama Barang</th>
-
                             <th>kategori Barang</th>
                             <th>Tanggal beli</th>
                             <th>Umur Ekonomi</th>
@@ -101,6 +100,8 @@
                           $bulan = Carbon\Carbon::parse($barang->tanggal_beli)->format('m');
                           $tahun = Carbon\Carbon::parse($barang->tanggal_beli)->format('Y');
                           $tanggal = Carbon\Carbon::parse($barang->tanggal_beli)->format('d-m-Y');
+
+
                           $array_bln = [
                           '01' => 'I',
                           '02' => 'II',
@@ -116,49 +117,30 @@
                           '12' => 'XII',
                           ];
                           $bln =$array_bln[$bulan];
+                          $day = Carbon\Carbon::parse($barang->tgl_peremajaan)->format('d');
+                          $month = Carbon\Carbon::parse($barang->tgl_peremajaan)->format('m');
+                          $years = Carbon\Carbon::parse($barang->tgl_peremajaan)->format('Y');
+                          $year =(int)((mktime (0,0,0,$month,$day,$years) - time())/31104000);
+                          $months =(int)((mktime (0,0,0,$month,$day,$years) - time())/2592000);
+                          $days =(int)((mktime (0,0,0,$month,$day,$years) - time())/86400);
                           @endphp
                           <tr>
 
                             <td> {{$barang->nomer_inventaris}}/IN/SWB/{{ $bln}}/{{$tahun}} </td>
                             <td>{{$barang->nama_brg}}</td>
-
-                            <td>{{$barang->kategori_brg}}</td>
+                            @if ($barang->kategori_id == 1)
+                            <td>Alat Kerja</td>
+                            @elseif ($barang->kategori_id == 2)
+                            <td>Kebutuhan Oprasional</td>
+                            @elseif ($barang->kategori_id == 3)
+                            <td>Elektronik</td>
+                            @else
+                            <td>Furniture</td>
+                            @endif
                             <td>{{$barang->tgl_beli}}</td>
-
                             <td>{{$barang->umur_ekonomi}}</td>
                             <td>
-                              <p id="$barang"></p>
-
-                              <script>
-                                // Set the date we're counting down to
-                                var countDownDate = new Date("15 Sep 2024").getTime();
-
-                                // Update the count down every 1 second
-                                var x = setInterval(function() {
-
-                                  // Get today's date and time
-                                  var now = new Date().getTime();
-
-                                  // Find the distance between now and the count down date
-                                  var distance = countDownDate - now;
-
-                                  // Time calculations for days, hours, minutes and seconds
-                                  var years = Math.floor(distance / (1000 * 60 * 60 * 24) / 365);
-                                  var days = Math.floor(distance / (1000 * 60 * 60 * 24)) % 365;
-                                  var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-
-
-                                  // Output the result in an element with id="demo"
-                                  document.getElementById("$barang").innerHTML = "Tersisa " + years + " Tahun " +
-                                    days + " Hari ";
-
-                                  // If the count down is over, write some text 
-                                  if (distance < 0) {
-                                    clearInterval(x);
-                                    document.getElementById("$barang").innerHTML = "EXPIRED";
-                                  }
-                                }, 1000);
-                              </script>
+                              <p>Tersisa {{$year}} Tahun {{$months}} Bulan {{$days}} Hari </p>
                             </td>
                             <td>
                               <div class="dropdown">
@@ -194,4 +176,35 @@
                 </div>
               </section>
 
+              <script>
+                var tgl_peremajaan = "{{$barang->tgl_peremajaan}}"
+                // Set the date we're counting down to
+                var countDownDate = new Date(tgl_peremajaan).getTime();
+
+                // Update the count down every 1 second
+                var x = setInterval(function() {
+
+                  // Get today's date and time
+                  var now = new Date().getTime();
+
+                  // Find the distance between now and the count down date
+                  var distance = countDownDate - now;
+
+                  // Time calculations for days, hours, minutes and seconds
+                  var years = Math.floor(distance / (1000 * 60 * 60 * 24) / 365);
+                  var days = Math.floor(distance / (1000 * 60 * 60 * 24)) % 365;
+                  var months = Math.floor(distance / (1000 * 365) / 30);
+                  var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+
+
+                  // Output the result in an element with id="demo"
+                  document.getElementById("$barang").innerHTML = "Tersisa " + years + " Tahun " + days + " Hari ";
+
+                  // If the count down is over, write some text 
+                  if (distance < 0) {
+                    clearInterval(x);
+                    document.getElementById("$barang").innerHTML = "EXPIRED";
+                  }
+                }, 1000);
+              </script>
               @endsection

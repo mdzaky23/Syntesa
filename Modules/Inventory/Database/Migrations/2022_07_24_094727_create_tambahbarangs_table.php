@@ -20,7 +20,7 @@ return new class extends Migration
             $table->string('merk_brg');
             $table->string('jumlah_brg');
             $table->string('harga_brg');
-            $table->string('kategori_brg');
+            $table->string('kategori_id');
             $table->string('lampiran')->nullable();
             $table->string('tipe_brg');
             $table->string('kategori_lokasi');

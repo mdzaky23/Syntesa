@@ -51,7 +51,15 @@
                                     <td>{{$barang->kategori_lokasi}}</td>
                                     <td>{{$barang->ruangan_lokasi}}</td>
                                     <td>{{$barang->lantai_lokasi}}</td>
-                                    <td>{{$barang->kategori_brg}}</td>
+                                    @if ($barang->kategori_id == 1)
+                                    <td>Alat Kerja</td>
+                                    @elseif ($barang->kategori_id == 2)
+                                    <td>Kebutuhan Oprasional</td>
+                                    @elseif ($barang->kategori_id == 3)
+                                    <td>Elektronik</td>
+                                    @else
+                                    <td>Furniture</td>
+                                    @endif
                                     <td>
                                         <a class="btn btn-success" target="blank" href="{{ asset('storage/' . $barang->lampiran)}}">Lihat</a>
                                     </td>
