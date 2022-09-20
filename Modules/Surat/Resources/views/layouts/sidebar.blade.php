@@ -53,11 +53,11 @@
                                     data-i18n="Add">Surat Dinas Keluar
                                     Kantor</span></a>
                         </li>
-                        <li {{ Request::is('surat/suratlembur/create') ? 'active' : '' }}><a
+                        {{-- <li {{ Request::is('surat/suratlembur/create') ? 'active' : '' }}><a
                                 class="d-flex align-items-center" href="/surat/suratlembur/create"><i
                                     data-feather="circle"></i><span class="menu-item text-truncate"
                                     data-i18n="Add">Surat Perintah Lembur</span></a>
-                        </li>
+                        </li> --}}
                     </ul>
                 </li>
                 <li class=" nav-item"><a class="d-flex align-items-center" href="#"><i

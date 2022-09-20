@@ -27,6 +27,7 @@ return new class extends Migration
             $table->string('tertanda2')->nullable();
             $table->string('jabatan')->nullable();
             $table->text('tembusan')->nullable();
+            $table->text('ttd')->nullable();
             $table->text('keterangan')->nullable();
             $table->text('dokumen')->nullable();
             $table->timestamps();

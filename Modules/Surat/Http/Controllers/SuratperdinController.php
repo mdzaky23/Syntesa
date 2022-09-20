@@ -41,19 +41,11 @@ class SuratperdinController extends Controller
     {
 
         $validatedData = $request->validate([
-            'tgl_suratperdin' => 'required',
             'no_suratperdin' => 'required',
-            'dasar' => 'required',
-            'nama' => 'required',
-            'jabatan' => 'required',
-            'pengikut1' => '',
-            'pengikut2' => '',
-            'pengikut3' => '',
-            'pengikut4' => '',
-            'pengikut5' => '',
-            'untuk' => 'required',
-            'waktu' => 'required',
-            'pengesahan' => 'required',
+            'tgl_suratperdin' => 'required',
+            'instansi' => 'required',
+            'perihal' => 'required',
+            'keterangan' => 'required',
             'dokumen' => '',
         ]);
 
@@ -98,17 +90,6 @@ class SuratperdinController extends Controller
         $rules = [
             'no_suratperdin' => 'required',
             'tgl_suratperdin' => 'required',
-            'dasar' => 'required',
-            'nama' => 'required',
-            'jabatan' => 'required',
-            'pengikut1' => '',
-            'pengikut2' => '',
-            'pengikut3' => '',
-            'pengikut4' => '',
-            'pengikut5' => '',
-            'untuk' => 'required',
-            'waktu' => 'required',
-            'pengesahan' => 'required',
             'instansi' => 'required',
             'perihal' => 'required',
             'keterangan' => 'required',

@@ -54,6 +54,7 @@ class PrintedaranController extends Controller
      */
     public function store(Request $request)
     {
+
         $terbaru = Suratedaran::select()->latest()->first();
         $cek = Carbon::parse($terbaru->tgl_suratedaran);
 
@@ -72,6 +73,7 @@ class PrintedaranController extends Controller
             'nama' => $request->nama,
             'jabatan' => $request->jabatan,
             'perihal' => $request->perihal,
+            'ttd' => $request->ttd,
             'keterangan' => $request->keterangan,
             'dokumen' => $request->dokumen
         ]);
@@ -118,6 +120,7 @@ class PrintedaranController extends Controller
             'instansi' => 'required',
             'nama' => 'required',
             'jabatan' => 'required',
+            'ttd' => '',
 
         ];
 

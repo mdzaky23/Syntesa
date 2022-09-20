@@ -109,25 +109,51 @@
                                                 <select class="form-select" id="nama" name="nama">
                                                     <option>-Pilih-</option>
                                                     <option
-                                                        value="<p>Supriadi Jufri</p><br><p>15007201
+                                                        value="<p>Supriadi Jufri</p><p>15007201
                                                 </p>">
                                                         Supriadi Jufri</option>
                                                     <option
-                                                        value="<p>Aminudin</p><br><p>15007902
+                                                        value="<p>Aminudin</p><p>15007902
                                                 </p>">
                                                         Aminudin</option>
                                                     <option
-                                                        value="<p>Ivan Fadilla</p><br><p>15006603
+                                                        value="<p>Ivan Fadilla</p><p>15006603
                                                 </p>">
                                                         Ivan Fadilla</option>
                                                 </select>
                                             </div>
                                         </div>
                                     </div>
-
+                                    <!-- Basic Checkbox start -->
+                                    <label for="ttd">Tanda Tangan</label>
+                                    <div class="demo-inline-spacing">
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="checkbox" id="ttd"
+                                                name="ttd" value="1" />
+                                            <label class="form-check-label" for="ttd">Direktur
+                                                Utama</label>
+                                        </div>
+                                    </div>
+                                    <div class="demo-inline-spacing">
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="checkbox" id="ttd"
+                                                name="ttd" value="2" />
+                                            <label class="form-check-label" for="ttd">Direktur Umum &
+                                                Keuangan</label>
+                                        </div>
+                                    </div>
+                                    <div class="demo-inline-spacing mb-2">
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="checkbox" id="ttd"
+                                                name="ttd" value="3" />
+                                            <label class="form-check-label" for="ttd">Direktur
+                                                Operasional</label>
+                                        </div>
+                                    </div>
+                                    <!-- Basic Checkbox end -->
 
                                     <div class="d-grid col-12">
-                                        <button type="submit" class="btn btn-primary">Buat Surat</button>
+                                        <button type="submit" class="btn btn-success">Buat Surat</button>
                                     </div>
 
                                 </form>

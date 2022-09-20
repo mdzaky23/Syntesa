@@ -140,6 +140,34 @@
                                                 </div>
                                             </div>
                                         </div>
+                                        <!-- Basic Checkbox start -->
+                                        <label for="ttd">Tanda Tangan</label>
+                                        <div class="demo-inline-spacing">
+                                            <div class="form-check form-check-inline">
+                                                <input class="form-check-input" type="checkbox" id="ttd"
+                                                    name="ttd" value="1" />
+                                                <label class="form-check-label" for="ttd">Direktur
+                                                    Utama</label>
+                                            </div>
+                                        </div>
+                                        <div class="demo-inline-spacing">
+                                            <div class="form-check form-check-inline">
+                                                <input class="form-check-input" type="checkbox" id="ttd"
+                                                    name="ttd" value="2" />
+                                                <label class="form-check-label" for="ttd">Direktur Umum &
+                                                    Keuangan</label>
+                                            </div>
+                                        </div>
+                                        <div class="demo-inline-spacing mb-2">
+                                            <div class="form-check form-check-inline">
+                                                <input class="form-check-input" type="checkbox" id="ttd"
+                                                    name="ttd" value="3" />
+                                                <label class="form-check-label" for="ttd">Direktur
+                                                    Operasional</label>
+                                            </div>
+                                        </div>
+                                        <!-- Basic Checkbox end -->
+
                                         <div class="col-12">
                                             <div class="mb-2">
                                                 <label class="form-label" for="keterangan">Keterangan (Untuk

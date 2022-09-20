@@ -92,13 +92,40 @@
                                     <tbody>
                                         @if (!empty($suratperdins))
                                             @foreach ($suratperdins as $suratperdin)
+                                                @php
+                                                    $surat = Modules\Surat\Entities\Suratperdin::select()
+                                                        ->where('id', $suratperdin->id)
+                                                        ->get()
+                                                        ->first();
+                                                    $bulan = Carbon\Carbon::parse($surat->tgl_suratperdin)->format('m');
+                                                    $tahun = Carbon\Carbon::parse($surat->tgl_suratperdin)->format('Y');
+                                                    $tanggal = Carbon\Carbon::parse($surat->tgl_suratperdin)->format('d-m-Y');
+                                                    $array_bln = [
+                                                        '01' => 'I',
+                                                        '02' => 'II',
+                                                        '03' => 'III',
+                                                        '04' => 'IV',
+                                                        '05' => 'V',
+                                                        '06' => 'VI',
+                                                        '07' => 'VII',
+                                                        '08' => 'VIII',
+                                                        '09' => 'IX',
+                                                        '10' => 'X',
+                                                        '11' => 'XI',
+                                                        '12' => 'XII',
+                                                    ];
+                                                    $bln = $array_bln[$bulan];
+                                                    $nosurat = sprintf('%03d', $suratperdin->no_suratperdin);
+                                                @endphp
                                                 <tr>
-                                                    <td> </td>
+                                                    <td></td>
                                                     <td>
                                                         <center>{{ $i++ }}</center>
                                                     </td>
                                                     <td>
-                                                        <center>{{ $suratperdin->no_suratperdin }}</center>
+                                                        <center>
+                                                            {{ $nosurat }}/A/SWB-SPD/{{ $bln }}/{{ $tahun }}
+                                                        </center>
                                                     </td>
                                                     <td>
                                                         <center>{{ $suratperdin->tgl_suratperdin }}</center>

@@ -111,46 +111,37 @@
                                                     </td>
                                                     <td>
                                                         @if ($suratlembur->dokumen)
-                                                            <div class="btn-group dropup d-block">
-                                                                <a href="{{ asset('storage/' . $suratlembur->dokumen) }}"
-                                                                    target="blank" class="btn btn-icon btn-success"><span
-                                                                        data-feather="eye"></span></a>
-                                                                <a href="#"
-                                                                    class="btn btn-icon btn-warning dropdown-toggle"
-                                                                    data-bs-toggle="dropdown"><span
-                                                                        data-feather="edit"></span>
-                                                                </a>
-                                                                <div class="dropdown-menu">
-                                                                    <a class="dropdown-item"
-                                                                        href="{{ url('surat/printlembur/' . $suratlembur->id . '/edit') }}">Edit
-                                                                        Isi Surat</a>
-                                                                    <a class="dropdown-item"
-                                                                        href="{{ url('surat/suratlembur/' . $suratlembur->id . '/edit') }}">Edit
-                                                                        Arsip Surat</a>
-                                                                </div>
-                                                            </div>
+                                                            <a href="{{ asset('storage/' . $suratlembur->dokumen) }}"
+                                                                target="blank" class="btn btn-icon btn-success"><span
+                                                                    data-feather="eye"></span></a>
+                                                            <a href="{{ url('surat/suratlembur/' . $suratlembur->id . '/edit') }}"
+                                                                class="btn btn-icon btn-warning"><span
+                                                                    data-feather="edit"></span></a>
+                                                            <form
+                                                                action="{{ url('surat/suratlembur', $suratlembur->id) }}"
+                                                                method="post" class="d-inline">
+                                                                @method('delete')
+                                                                @csrf
+                                                                <button class="btn btn-icon btn-danger border-0"
+                                                                    onclick="return confirm('Apakah anda yakin ingin menghapus data?')"><span
+                                                                        data-feather="x-circle"></span></button>
+                                                            </form>
                                                         @else
-                                                            <div class="btn-group dropup d-block">
-                                                                <a href="#" target="blank"
-                                                                    class="btn btn-icon btn-danger"><span
-                                                                        data-feather="eye"></span></a>
-                                                                <a href="{{ url('surat/printlembur/') }}" target="blank"
-                                                                    class="btn btn-icon btn-primary"><span
-                                                                        data-feather="printer"></span></a>
-                                                                <a href="#"
-                                                                    class="btn btn-icon btn-warning dropdown-toggle"
-                                                                    data-bs-toggle="dropdown"><span
-                                                                        data-feather="edit"></span>
-                                                                </a>
-                                                                <div class="dropdown-menu">
-                                                                    <a class="dropdown-item"
-                                                                        href="{{ url('surat/printlembur/' . $suratlembur->id . '/edit') }}">Edit
-                                                                        Isi Surat</a>
-                                                                    <a class="dropdown-item"
-                                                                        href="{{ url('surat/suratlembur/' . $suratlembur->id . '/edit') }}">Edit
-                                                                        Arsip Surat</a>
-                                                                </div>
-                                                            </div>
+                                                            <a href="#" target="blank"
+                                                                class="btn btn-icon btn-danger"><span
+                                                                    data-feather="eye"></span></a>
+                                                            <a href="{{ url('surat/suratlembur/' . $suratlembur->id . '/edit') }}"
+                                                                class="btn btn-icon btn-warning"><span
+                                                                    data-feather="edit"></span></a>
+                                                            <form
+                                                                action="{{ url('surat/suratlembur', $suratlembur->id) }}"
+                                                                method="post" class="d-inline">
+                                                                @method('delete')
+                                                                @csrf
+                                                                <button class="btn btn-icon btn-danger border-0"
+                                                                    onclick="return confirm('Apakah anda yakin ingin menghapus data?')"><span
+                                                                        data-feather="x-circle"></span></button>
+                                                            </form>
                                                         @endif
                                                     </td>
                                                 </tr>

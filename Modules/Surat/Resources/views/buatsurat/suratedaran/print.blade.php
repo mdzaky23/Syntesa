@@ -75,9 +75,20 @@ $nosurat = sprintf('%03d', $suratedaran->no_suratedaran);
                             {{ $tanggal }}
                             <br>
                             <b>{{ $suratedaran->instansi }}</b><br>
-                            <br>
-                            <br>
-                            <br>
+                            @if ($suratedaran->ttd == '1')
+                                <img class="mt-0" src="{{ asset('storage/ttd/dirut.png') }}" width="10%">
+                                <br>
+                            @elseif ($suratedaran->ttd == '2')
+                                <img class="mt-0" src="{{ asset('storage/ttd/dirum.jpg') }}" width="15%">
+                                <br>
+                            @elseif ($suratedaran->ttd == '3')
+                                <img class="mt-0" src="{{ asset('storage/ttd/dirop.png') }}" width="15%">
+                                <br>
+                            @else
+                                <br>
+                                <br>
+                                <br>
+                            @endif
                             <b><u>{{ $suratedaran->nama }}</u></b><br>
                             {{ $suratedaran->jabatan }}
                         </p>

@@ -22,6 +22,7 @@ return new class extends Migration
             $table->string('instansi')->nullable();
             $table->string('nama')->nullable();
             $table->string('jabatan')->nullable();
+            $table->string('ttd')->nullable();
             $table->text('perihal')->nullable();
             $table->text('keterangan')->nullable();
             $table->string('dokumen')->nullable();

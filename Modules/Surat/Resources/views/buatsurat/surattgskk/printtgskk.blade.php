@@ -88,25 +88,33 @@ $nosurat = sprintf('%03d', $surattgskk->no_surattgskk);
                             Direktur Umum & Keuangan. </p>
                         <p style="font-size:12pt; font-family:'Times New Roman'; line-height:1.2">3. Pembebanan biaya
                             ini sesuai dengan surat keputusan direksi </p>
-
-                        <p style="font-size:12pt; font-family:'Times New Roman'; text-align:right; line-height:1.2">
+                        <br>
+                        <p style="font-size:12pt; font-family:'Times New Roman'; text-align:left; line-height:1.2">
                             Dikeluarkan di :
                             Cibinong </p>
-                        <p style="font-size:12pt; font-family:'Times New Roman'; text-align:right; line-height:1.2">
-                            {{ $tanggal }} </p>
-                        <hr style=" float:right; width: 35%; border-top: 1px solid black; opacity: 0.5;">
-                        <br>
-                        <br>
+                        <p style="font-size:12pt; font-family:'Times New Roman'; text-align:left; line-height:1.2"><u>
+                                {{ $tanggal }}</u> </p>
+                        {{-- <hr style=" float:left; width: 35%; border-top: 1px solid black; opacity: 0.5;"> --}}
                         <p
                             style="font-size:12pt;
-                            font-family:'Times New Roman'; text-align:right; line-height:1.2">
+                            font-family:'Times New Roman'; text-align:left; line-height:1.2">
                             <b>{{ $surattgskk->tertanda }}</b>
                         </p>
-                        <br>
-                        <br>
-                        <br>
-                        <br>
-                        <p style="font-size:12pt; font-family:'Times New Roman'; text-align:right; line-height:1.2">
+                        @if ($surattgskk->ttd == '1')
+                            <img class="mt-0" src="{{ asset('storage/ttd/dirut.png') }}" width="10%">
+                            <br>
+                        @elseif ($surattgskk->ttd == '2')
+                            <img class="mt-0" src="{{ asset('storage/ttd/dirum.jpg') }}" width="15%">
+                            <br>
+                        @elseif ($surattgskk->ttd == '3')
+                            <img class="mt-0" src="{{ asset('storage/ttd/dirop.png') }}" width="15%">
+                            <br>
+                        @else
+                            <br>
+                            <br><br>
+                            <br>
+                        @endif
+                        <p style="font-size:12pt; font-family:'Times New Roman'; text-align:left; line-height:1.2">
                             <b>
                                 <font size="3" face="Times" style="align:right; line-height:1.2">
                                     {!! $surattgskk->nama !!}</font>

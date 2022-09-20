@@ -94,9 +94,20 @@ $nosurat = sprintf('%03d', $suratkeluar->nomor_surat);
                         <p style="font-size:12pt; font-family:'Times New Roman'; line-height:1.2">Hormat kami,
                             <br>
                             <b>{{ $suratkeluar->tertanda }}</b><br>
-                            <br>
-                            <br><br>
-                            <br>
+                            @if ($suratkeluar->ttd == '1')
+                                <img class="mt-0" src="{{ asset('storage/ttd/dirut.png') }}" width="10%">
+                                <br>
+                            @elseif ($suratkeluar->ttd == '2')
+                                <img class="mt-0" src="{{ asset('storage/ttd/dirum.jpg') }}" width="15%">
+                                <br>
+                            @elseif ($suratkeluar->ttd == '3')
+                                <img class="mt-0" src="{{ asset('storage/ttd/dirop.png') }}" width="15%">
+                                <br>
+                            @else
+                                <br>
+                                <br><br>
+                                <br>
+                            @endif
                             <b><u>{{ $suratkeluar->tertanda2 }}</u></b><br>
                             {{ $suratkeluar->jabatan }}
                         </p>

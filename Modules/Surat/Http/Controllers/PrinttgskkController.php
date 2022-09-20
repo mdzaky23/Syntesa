@@ -66,6 +66,7 @@ class PrinttgskkController extends Controller
             'nama' => $request->nama,
             'perihal' => $request->perihal,
             'keterangan' => $request->keterangan,
+            'ttd' => $request->ttd,
             'instansi' => $request->instansi,
             'dokumen' => $request->dokumen,
         ]);
@@ -112,6 +113,7 @@ class PrinttgskkController extends Controller
             'waktu_pelaksanaan' => 'required',
             'tertanda' => 'required',
             'nama' => 'required',
+            'ttd' => '',
 
         ];
 

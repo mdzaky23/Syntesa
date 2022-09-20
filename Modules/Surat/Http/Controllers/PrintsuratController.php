@@ -102,6 +102,7 @@ class PrintsuratController extends Controller
             'tertanda' => $request->tertanda,
             'tertanda2' => $request->tertanda2,
             'jabatan' => $request->jabatan,
+            'ttd' => $request->ttd,
             'tembusan' => $request->tembusan,
             'keterangan' => $request->keterangan,
             'dokumen' => $request->dokumen
@@ -157,6 +158,7 @@ class PrintsuratController extends Controller
             'tertanda' => 'required',
             'tertanda2' => 'required',
             'jabatan' => 'required',
+            'ttd' => '',
             'tembusan' => 'required',
             'keterangan' => 'required'
 

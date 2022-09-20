@@ -10,12 +10,12 @@
                 <div class="content-header-left col-md-9 col-12 mb-2">
                     <div class="row breadcrumbs-top">
                         <div class="col-12">
-                            <h2 class="content-header-title float-start mb-0">Buat Surat</h2>
+                            <h2 class="content-header-title float-start mb-0">Edit Surat</h2>
                             <div class="breadcrumb-wrapper">
                                 <ol class="breadcrumb">
                                     <li class="breadcrumb-item"><a href="/surat">Home</a>
                                     </li>
-                                    <li class="breadcrumb-item active">Buat Surat Perintah Dinas
+                                    <li class="breadcrumb-item active">Edit Surat Perintah Dinas
                                     </li>
                                 </ol>
                             </div>
@@ -33,33 +33,37 @@
                                 <h4 class="card-title">Surat Perintah Dinas</h4>
                             </div>
                             <div class="card-body">
-                                <form action="/surat/printperdin" method="POST" class="form"
-                                    enctype="multipart/form-data">
+                                <form action="{{ url('surat/printperdin', $suratperdin->id) }}" method="POST"
+                                    class="form" enctype="multipart/form-data">
                                     @csrf
+                                    @method ('put')
                                     <div class="row">
                                         <div class="col-12 position-relative">
                                             <div class="mb-2">
                                                 <label class="form-label" for="tgl_suratperdin">Tanggal Buat</label>
                                                 <input type="text" id="tgl_suratperdin" name="tgl_suratperdin"
-                                                    class="form-control flatpickr-basic" placeholder="18 June, 2020" />
+                                                    class="form-control flatpickr-basic" placeholder="18 June, 2020"
+                                                    value="{{ $suratperdin->tgl_suratperdin }}" />
                                             </div>
                                         </div>
                                         <div class="col-12">
                                             <div class="mb-2">
                                                 <label class="form-label" for="no_suratperdin">Nomor Surat</label>
                                                 <input type="text" id="no_suratperdin" name="no_suratperdin"
-                                                    class="form-control" placeholder="SPD No.028/A/SWB-SPD/VII/20222" />
+                                                    class="form-control" placeholder="SPD No.028/A/SWB-SPD/VII/20222"
+                                                    value="{{ $suratperdin->no_suratperdin }}" />
                                             </div>
                                         </div>
                                         <div class="col-12">
                                             <div class="mb-2">
                                                 <label class="form-label" for="dasar">Dasar</label>
                                                 <input type="text" id="dasar" name="dasar" class="form-control"
-                                                    placeholder="Penting">
+                                                    placeholder="Penting" value="{{ $suratperdin->dasar }}">
                                                 </input>
                                             </div>
                                         </div>
-                                        <label for="pengikut">Diperintahkan Kepada :</label>
+                                        <label for="pengikut">Diperintahkan
+                                            Kepada :</label>
                                         <div class="row">
                                             <div class="col-sm-3 col-12">
                                                 <div class="mb-1">
@@ -80,10 +84,12 @@
                                                     <select class="form-select" id="jabatan1" name="jabatan1">
                                                         <option>-Pilih-</option>
                                                         <option value="Direktur Utama">Direktur Utama</option>
-                                                        <option value="Direktur Umum dan Keuangan">Direktur Umum dan
+                                                        <option value="Direktur Umum dan Keuangan">Direktur Umum
+                                                            dan
                                                             Keuangan
                                                         </option>
-                                                        <option value="Direktur Operasional">Direktur Operasional</option>
+                                                        <option value="Direktur Operasional">Direktur
+                                                            Operasional</option>
                                                         <option value="Manager">Manager</option>
                                                         <option value="Kepala Divisi">Kepala Divisi</option>
                                                         <option value="Junior Manager">Junior Manager</option>
@@ -112,10 +118,12 @@
                                                     <select class="form-select" id="jabatan2" name="jabatan2">
                                                         <option>-Pilih-</option>
                                                         {{-- <option value="Direktur Utama">Direktur Utama</option> --}}
-                                                        <option value="Direktur Umum dan Keuangan">Direktur Umum dan
+                                                        <option value="Direktur Umum dan Keuangan">Direktur Umum
+                                                            dan
                                                             Keuangan
                                                         </option>
-                                                        <option value="Direktur Operasional">Direktur Operasional</option>
+                                                        <option value="Direktur Operasional">Direktur
+                                                            Operasional</option>
                                                         <option value="Manager">Manager</option>
                                                         <option value="Kepala Divisi">Kepala Divisi</option>
                                                         <option value="Junior Manager">Junior Manager</option>
@@ -147,7 +155,8 @@
                                                         <option value="Direktur Umum dan Keuangan">Direktur Umum dan
                                                             Keuangan
                                                         </option> --}}
-                                                        <option value="Direktur Operasional">Direktur Operasional</option>
+                                                        <option value="Direktur Operasional">Direktur
+                                                            Operasional</option>
                                                         <option value="Manager">Manager</option>
                                                         <option value="Kepala Divisi">Kepala Divisi</option>
                                                         <option value="Junior Manager">Junior Manager</option>
@@ -268,7 +277,8 @@
                                             </div>
                                             <div class="col-sm-3 col-12">
                                                 <div class="mb-1">
-                                                    <label class="form-label" for="jabatan7">Jabatan 87</label>
+                                                    <label class="form-label" for="jabatan7">Jabatan
+                                                        87</label>
                                                     <select class="form-select" id="jabatan7" name="jabatan7">
                                                         <option>-Pilih-</option>
                                                         {{-- <option value="Direktur Utama">Direktur Utama</option>
@@ -364,7 +374,8 @@
                                             </div>
                                             <div class="col-sm-3 col-12">
                                                 <div class="mb-1">
-                                                    <label class="form-label" for="jabatan10">Jabatan 10</label>
+                                                    <label class="form-label" for="jabatan10">Jabatan
+                                                        10</label>
                                                     <select class="form-select" id="jabatan10" name="jabatan10">
                                                         <option>-Pilih-</option>
                                                         {{-- <option value="Direktur Utama">Direktur Utama</option>
@@ -397,7 +408,8 @@
                                             </div>
                                             <div class="col-sm-3 col-12">
                                                 <div class="mb-1">
-                                                    <label class="form-label" for="jabatan11">Jabatan 11</label>
+                                                    <label class="form-label" for="jabatan11">Jabatan
+                                                        11</label>
                                                     <select class="form-select" id="jabatan11" name="jabatan11">
                                                         <option>-Pilih-</option>
                                                         {{-- <option value="Direktur Utama">Direktur Utama</option>
@@ -430,7 +442,8 @@
                                             </div>
                                             <div class="col-sm-3 col-12">
                                                 <div class="mb-1">
-                                                    <label class="form-label" for="jabatan12">Jabatan 12</label>
+                                                    <label class="form-label" for="jabatan12">Jabatan
+                                                        12</label>
                                                     <select class="form-select" id="jabatan12" name="jabatan12">
                                                         <option>-Pilih-</option>
                                                         {{-- <option value="Direktur Utama">Direktur Utama</option>
@@ -463,7 +476,8 @@
                                             </div>
                                             <div class="col-sm-3 col-12">
                                                 <div class="mb-1">
-                                                    <label class="form-label" for="jabatan13">Jabatan 13</label>
+                                                    <label class="form-label" for="jabatan13">Jabatan
+                                                        13</label>
                                                     <select class="form-select" id="jabatan13" name="jabatan13">
                                                         <option>-Pilih-</option>
                                                         {{-- <option value="Direktur Utama">Direktur Utama</option>
@@ -496,7 +510,8 @@
                                             </div>
                                             <div class="col-sm-3 col-12">
                                                 <div class="mb-1">
-                                                    <label class="form-label" for="jabatan14">Jabatan 14</label>
+                                                    <label class="form-label" for="jabatan14">Jabatan
+                                                        14</label>
                                                     <select class="form-select" id="jabatan14" name="jabatan14">
                                                         <option>-Pilih-</option>
                                                         {{-- <option value="Direktur Utama">Direktur Utama</option>
@@ -529,7 +544,8 @@
                                             </div>
                                             <div class="col-sm-3 col-12">
                                                 <div class="mb-1">
-                                                    <label class="form-label" for="jabatan15">Jabatan 15</label>
+                                                    <label class="form-label" for="jabatan15">Jabatan
+                                                        15</label>
                                                     <select class="form-select" id="jabatan15" name="jabatan15">
                                                         <option>-Pilih-</option>
                                                         {{-- <option value="Direktur Utama">Direktur Utama</option>
@@ -562,7 +578,8 @@
                                             </div>
                                             <div class="col-sm-3 col-12">
                                                 <div class="mb-1">
-                                                    <label class="form-label" for="jabatan16">Jabatan 16</label>
+                                                    <label class="form-label" for="jabatan16">Jabatan
+                                                        16</label>
                                                     <select class="form-select" id="jabatan16" name="jabatan16">
                                                         <option>-Pilih-</option>
                                                         {{-- <option value="Direktur Utama">Direktur Utama</option>
@@ -595,7 +612,8 @@
                                             </div>
                                             <div class="col-sm-3 col-12">
                                                 <div class="mb-1">
-                                                    <label class="form-label" for="jabatan17">Jabatan 17</label>
+                                                    <label class="form-label" for="jabatan17">Jabatan
+                                                        17</label>
                                                     <select class="form-select" id="jabatan17" name="jabatan17">
                                                         <option>-Pilih-</option>
                                                         {{-- <option value="Direktur Utama">Direktur Utama</option>
@@ -628,7 +646,8 @@
                                             </div>
                                             <div class="col-sm-3 col-12">
                                                 <div class="mb-1">
-                                                    <label class="form-label" for="jabatan18">Jabatan 18</label>
+                                                    <label class="form-label" for="jabatan18">Jabatan
+                                                        18</label>
                                                     <select class="form-select" id="jabatan18" name="jabatan18">
                                                         <option>-Pilih-</option>
                                                         {{-- <option value="Direktur Utama">Direktur Utama</option>
@@ -661,7 +680,8 @@
                                             </div>
                                             <div class="col-sm-3 col-12">
                                                 <div class="mb-1">
-                                                    <label class="form-label" for="jabatan19">Jabatan 19</label>
+                                                    <label class="form-label" for="jabatan19">Jabatan
+                                                        19</label>
                                                     <select class="form-select" id="jabatan19" name="jabatan19">
                                                         <option>-Pilih-</option>
                                                         {{-- <option value="Direktur Utama">Direktur Utama</option>
@@ -694,7 +714,8 @@
                                             </div>
                                             <div class="col-sm-3 col-12">
                                                 <div class="mb-1">
-                                                    <label class="form-label" for="jabatan20">Jabatan 20</label>
+                                                    <label class="form-label" for="jabatan20">Jabatan
+                                                        20</label>
                                                     <select class="form-select" id="jabatan20" name="jabatan20">
                                                         <option>-Pilih-</option>
                                                         {{-- <option value="Direktur Utama">Direktur Utama</option>
@@ -715,7 +736,7 @@
                                             <div class="mb-2">
                                                 <label class="form-label" for="untuk">Untuk</label>
                                                 <input type="text" id="untuk" name="untuk" class="form-control"
-                                                    placeholder="Untuk...">
+                                                    placeholder="Untuk..." value="{{ $suratperdin->untuk }}">
                                                 </input>
                                             </div>
                                         </div>
@@ -724,16 +745,17 @@
                                                 <label class="form-label" for="waktu_mulai">Waktu
                                                     Mulai</label>
                                                 <input type="text" id="waktu_mulai" name="waktu_mulai"
-                                                    class="form-control flatpickr-basic"
-                                                    placeholder="Dari... Sampai..." />
+                                                    class="form-control flatpickr-basic" placeholder="Dari... Sampai..." /
+                                                    value="{{ $suratperdin->waktu_mulai }}">
                                                 <label class="form-label" for="waktu">Waktu
                                                     Selesai</label>
                                                 <input type="text" id="waktu_selesai" name="waktu_selesai"
-                                                    class="form-control flatpickr-basic"
-                                                    placeholder="Dari... Sampai..." />
+                                                    class="form-control flatpickr-basic" placeholder="Dari... Sampai..."
+                                                    value="{{ $suratperdin->waktu_selesai }}">
                                                 <label class="form-label" for="jml_hari">Jumlah Hari</label>
                                                 <input type="text" id="jml_hari" name="jml_hari"
-                                                    class="form-control" placeholder="Jumlah Hari" />
+                                                    class="form-control" placeholder="Jumlah Hari"
+                                                    value="{{ $suratperdin->jml_hari }}">
                                             </div>
                                         </div>
                                         <div class="col-12">
@@ -742,7 +764,8 @@
                                                 <p>1. Melaksanakan Perintah ini dengan seksama dan penuh
                                                     rasa tanggung
                                                     jawab.</p>
-                                                <p>2. Sebelum dan sesudah melaksanakan Perintah ini, agar
+                                                <p>2. Sebelum dan sesudah melaksanakan Perintah ini,
+                                                    agar
                                                     melapor kepada
                                                     Direktur Umum & Keuangan. </p>
                                                 <p>3. Pembebanan biaya ini sesuai dengan surat keputusan
@@ -751,25 +774,33 @@
                                         </div>
                                         <div class="col-12">
                                             <div class="mb-2">
-                                                <label class="form-label" for="tertanda">Yang Bertandatangan:</label>
+                                                <label class="form-label" for="tertanda">Yang
+                                                    Bertandatangan:</label>
                                                 <select class="form-select" id="tertanda" name="tertanda">
-                                                    <option value="Direktur Utama">Direktur Utama</option>
-                                                    <option value="Direktur Umum dan Keuangan">Direktur Umum dan
+                                                    <option value="Direktur Utama">Direktur Utama
+                                                    </option>
+                                                    <option value="Direktur Umum dan Keuangan">Direktur
+                                                        Umum dan
                                                         Keuangan
                                                     </option>
-                                                    <option value="Direktur Operasional">Direktur Operasional</option>
+                                                    <option value="Direktur Operasional">Direktur
+                                                        Operasional</option>
                                                     <option value="Manager">Manager</option>
                                                     <option value="Manager">Kepala Divisi</option>
                                                 </select>
                                                 <label class="form-label" for="tertanda">Nama:</label>
                                                 <select class="form-select" id="tertanda2" name="tertanda2">
-                                                    <option value="Supriadi Jufri, SE., MM.">Supriadi Jufri, SE., MM.
+                                                    <option value="Supriadi Jufri, SE., MM.">Supriadi
+                                                        Jufri, SE., MM.
                                                     </option>
-                                                    <option value="Aminudin, S.Tp., M.Si.">Aminudin, S.Tp., M.Si.
+                                                    <option value="Aminudin, S.Tp., M.Si.">Aminudin,
+                                                        S.Tp., M.Si.
                                                     </option>
-                                                    <option value="Ir. Ivan Fadilla">Ir. Ivan Fadilla</option>
+                                                    <option value="Ir. Ivan Fadilla">Ir. Ivan Fadilla
+                                                    </option>
                                                     <option value="Sudrajat">Sudrajat</option>
-                                                    <option value="Agung Djatiwalujo">Agung Djatiwalujo</option>
+                                                    <option value="Agung Djatiwalujo">Agung Djatiwalujo
+                                                    </option>
                                                 </select>
                                                 <label class="form-label" for="tertanda">NIP:</label>
                                                 <select class="form-select" id="tertanda3" name="tertanda3">
@@ -779,8 +810,8 @@
                                                     </option>
                                                     <option value="15006603">15006603</option>
                                                 </select>
-                                                <!-- Basic Checkbox start -->
                                                 <hr>
+                                                <!-- Basic Checkbox start -->
                                                 <label for="ttd">Tanda Tangan</label>
                                                 <div class="demo-inline-spacing">
                                                     <div class="form-check form-check-inline">
@@ -810,8 +841,7 @@
                                             </div>
                                         </div>
                                         <div class="d-grid col-12">
-                                            <button type="submit" class="btn btn-success">Buat
-                                                Surat</button>
+                                            <button type="submit" class="btn btn-success">Simpan Perubahan</button>
                                         </div>
                                     </div>
                             </div>

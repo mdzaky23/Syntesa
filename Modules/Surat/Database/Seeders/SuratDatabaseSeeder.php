@@ -17,5 +17,7 @@ class SuratDatabaseSeeder extends Seeder
         Model::unguard();
 
         // $this->call("OthersTableSeeder");
+
+
     }
 }

@@ -114,6 +114,11 @@ class SuratlemburController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $suratlembur = Suratlembur::find($id);
+        if ($suratlembur->dokumen) {
+            Storage::delete($suratlembur->dokumen);
+        }
+        $suratlembur->delete();
+        return redirect()->back()->with('status', 'Data berhasil dihapus!');
     }
 }
