@@ -12,17 +12,7 @@
                 <div class="content-header-left col-md-9 col-12 mb-2">
                     <div class="row breadcrumbs-top">
                         <div class="col-12">
-                            <h2 class="content-header-title float-start mb-0">DataTables</h2>
-                            <div class="breadcrumb-wrapper">
-                                <ol class="breadcrumb">
-                                    <li class="breadcrumb-item"><a href="index.html">Home</a>
-                                    </li>
-                                    <li class="breadcrumb-item"><a href="#">Datatable</a>
-                                    </li>
-                                    <li class="breadcrumb-item active">Basic
-                                    </li>
-                                </ol>
-                            </div>
+                            <h2 class="content-header-title float-start mb-0">History</h2>
                         </div>
                     </div>
                 </div>
@@ -40,46 +30,54 @@
                             <table class="datatables-basic table">
                                 <thead>
                                     <tr>
-                                        <th>ID Barang</th>
+                                        <th></th>
+
+                                        <th>No Inventaris</th>
                                         <th>Nama Barang</th>
-                                        <th>Jumlah Barang</th>
-                                        <th>Jumlah Barang</th>
-                                        <th>Lokasi Barang</th>
-                                        <th>Tanggal Masuk</th>
-                                        <th>Tanggal peremajaan</th>
-                                        <th>Action</th>
+                                        <th>Tipe Barang</th>
+                                        <th>Tanggal Beli</th>
+                                        <th>Umur Ekonomi</th>
+                                        <th>Tanggal Peremajaan</th>
+                                        <th>Lokasi</th>
+                                        <th>Kategori Barang</th>
                                     </tr>
                                 </thead>
                                 <tbody>
+                                    @if(!empty($barangs))
+                                    @foreach ($barangs as $barang )
+                                    @php
+                                    $barang = Modules\Inventory\Entities\Tambahbarang::select()
+                                    ->where('id', $barang->id)
+                                    ->get()
+                                    ->first();
+                                    $bulan = Carbon\Carbon::parse($barang->tanggal_beli)->format('m');
+                                    $tahun = Carbon\Carbon::parse($barang->tanggal_beli)->format('Y');
+                                    $tanggal = Carbon\Carbon::parse($barang->tanggal_beli)->format('d-m-Y');
+                                    $tanggalsekarang = Carbon\Carbon::now();
+                                    @endphp
                                     <tr>
-                                        <td> 1 </td>
-                                        <td>Laptop Asus</td>
-                                        <td>2</td>
-                                        <td>sayaga</td>
-                                        <td>22-02-22</td>
-                                        <td>22-03-23</td>
-                                        <td>
-                                            <div class="dropdown">
-                                                <button type="button" class="btn btn-sm dropdown-toggle hide-arrow py-0" data-bs-toggle="dropdown">
-                                                    <i data-feather="more-vertical"></i>
-                                                </button>
-                                                <div class="dropdown-menu dropdown-menu-end">
-                                                    <a class="dropdown-item" href="#">
-                                                        <i data-feather="edit-2" class="me-50"></i>
-                                                        <span>Edit</span>
-                                                    </a>
-                                                    <a class="dropdown-item" href="#">
-                                                        <i data-feather="trash" class="me-50"></i>
-                                                        <span>Delete</span>
-                                                    </a>
-                                                </div>
-                                            </div>
-                                        </td>
-                                        <!-- <td>
-                                            <a class="btn btn-warning" href="/"><span data-feather="eye"></span></a>
-                                            <a class="btn btn-warning"><span data-feather="trash-2"></span></a>
-                                            <a class="btn btn-warning" href="tambahbarang/{tambahbarang}/edit"><span data-feather="edit"></span></a>
-                                        </td> -->
+                                        @if ($tanggalsekarang > $barang->tgl_peremajaan )
+                                        <td></td>
+
+                                        <td> {{$barang->nomer_inventaris}}/IN/SWB/{{ $bulan}}/{{$tahun}} </td>
+                                        <td>{{$barang->nama_brg}}</td>
+                                        <td>{{$barang->tipe_brg}}</td>
+                                        <td>{{$barang->tgl_beli}}</td>
+                                        <td>{{$barang->umur_ekonomi}}</td>
+                                        <td>{{$barang->tgl_peremajaan}}</td>
+                                        <td>{{$barang->kategori_lokasi}}</td>
+                                        @if ($barang->kategori_id == 1)
+                                        <td>Alat Kerja</td>
+                                        @elseif ($barang->kategori_id == 2)
+                                        <td>Kebutuhan Oprasional</td>
+                                        @elseif ($barang->kategori_id == 3)
+                                        <td>Elektronik</td>
+                                        @else
+                                        <td>Furniture</td>
+                                        @endif
+                                        @endif
+                                        @endforeach
+                                        @endif
                                     </tr>
 
                                 </tbody>

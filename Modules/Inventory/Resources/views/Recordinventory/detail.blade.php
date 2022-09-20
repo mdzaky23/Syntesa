@@ -63,11 +63,65 @@
 
                         </div>
                         <div class="visible-print text-center mt-3">
-                            {!! QrCode::size(180)->generate($barang->kategori_lokasi); !!}
+                            {!! QrCode::size(180)->generate("$barang->nama_brg , $barang->kategori_lokasi , $barang->ruangan_lokasi , $barang->lantai_lokasi"); !!}
                             <p><a class="btn btn-success mt-2" href="/inventory/print/ {{$barang->id}}" target="blank"><span data-feather="printer"></span></a></p>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+        <!-- Basic table -->
+        <section id="basic-datatable">
+            <div class="row">
+                <div class="col-12">
+                    <div class="card">
+                        <table class="datatables-basic table">
+                            <thead>
+                                <tr>
+                                    <th></th>
+                                    <th>No Inventaris</th>
+                                    <th>Nama Barang</th>
+                                    <th>Tipe Barang</th>
+                                    <th>Tanggal Beli</th>
+                                    <th>Umur Ekonomi</th>
+                                    <th>Tanggal Peremajaan</th>
+                                    <th>Lokasi</th>
+                                    <th>Ruangan</th>
+                                    <th>Lantai</th>
+                                    <th>Kategori Barang</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+
+                                <tr>
+                                    <td></td>
+
+                                    <td> {{$barang->nomer_inventaris}}/IN/SWB/{{ $bulan}}/{{$tahun}} </td>
+                                    <td>{{$barang->nama_brg}}</td>
+                                    <td>{{$barang->tipe_brg}}</td>
+                                    <td>{{$barang->tgl_beli}}</td>
+                                    <td>{{$barang->umur_ekonomi}}</td>
+                                    <td>{{$barang->tgl_peremajaan}}</td>
+                                    <td>{{$barang->kategori_lokasi}}</td>
+                                    <td>{{$barang->ruangan_lokasi}}</td>
+                                    <td>{{$barang->lantai_lokasi}}</td>
+                                    @if ($barang->kategori_id == 1)
+                                    <td>Alat Kerja</td>
+                                    @elseif ($barang->kategori_id == 2)
+                                    <td>Kebutuhan Oprasional</td>
+                                    @elseif ($barang->kategori_id == 3)
+                                    <td>Elektronik</td>
+                                    @else
+                                    <td>Furniture</td>
+                                    @endif
+
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <!-- Modal to add new record -->
+        </section>
+        <!--/ Basic table -->
         @endsection

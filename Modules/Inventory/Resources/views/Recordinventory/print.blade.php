@@ -18,7 +18,6 @@
                 @endphp
 
                 <div>
-                    <h1 class="card-title mb-1">No Inventaris : {{$barang->nomer_inventaris}}.IN.SWB.{{ $bulan}}.{{$tahun}}</h1>
                     <h1 class="card-title mb-1">Nama Barang : {{ $barang -> nama_brg }}</h1>
                     <p class="card-text">Kategori Barang :@if ($barang->kategori_id == 1)
                         Alat Kerja
@@ -29,10 +28,11 @@
                         @else
                         Furniture
                         @endif</p>
+                    <p class="card-text">Lokasi Barang : {{$barang->kategori_lokasi}}</p>
                 </div>
 
                 <div class="visible-print text-center">
-                    {!! QrCode::size(100)->generate(Request::url()); !!}
+                    {!! QrCode::size(100)->generate("$barang->nama_brg , $barang->kategori_lokasi , $barang->ruangan_lokasi , $barang->lantai_lokasi"); !!}
                     <p>{{$barang->nomer_inventaris}}.IN.SWB.{{ $bulan}}.{{$tahun}}</p>
                 </div>
                 <!-- <i data-feather="more-vertical" class="font-medium-3 cursor-pointer"></i> -->
@@ -56,7 +56,6 @@
                 @endphp
 
                 <div>
-                    <h1 class="card-title mb-1">No Inventaris : {{$barang->nomer_inventaris}}.IN.SWB.{{ $bulan}}.{{$tahun}}</h1>
                     <h1 class="card-title mb-1">Nama Barang : {{ $barang -> nama_brg }}</h1>
                     <p class="card-text">Kategori Barang :@if ($barang->kategori_id == 1)
                         Alat Kerja
@@ -67,10 +66,11 @@
                         @else
                         Furniture
                         @endif</p>
+                    <p class="card-text">Lokasi Barang : {{$barang->kategori_lokasi}}</p>
                 </div>
 
                 <div class="visible-print text-center">
-                    {!! QrCode::size(100)->generate(Request::url()); !!}
+                    {!! QrCode::size(100)->generate("$barang->nama_brg , $barang->kategori_lokasi , $barang->ruangan_lokasi , $barang->lantai_lokasi"); !!}
                     <p>{{$barang->nomer_inventaris}}.IN.SWB.{{ $bulan}}.{{$tahun}}</p>
                 </div>
                 <!-- <i data-feather="more-vertical" class="font-medium-3 cursor-pointer"></i> -->
@@ -94,7 +94,6 @@
                 @endphp
 
                 <div>
-                    <h1 class="card-title mb-1">No Inventaris : {{$barang->nomer_inventaris}}.IN.SWB.{{ $bulan}}.{{$tahun}}</h1>
                     <h1 class="card-title mb-1">Nama Barang : {{ $barang -> nama_brg }}</h1>
                     <p class="card-text">Kategori Barang :@if ($barang->kategori_id == 1)
                         Alat Kerja
@@ -104,11 +103,12 @@
                         Elektronik
                         @else
                         Furniture
-                        @endif </p>
+                        @endif</p>
+                    <p class="card-text">Lokasi Barang : {{$barang->kategori_lokasi}}</p>
                 </div>
 
                 <div class="visible-print text-center">
-                    {!! QrCode::size(100)->generate(Request::url()); !!}
+                    {!! QrCode::size(100)->generate("$barang->nama_brg , $barang->kategori_lokasi , $barang->ruangan_lokasi , $barang->lantai_lokasi"); !!}
                     <p>{{$barang->nomer_inventaris}}.IN.SWB.{{ $bulan}}.{{$tahun}}</p>
                 </div>
                 <!-- <i data-feather="more-vertical" class="font-medium-3 cursor-pointer"></i> -->
@@ -132,9 +132,8 @@
                 @endphp
 
                 <div>
-                    <h1 class="card-title mb-1">No Inventaris : {{$barang->nomer_inventaris}}.IN.SWB.{{ $bulan}}.{{$tahun}}</h1>
                     <h1 class="card-title mb-1">Nama Barang : {{ $barang -> nama_brg }}</h1>
-                    <p class="card-text">Kategori Barang : @if ($barang->kategori_id == 1)
+                    <p class="card-text">Kategori Barang :@if ($barang->kategori_id == 1)
                         Alat Kerja
                         @elseif ($barang->kategori_id == 2)
                         Kebutuhan Oprasional
@@ -142,12 +141,12 @@
                         Elektronik
                         @else
                         Furniture
-                        @endif
-                    </p>
+                        @endif</p>
+                    <p class="card-text">Lokasi Barang : {{$barang->kategori_lokasi}}</p>
                 </div>
 
                 <div class="visible-print text-center">
-                    {!! QrCode::size(100)->generate(Request::url()); !!}
+                    {!! QrCode::size(100)->generate("$barang->nama_brg , $barang->kategori_lokasi , $barang->ruangan_lokasi , $barang->lantai_lokasi"); !!}
                     <p>{{$barang->nomer_inventaris}}.IN.SWB.{{ $bulan}}.{{$tahun}}</p>
                 </div>
                 <!-- <i data-feather="more-vertical" class="font-medium-3 cursor-pointer"></i> -->

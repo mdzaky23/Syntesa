@@ -2,9 +2,10 @@
 
 namespace Modules\Inventory\Http\Controllers;
 
-use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
+use Illuminate\Contracts\Support\Renderable;
+use Modules\Inventory\Entities\Tambahbarang;
 
 class HistorybarangController extends Controller
 {
@@ -14,7 +15,10 @@ class HistorybarangController extends Controller
      */
     public function index()
     {
-        return view('inventory::History.index');
+        return view('inventory::History.index', [
+            'barangs' => Tambahbarang::all(),
+
+        ]);
     }
 
     /**

@@ -59,6 +59,10 @@
                       <i data-feather="box" class="font-medium-5"></i>
                     </div>
                   </div>
+                  <!-- @php
+                  $tanggalsekarang = Carbon\Carbon::now();
+                  if($tanggalsekarang )
+                  @endphp -->
                   <h2 class="fw-bolder mt-1">12</h2>
                   <p class="card-text">Barang Yang Mendekati Tanggal Peremajaan</p>
                 </div>
@@ -125,50 +129,51 @@
                           $days =(int)((mktime (0,0,0,$month,$day,$years) - time())/86400);
                           @endphp
                           <tr>
-
-                            <td> {{$barang->nomer_inventaris}}/IN/SWB/{{ $bln}}/{{$tahun}} </td>
-                            <td>{{$barang->nama_brg}}</td>
-                            @if ($barang->kategori_id == 1)
-                            <td>Alat Kerja</td>
-                            @elseif ($barang->kategori_id == 2)
-                            <td>Kebutuhan Oprasional</td>
-                            @elseif ($barang->kategori_id == 3)
-                            <td>Elektronik</td>
-                            @else
-                            <td>Furniture</td>
-                            @endif
-                            <td>{{$barang->tgl_beli}}</td>
-                            <td>{{$barang->umur_ekonomi}}</td>
-                            <td>
-                              <p>Tersisa {{$year}} Tahun {{$months}} Bulan {{$days}} Hari </p>
-                            </td>
-                            <td>
-                              <div class="dropdown">
-                                <button type="button" class="btn btn-sm dropdown-toggle hide-arrow py-0" data-bs-toggle="dropdown">
-                                  <i data-feather="more-vertical"></i>
-                                </button>
-                                <div class="dropdown-menu dropdown-menu-end">
-                                  <a class="dropdown-item" href="/inventory/tambahbarang/{{$barang->id}}">
-                                    <i data-feather="eye" class="me-50"></i>
-                                    <span>Lihat</span>
-                                  </a>
-                                  <a class="dropdown-item" href="/inventory/tambahbarang/{{$barang->id}}/edit">
-                                    <i data-feather="edit-2" class="me-50"></i>
-                                    <span>Edit</span>
-                                  </a>
-                                  <form action="/inventory/tambahbarang/{{$barang->id}}" method="POST">
-                                    @method ('delete')
-                                    @csrf
-                                    <button class="dropdown-item" onclick="return confirm('Apakah Anda Yakin Ingin Menghapus?')">
-                                      <i data-feather="trash" class="me-50"></i>
-                                      <span>Delete</span>
-                                    </button>
-                                  </form>
+                            @if ($tanggalsekarang < $barang->tgl_peremajaan )
+                              <td> {{$barang->nomer_inventaris}}/IN/SWB/{{ $bln}}/{{$tahun}} </td>
+                              <td>{{$barang->nama_brg}}</td>
+                              @if ($barang->kategori_id == 1)
+                              <td>Alat Kerja</td>
+                              @elseif ($barang->kategori_id == 2)
+                              <td>Kebutuhan Oprasional</td>
+                              @elseif ($barang->kategori_id == 3)
+                              <td>Elektronik</td>
+                              @else
+                              <td>Furniture</td>
+                              @endif
+                              <td>{{$barang->tgl_beli}}</td>
+                              <td>{{$barang->umur_ekonomi}}</td>
+                              <td>
+                                <p> Tersisa {{$year}} Tahun {{$months}} Bulan {{$days}} Hari </p>
+                              </td>
+                              <td>
+                                <div class="dropdown">
+                                  <button type="button" class="btn btn-sm dropdown-toggle hide-arrow py-0" data-bs-toggle="dropdown">
+                                    <i data-feather="more-vertical"></i>
+                                  </button>
+                                  <div class="dropdown-menu dropdown-menu-end">
+                                    <a class="dropdown-item" href="/inventory/tambahbarang/{{$barang->id}}">
+                                      <i data-feather="eye" class="me-50"></i>
+                                      <span>Lihat</span>
+                                    </a>
+                                    <a class="dropdown-item" href="/inventory/tambahbarang/{{$barang->id}}/edit">
+                                      <i data-feather="edit-2" class="me-50"></i>
+                                      <span>Edit</span>
+                                    </a>
+                                    <form action="/inventory/tambahbarang/{{$barang->id}}" method="POST">
+                                      @method ('delete')
+                                      @csrf
+                                      <button class="dropdown-item" onclick="return confirm('Apakah Anda Yakin Ingin Menghapus?')">
+                                        <i data-feather="trash" class="me-50"></i>
+                                        <span>Delete</span>
+                                      </button>
+                                    </form>
+                                  </div>
                                 </div>
-                              </div>
-                            </td>
-                            @endforeach
-                            @endif
+                              </td>
+                              @endif
+                              @endforeach
+                              @endif
                         </tbody>
                       </table>
                     </div>

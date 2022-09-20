@@ -29,7 +29,7 @@
         </li>
     </li>
     </ul>
-    <li class=" nav-item" hidden><a class="d-flex align-items-center" href="/inventory/history"><i data-feather="archive"></i><span class="menu-title text-truncate" data-i18n="Dashboards">History</span><span class="badge badge-light-warning rounded-pill ms-auto me-1"></span></a>
+    <li class=" nav-item"><a class="d-flex align-items-center" href="/inventory/history"><i data-feather="archive"></i><span class="menu-title text-truncate" data-i18n="Dashboards">History</span><span class="badge badge-light-warning rounded-pill ms-auto me-1"></span></a>
     </li>
     <li class=" nav-item" hidden><a class="d-flex align-items-center" href="/inventory/"><i data-feather="archive"></i><span class="menu-title text-truncate" data-i18n="Dashboards">Tambah Kategori Barang</span><span class="badge badge-light-warning rounded-pill ms-auto me-1"></span></a>
     </li>
