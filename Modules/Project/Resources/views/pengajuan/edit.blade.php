@@ -333,8 +333,13 @@
                                                                                     <div class="col-xl-4 col-md-6 col-12">
                                                                                         <div class="mb-1">
                                                                                             <label class="form-label" for="dokumen_lampiran">Lampiran : </label>
-                                                                                            @if (!empty ($project->b))
-                                                                                            <label>Lampiran : <a href="/project/lampiran/{{ $b->id }}" target="_blank">Klik</a></label>
+                                                                                            @if (!empty ($b->dokumen_lampiran))
+                                                                                            <label><a href="/project/lampiran/{{ $b->id }}" target="_blank">Klik</a></label>
+                                                                                               
+                                                                                            @else
+
+                                                                                            <label><a href="#" target="_blank">Klik</a></label> 
+                                                                                            
                                                                                             @endif
                                                                                             <input class="form-control" name="dokumen_lampiran_{{$b->kategori}}[]"
                                                                                                 type="file" multiple>
