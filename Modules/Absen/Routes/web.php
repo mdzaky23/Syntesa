@@ -1,5 +1,6 @@
 <?php
 
+use Modules\Absen\Http\Controllers\BpjsController;
 use Modules\Absen\Http\Controllers\GajiController;
 use Modules\Absen\Http\Controllers\UserController;
 use Modules\Absen\Http\Controllers\AbsenController;
@@ -50,4 +51,5 @@ Route::prefix('absen')->group(function() {
     Route::resource('/suratcuti', SuratcutiController::class);
     Route::resource('/printsuratcuti', PrintsuratcutiController::class);
     Route::resource('/waktukerja', WaktukerjaController::class);
+    Route::resource('/bpjs', BpjsController::class);
 });

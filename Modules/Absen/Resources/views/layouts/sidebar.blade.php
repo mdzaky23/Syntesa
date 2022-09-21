@@ -48,9 +48,16 @@
           <li><a class="d-flex align-items-center" href="/absen/pegawai"><i data-feather="users"></i><span class="menu-item text-truncate" data-i18n="List">Pegawai</span></a>
           </li>
 
-          <li class=" nav-item"><a class="d-flex align-items-center" href="/absen/gaji"><i data-feather="clock"></i><span class="menu-title text-truncate" data-i18n="Email">Gaji</span></a>
+          <li class=" nav-item"><a class="d-flex align-items-center" href="#"><i data-feather="dollar-sign"></i><span class="menu-title text-truncate" data-i18n="Documentation">Gaji</span></a>
+            <ul class="menu-content">
+              <li class=" nav-item"><a class="d-flex align-items-center" href="/absen/gaji"><i data-feather="clock"></i><span class="menu-title text-truncate" data-i18n="Email">Data Gaji</span></a>
+              </li>
+              <li class=" nav-item"><a class="d-flex align-items-center" href="/absen/bpjs"><i data-feather="clock"></i><span class="menu-title text-truncate" data-i18n="Email">BPJS</span></a>
+              </li>
+            </ul>
           </li>
 
+          
           <li class=" nav-item"><a class="d-flex align-items-center" href="#"><i data-feather="folder"></i><span class="menu-title text-truncate" data-i18n="Documentation">Surat Absent</span></a>
             <ul class="menu-content">
               <li class=" nav-item"><a class="d-flex align-items-center" href="/absen/lpsrtabsen"><i data-feather='folder'></i><span class="menu-title text-truncate" data-i18n="User">LP Surat Absent</span></a>

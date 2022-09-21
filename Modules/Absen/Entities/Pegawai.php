@@ -49,6 +49,10 @@ class Pegawai extends Model
         return $this->hasMany(Suratcuti::class);
     }
 
+    public function bpjs(){
+        return $this->hasMany(Bpjs::class);
+    }
+
     // public function user(){
     //     return $this->belongsTo('user_id','id');
     // }

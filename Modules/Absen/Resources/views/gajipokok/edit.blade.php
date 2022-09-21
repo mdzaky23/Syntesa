@@ -123,7 +123,7 @@
 
                                         <div class="col-12">
                                             <div class="d-grid col-12">
-                                                <button type="submit" class="btn btn-primary">Edit Golongan</button>
+                                                <button type="submit" class="btn btn-primary">Edit Gaji Pokok</button>
                                             </div>
                                         </div>
                                 </form>
