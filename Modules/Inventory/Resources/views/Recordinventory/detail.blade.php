@@ -38,22 +38,35 @@
                         ->where('id', $barang->id)
                         ->get()
                         ->first();
-                        $hari = Carbon\Carbon::parse($barang->tanggal_beli)->format('d');
-                        $bulan = Carbon\Carbon::parse($barang->tanggal_beli)->format('m');
-                        $tahun = Carbon\Carbon::parse($barang->tanggal_beli)->format('Y');
-                        $tanggal = Carbon\Carbon::parse($barang->tanggal_beli)->format('d-m-Y');
+                        $hari = Carbon\Carbon::parse($barang->tgl_beli)->format('d');
+                        $bulan = Carbon\Carbon::parse($barang->tgl_beli)->format('m');
+                        $tahun = Carbon\Carbon::parse($barang->tgl_beli)->format('y');
+                        $tanggal = Carbon\Carbon::parse($barang->tgl_beli)->format('d-m-Y');
+                        $array_bln = [
+                        '01' => '1',
+                        '02' => '2',
+                        '03' => '3',
+                        '04' => '4',
+                        '05' => '5',
+                        '06' => '6',
+                        '07' => '7',
+                        '08' => '8',
+                        '09' => '9',
+                        ];
+                        $bln =$array_bln[$bulan];
 
                         @endphp
                         <div>
 
                             <p class="card-title-left mb-1">No Inventaris : @if ($barang->kategori_id == 1)</p>
-                            {{$barang->nomer_inventaris}}.1.{{ $bulan}}.{{$tahun}}
+
+                            {{$barang->nomer_inventaris}}.1.{{$hari}}.{{ $bln}}.{{$tahun}}
                             @elseif ($barang->kategori_id == 2)
-                            {{$barang->nomer_inventaris}}.2.{{ $bulan}}.{{$tahun}}
+                            {{$barang->nomer_inventaris}}.2.{{$hari}}.{{ $bln}}.{{$tahun}}
                             @elseif ($barang->kategori_id == 3)
-                            {{$barang->nomer_inventaris}}.3.{{ $bulan}}.{{$tahun}}
+                            {{$barang->nomer_inventaris}}.3.{{$hari}}.{{ $bln}}.{{$tahun}}
                             @else
-                            {{$barang->nomer_inventaris}}.4.{{ $bulan}}.{{$tahun}}
+                            {{$barang->nomer_inventaris}}.4.{{$hari}}.{{ $bln}}.{{$tahun}}
                             @endif
                             <p class="card-text">Nama Barang : {{ $barang -> nama_brg }}</p>
                             <p class="card-text">Kategori Barang : @if ($barang->kategori_id == 1)
@@ -107,10 +120,18 @@
                                 <tr>
                                     <td></td>
 
-                                    <td> {{$barang->nomer_inventaris}}/IN/SWB/{{ $bulan}}/{{$tahun}} </td>
+                                    @if ($barang->kategori_id == 1)
+                                    <td> {{$barang->nomer_inventaris}}.1.{{$hari}}.{{ $bln}}.{{$tahun}} </td>
+                                    @elseif ($barang->kategori_id == 2)
+                                    <td> {{$barang->nomer_inventaris}}.2.{{$hari}}.{{ $bln}}.{{$tahun}} </td>
+                                    @elseif ($barang->kategori_id == 3)
+                                    <td> {{$barang->nomer_inventaris}}.3.{{$hari}}.{{ $bln}}.{{$tahun}} </td>
+                                    @else
+                                    <td> {{$barang->nomer_inventaris}}.4.{{$hari}}.{{ $bln}}.{{$tahun}} </td>
+                                    @endif
                                     <td>{{$barang->nama_brg}}</td>
                                     <td>{{$barang->tipe_brg}}</td>
-                                    <td>{{$barang->tgl_beli}}</td>
+                                    <td>{{$tanggal}}</td>
                                     <td>{{$barang->umur_ekonomi}}</td>
                                     <td>{{$barang->tgl_peremajaan}}</td>
                                     <td>{{$barang->kategori_lokasi}}</td>

@@ -105,24 +105,23 @@
                           ->where('id', $barang->id)
                           ->get()
                           ->first();
-                          $bulan = Carbon\Carbon::parse($barang->tanggal_beli)->format('m');
-                          $tahun = Carbon\Carbon::parse($barang->tanggal_beli)->format('Y');
-                          $tanggal = Carbon\Carbon::parse($barang->tanggal_beli)->format('d-m-Y');
+
+                          $hari = Carbon\Carbon::parse($barang->tgl_beli)->format('d');
+                          $bulan = Carbon\Carbon::parse($barang->tgl_beli)->format('m');
+                          $tahun = Carbon\Carbon::parse($barang->tgl_beli)->format('y');
+                          $tanggal = Carbon\Carbon::parse($barang->tgl_beli)->format('d-m-Y');
 
 
                           $array_bln = [
-                          '01' => 'I',
-                          '02' => 'II',
-                          '03' => 'III',
-                          '04' => 'IV',
-                          '05' => 'V',
-                          '06' => 'VI',
-                          '07' => 'VII',
-                          '08' => 'VIII',
-                          '09' => 'IX',
-                          '10' => 'X',
-                          '11' => 'XI',
-                          '12' => 'XII',
+                          '01' => '1',
+                          '02' => '2',
+                          '03' => '3',
+                          '04' => '4',
+                          '05' => '5',
+                          '06' => '6',
+                          '07' => '7',
+                          '08' => '8',
+                          '09' => '9',
                           ];
                           $bln =$array_bln[$bulan];
                           $day = Carbon\Carbon::parse($barang->tgl_peremajaan)->format('d');
@@ -137,13 +136,13 @@
                           <tr>
                             @if ($tanggalsekarang < $barang->tgl_peremajaan)
                               @if ($barang->kategori_id == 1)
-                              <td> {{$barang->nomer_inventaris}}.1.{{ $bulan}}.{{$tahun}} </td>
+                              <td> {{$barang->nomer_inventaris}}.1.{{$hari}}.{{ $bln}}.{{$tahun}} </td>
                               @elseif ($barang->kategori_id == 2)
-                              <td> {{$barang->nomer_inventaris}}.2.{{ $bulan}}.{{$tahun}} </td>
+                              <td> {{$barang->nomer_inventaris}}.2.{{$hari}}.{{ $bln}}.{{$tahun}} </td>
                               @elseif ($barang->kategori_id == 3)
-                              <td> {{$barang->nomer_inventaris}}.3.{{ $bulan}}.{{$tahun}} </td>
+                              <td> {{$barang->nomer_inventaris}}.3.{{$hari}}.{{ $bln}}.{{$tahun}} </td>
                               @else
-                              <td> {{$barang->nomer_inventaris}}.4.{{ $bulan}}.{{$tahun}} </td>
+                              <td> {{$barang->nomer_inventaris}}.4.{{$hari}}.{{ $bln}}.{{$tahun}} </td>
                               @endif
                               <td>{{$barang->nama_brg}}</td>
                               @if ($barang->kategori_id == 1)
@@ -155,7 +154,7 @@
                               @else
                               <td>Furniture</td>
                               @endif
-                              <td>{{$barang->tgl_beli}}</td>
+                              <td>{{$tanggal}}</td>
                               <td>{{$barang->umur_ekonomi}}</td>
                               <td>
                                 <p> Tersisa {{$year}} Tahun {{$months}} Bulan {{$days}} Hari </p>
