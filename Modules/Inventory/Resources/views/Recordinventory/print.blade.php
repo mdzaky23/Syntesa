@@ -32,8 +32,16 @@
                 </div>
 
                 <div class="visible-print text-center">
-                    {!! QrCode::size(100)->generate("$barang->nama_brg , $barang->kategori_lokasi , $barang->ruangan_lokasi , $barang->lantai_lokasi"); !!}
-                    <p>{{$barang->nomer_inventaris}}.IN.SWB.{{ $bulan}}.{{$tahun}}</p>
+                    {!! QrCode::size(100)->generate("Nama Barang : $barang->nama_brg || Lokasi Barang : $barang->kategori_lokasi || $barang->ruangan_lokasi || $barang->lantai_lokasi"); !!}
+                    <p>@if ($barang->kategori_id == 1)</p>
+                    {{$barang->nomer_inventaris}}.1.{{ $bulan}}.{{$tahun}}
+                    @elseif ($barang->kategori_id == 2)
+                    {{$barang->nomer_inventaris}}.2.{{ $bulan}}.{{$tahun}}
+                    @elseif ($barang->kategori_id == 3)
+                    {{$barang->nomer_inventaris}}.3.{{ $bulan}}.{{$tahun}}
+                    @else
+                    {{$barang->nomer_inventaris}}.4.{{ $bulan}}.{{$tahun}}
+                    @endif
                 </div>
                 <!-- <i data-feather="more-vertical" class="font-medium-3 cursor-pointer"></i> -->
             </div>
@@ -70,8 +78,16 @@
                 </div>
 
                 <div class="visible-print text-center">
-                    {!! QrCode::size(100)->generate("$barang->nama_brg , $barang->kategori_lokasi , $barang->ruangan_lokasi , $barang->lantai_lokasi"); !!}
-                    <p>{{$barang->nomer_inventaris}}.IN.SWB.{{ $bulan}}.{{$tahun}}</p>
+                    {!! QrCode::size(100)->generate("Nama Barang : $barang->nama_brg || Lokasi Barang : $barang->kategori_lokasi || $barang->ruangan_lokasi || $barang->lantai_lokasi"); !!}
+                    <p>@if ($barang->kategori_id == 1)</p>
+                    {{$barang->nomer_inventaris}}.1.{{ $bulan}}.{{$tahun}}
+                    @elseif ($barang->kategori_id == 2)
+                    {{$barang->nomer_inventaris}}.2.{{ $bulan}}.{{$tahun}}
+                    @elseif ($barang->kategori_id == 3)
+                    {{$barang->nomer_inventaris}}.3.{{ $bulan}}.{{$tahun}}
+                    @else
+                    {{$barang->nomer_inventaris}}.4.{{ $bulan}}.{{$tahun}}
+                    @endif
                 </div>
                 <!-- <i data-feather="more-vertical" class="font-medium-3 cursor-pointer"></i> -->
             </div>
@@ -108,8 +124,16 @@
                 </div>
 
                 <div class="visible-print text-center">
-                    {!! QrCode::size(100)->generate("$barang->nama_brg , $barang->kategori_lokasi , $barang->ruangan_lokasi , $barang->lantai_lokasi"); !!}
-                    <p>{{$barang->nomer_inventaris}}.IN.SWB.{{ $bulan}}.{{$tahun}}</p>
+                    {!! QrCode::size(100)->generate("Nama Barang : $barang->nama_brg || Lokasi Barang : $barang->kategori_lokasi || $barang->ruangan_lokasi || $barang->lantai_lokasi"); !!}
+                    <p>@if ($barang->kategori_id == 1)</p>
+                    {{$barang->nomer_inventaris}}.1.{{ $bulan}}.{{$tahun}}
+                    @elseif ($barang->kategori_id == 2)
+                    {{$barang->nomer_inventaris}}.2.{{ $bulan}}.{{$tahun}}
+                    @elseif ($barang->kategori_id == 3)
+                    {{$barang->nomer_inventaris}}.3.{{ $bulan}}.{{$tahun}}
+                    @else
+                    {{$barang->nomer_inventaris}}.4.{{ $bulan}}.{{$tahun}}
+                    @endif
                 </div>
                 <!-- <i data-feather="more-vertical" class="font-medium-3 cursor-pointer"></i> -->
             </div>
@@ -146,8 +170,16 @@
                 </div>
 
                 <div class="visible-print text-center">
-                    {!! QrCode::size(100)->generate("$barang->nama_brg , $barang->kategori_lokasi , $barang->ruangan_lokasi , $barang->lantai_lokasi"); !!}
-                    <p>{{$barang->nomer_inventaris}}.IN.SWB.{{ $bulan}}.{{$tahun}}</p>
+                    {!! QrCode::size(100)->generate("Nama Barang : $barang->nama_brg || Lokasi Barang : $barang->kategori_lokasi || $barang->ruangan_lokasi || $barang->lantai_lokasi"); !!}
+                    <p>@if ($barang->kategori_id == 1)</p>
+                    {{$barang->nomer_inventaris}}.1.{{ $bulan}}.{{$tahun}}
+                    @elseif ($barang->kategori_id == 2)
+                    {{$barang->nomer_inventaris}}.2.{{ $bulan}}.{{$tahun}}
+                    @elseif ($barang->kategori_id == 3)
+                    {{$barang->nomer_inventaris}}.3.{{ $bulan}}.{{$tahun}}
+                    @else
+                    {{$barang->nomer_inventaris}}.4.{{ $bulan}}.{{$tahun}}
+                    @endif
                 </div>
                 <!-- <i data-feather="more-vertical" class="font-medium-3 cursor-pointer"></i> -->
             </div>

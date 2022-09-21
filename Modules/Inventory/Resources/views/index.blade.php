@@ -31,6 +31,10 @@
                     <p class="card-text m-auto w-75">
                       Sudah Memasuki Tanggal Peremajaan <strong>22-02-2020</strong> Silahkan Untuk Mengecek Barang.
                     </p>
+
+                    <a class="btn btn-success mt-1" hidden href="">Perbaharui</a>
+                    <a class="btn btn-danger mt-1" hidden href="">Hapus</a>
+
                   </div>
                 </div>
               </div>
@@ -45,7 +49,7 @@
                       <i data-feather="package" class="font-medium-5"></i>
                     </div>
                   </div>
-                  <h2 class="fw-bolder mt-1">{{$jumlah_brg}}</h2>
+                  <h2 class="fw-bolder mt-1"> {{$jumlah_brg}}</h2>
                   <p class="card-text">Jumlah Data Barang</p>
                 </div>
                 <div id="order-chart"></div>
@@ -128,9 +132,19 @@
                           $months =(int)((mktime (0,0,0,$month,$day,$years) - time())/2592000);
                           $days =(int)((mktime (0,0,0,$month,$day,$years) - time())/86400);
                           @endphp
+
+
                           <tr>
-                            @if ($tanggalsekarang < $barang->tgl_peremajaan )
-                              <td> {{$barang->nomer_inventaris}}/IN/SWB/{{ $bln}}/{{$tahun}} </td>
+                            @if ($tanggalsekarang < $barang->tgl_peremajaan)
+                              @if ($barang->kategori_id == 1)
+                              <td> {{$barang->nomer_inventaris}}.1.{{ $bulan}}.{{$tahun}} </td>
+                              @elseif ($barang->kategori_id == 2)
+                              <td> {{$barang->nomer_inventaris}}.2.{{ $bulan}}.{{$tahun}} </td>
+                              @elseif ($barang->kategori_id == 3)
+                              <td> {{$barang->nomer_inventaris}}.3.{{ $bulan}}.{{$tahun}} </td>
+                              @else
+                              <td> {{$barang->nomer_inventaris}}.4.{{ $bulan}}.{{$tahun}} </td>
+                              @endif
                               <td>{{$barang->nama_brg}}</td>
                               @if ($barang->kategori_id == 1)
                               <td>Alat Kerja</td>

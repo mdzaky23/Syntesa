@@ -128,7 +128,7 @@
                 <img src="../../../app-assets/images/illustration/email.svg" class="card-img-top" alt="knowledge-base-image" />
                 <div class="card-body text-center">
                   <h4>LR</h4>
-                  <p class="text-body mt-1 mb-0">-</p>
+                  <p class="text-body mt-1 mb-0">Pengajuan Project</p>
                 </div>
               </a>
             </div>

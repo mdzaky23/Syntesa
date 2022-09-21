@@ -59,12 +59,20 @@
                                         @if ($tanggalsekarang > $barang->tgl_peremajaan )
                                         <td></td>
 
-                                        <td> {{$barang->nomer_inventaris}}/IN/SWB/{{ $bulan}}/{{$tahun}} </td>
+                                        @if ($barang->kategori_id == 1)
+                                        <td> {{$barang->nomer_inventaris}}.1.{{ $bulan}}.{{$tahun}} </td>
+                                        @elseif ($barang->kategori_id == 2)
+                                        <td> {{$barang->nomer_inventaris}}.2.{{ $bulan}}.{{$tahun}} </td>
+                                        @elseif ($barang->kategori_id == 3)
+                                        <td> {{$barang->nomer_inventaris}}.3.{{ $bulan}}.{{$tahun}} </td>
+                                        @else
+                                        <td> {{$barang->nomer_inventaris}}.4.{{ $bulan}}.{{$tahun}} </td>
+                                        @endif
                                         <td>{{$barang->nama_brg}}</td>
                                         <td>{{$barang->tipe_brg}}</td>
                                         <td>{{$barang->tgl_beli}}</td>
                                         <td>{{$barang->umur_ekonomi}}</td>
-                                        <td>{{$barang->tgl_peremajaan}}</td>
+                                        <td>Expired</td>
                                         <td>{{$barang->kategori_lokasi}}</td>
                                         @if ($barang->kategori_id == 1)
                                         <td>Alat Kerja</td>

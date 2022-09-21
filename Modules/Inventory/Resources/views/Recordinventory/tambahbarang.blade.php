@@ -97,7 +97,7 @@
                     </div>
                     <div class="mb-1 col-md-6">
                       <label class="form-label" for="tgl_beli">Tanggal beli</label>
-                      <input type="date" id="tgl_beli" class="form-control" name="tgl_beli" placeholder=" Masukan Jenis Barang" />
+                      <input type="date" id="tgl_beli" class="form-control" name="tgl_beli" placeholder="mm/dd/yyyy" />
                     </div>
                   </div>
                   <div class=" row">

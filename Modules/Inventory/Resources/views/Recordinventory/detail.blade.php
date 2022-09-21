@@ -38,12 +38,23 @@
                         ->where('id', $barang->id)
                         ->get()
                         ->first();
+                        $hari = Carbon\Carbon::parse($barang->tanggal_beli)->format('d');
                         $bulan = Carbon\Carbon::parse($barang->tanggal_beli)->format('m');
                         $tahun = Carbon\Carbon::parse($barang->tanggal_beli)->format('Y');
                         $tanggal = Carbon\Carbon::parse($barang->tanggal_beli)->format('d-m-Y');
+
                         @endphp
                         <div>
-                            <h1 class="card-title-left mb-1">No Inventaris : {{$barang->nomer_inventaris}}.IN.SWB.{{ $bulan}}.{{$tahun}}</h1>
+
+                            <p class="card-title-left mb-1">No Inventaris : @if ($barang->kategori_id == 1)</p>
+                            {{$barang->nomer_inventaris}}.1.{{ $bulan}}.{{$tahun}}
+                            @elseif ($barang->kategori_id == 2)
+                            {{$barang->nomer_inventaris}}.2.{{ $bulan}}.{{$tahun}}
+                            @elseif ($barang->kategori_id == 3)
+                            {{$barang->nomer_inventaris}}.3.{{ $bulan}}.{{$tahun}}
+                            @else
+                            {{$barang->nomer_inventaris}}.4.{{ $bulan}}.{{$tahun}}
+                            @endif
                             <p class="card-text">Nama Barang : {{ $barang -> nama_brg }}</p>
                             <p class="card-text">Kategori Barang : @if ($barang->kategori_id == 1)
                                 Alat Kerja
@@ -63,7 +74,7 @@
 
                         </div>
                         <div class="visible-print text-center mt-3">
-                            {!! QrCode::size(180)->generate("$barang->nama_brg , $barang->kategori_lokasi , $barang->ruangan_lokasi , $barang->lantai_lokasi"); !!}
+                            {!! QrCode::size(180)->generate("Nama Barang : $barang->nama_brg || Lokasi Barang : $barang->kategori_lokasi || $barang->ruangan_lokasi || $barang->lantai_lokasi"); !!}
                             <p><a class="btn btn-success mt-2" href="/inventory/print/ {{$barang->id}}" target="blank"><span data-feather="printer"></span></a></p>
                         </div>
                     </div>
@@ -123,5 +134,5 @@
             </div>
             <!-- Modal to add new record -->
         </section>
-        <!--/ Basic table -->
+
         @endsection

@@ -12,7 +12,6 @@
                             <thead>
                                 <tr>
                                     <th></th>
-                                    <th></th>
                                     <th>No Inventaris</th>
                                     <th>Nama Barang</th>
                                     <th>Tipe Barang</th>
@@ -45,8 +44,15 @@
 
 
                                         <td></td>
-                                        <td></td>
-                                        <td> {{$barang->nomer_inventaris}}/IN/SWB/{{ $bulan}}/{{$tahun}} </td>
+                                        @if ($barang->kategori_id == 1)
+                                        <td> {{$barang->nomer_inventaris}}.1.{{ $bulan}}.{{$tahun}} </td>
+                                        @elseif ($barang->kategori_id == 2)
+                                        <td> {{$barang->nomer_inventaris}}.2.{{ $bulan}}.{{$tahun}} </td>
+                                        @elseif ($barang->kategori_id == 3)
+                                        <td> {{$barang->nomer_inventaris}}.3.{{ $bulan}}.{{$tahun}} </td>
+                                        @else
+                                        <td> {{$barang->nomer_inventaris}}.4.{{ $bulan}}.{{$tahun}} </td>
+                                        @endif
                                         <td>{{$barang->nama_brg}}</td>
                                         <td>{{$barang->tipe_brg}}</td>
                                         <td>{{$barang->tgl_beli}}</td>
