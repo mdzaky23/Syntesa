@@ -273,7 +273,7 @@ $(function () {
   if (success.length) {
     success.on('click', function () {
       Swal.fire({
-        title: ' Success!',
+        title: 'Success!',
         text: 'Data berhasil diajukan',
         icon: 'success',
         customClass: {
