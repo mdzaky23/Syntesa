@@ -16,7 +16,7 @@ use App\Http\Controllers\UserController;
 */
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/', function () {
-    return view('/user');
+    return view('/user/index');
 })->name('dashboard');
 
 Auth::routes();

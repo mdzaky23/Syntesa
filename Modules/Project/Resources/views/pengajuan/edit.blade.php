@@ -70,10 +70,14 @@
                                             </div>
                                         </div>
                                         <div class="col-12">
+
                                             <div class="mb-2">
                                                 <label class="form-label" for="sales_order">Sales Order : </label>
+                                                @if (!empty ($project->sales_order))
                                                 <label for="sales_order"  class="form-label"><a target="_blank" href="{{ asset('storage/' . str_replace('public/','',$project->sales_order)) }}">Sales Order</a></label>
+                                                @endif
                                                 <input type="file"  id="sales_order" class="form-control" name="sales_order" value="{{ $project->sales_order }}"/>
+                                                
                                             </div>
                                         </div>
                                         <!-- Basic Textarea start -->
@@ -328,7 +332,10 @@
                                                                                   
                                                                                     <div class="col-xl-4 col-md-6 col-12">
                                                                                         <div class="mb-1">
+                                                                                            <label class="form-label" for="dokumen_lampiran">Lampiran : </label>
+                                                                                            @if (!empty ($project->b))
                                                                                             <label>Lampiran : <a href="/project/lampiran/{{ $b->id }}" target="_blank">Klik</a></label>
+                                                                                            @endif
                                                                                             <input class="form-control" name="dokumen_lampiran_{{$b->kategori}}[]"
                                                                                                 type="file" multiple>
                                                                                         </div>
