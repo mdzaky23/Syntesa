@@ -187,7 +187,7 @@
 
                                             <!-- penjualan -->
                                             <div class="card-footer">
-                                                <button type="hidden" value="Normal" name="status" class="btn btn-success" onclick="return confirm ('Apakah anda yakin?')">Ajukan Project</button>
+                                                <button type="hidden" value="Normal" name="status" class="btn btn-success" id="type-success" onclick="return confirm ('Apakah anda yakin?')">Ajukan Project</button>
                                             </div>
 
                                     </form>

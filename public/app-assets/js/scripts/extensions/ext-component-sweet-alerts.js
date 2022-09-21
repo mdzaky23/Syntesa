@@ -267,14 +267,14 @@ $(function () {
     });
   }
 
-  //--------------- Types ---------------
+  //--------------- Types ---------------s
 
   // Success
   if (success.length) {
     success.on('click', function () {
       Swal.fire({
-        title: 'Good job!',
-        text: 'You clicked the button!',
+        title: ' Success!',
+        text: 'Data berhasil diajukan',
         icon: 'success',
         customClass: {
           confirmButton: 'btn btn-primary'

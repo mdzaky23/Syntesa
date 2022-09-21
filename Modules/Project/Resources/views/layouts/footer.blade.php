@@ -33,6 +33,9 @@
 <script src="../../../app-assets/vendors/js/pickers/flatpickr/flatpickr.min.js"></script>
 <script src="../../../app-assets/vendors/js/forms/repeater/jquery.repeater.min.js"></script>
 <script src="../../../app-assets/vendors/js/charts/apexcharts.min.js"></script>
+<script src="../../../app-assets/vendors/js/extensions/sweetalert2.all.min.js"></script>
+<script src="../../../app-assets/vendors/js/extensions/polyfill.min.js"></script>
+<script src="../../../app-assets/js/scripts/extensions/ext-component-sweet-alerts.min.js"></script>
 <!-- END: Page Vendor JS-->
 
 <!-- BEGIN: Theme JS-->
