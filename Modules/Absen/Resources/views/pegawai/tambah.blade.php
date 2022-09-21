@@ -28,6 +28,51 @@
 
             </div>
             <div class="content-body">
+           <!-- Menu Atas -->      
+<div class="col-12 order-0 order-md-1">
+      <!-- User Pills -->
+      <ul class="nav nav-pills mb-2">
+        <li class="nav-item">
+          <a class="nav-link active" href="/absen/pegawai">
+            <i data-feather="users" class="font-medium-3 me-50"></i><span class="fw-bold">Pegawai</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/user">
+            <i data-feather="user" class="font-medium-3 me-50"></i><span class="fw-bold">User</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/absen/jabatan">
+            <i data-feather="star" class="font-medium-3 me-50"></i><span class="fw-bold">Jabatan</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/absen/divisi">
+            <i data-feather="trello" class="font-medium-3 me-50"></i><span class="fw-bold">Divisi</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/absen/golongan">
+            <i data-feather="codepen" class="font-medium-3 me-50"></i><span class="fw-bold">Golongan</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/absen/pendidikan">
+            <i data-feather="award" class="font-medium-3 me-50"></i><span class="fw-bold">Pendidikan</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/absen/uangsaku">
+            <i data-feather="credit-card" class="font-medium-3 me-50"></i><span class="fw-bold">Uang Saku</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/absen/jenispegawai">
+            <i data-feather="user-check" class="font-medium-3 me-50"></i><span class="fw-bold">Jenis</span>
+          </a>
+        </li>
+      </ul>
+<!-- menu bawah -->     
                 <!-- Card Advance -->
 
                 <div class="row match-height">
@@ -223,8 +268,14 @@
                                         <div class="col-12">
                                             <div class="mb-2">
                                                 <label class="form-label" for="uangsaku_id">Uang Saku</label>                                    
-                                                <input type="text" id="uangsaku_id" name="uangsaku_id"class="form-control"
-                                                    placeholder="Input uang saku Pegawai"/>
+                                                <select class="form-select" aria-label="Default select example" name="uangsaku_id" id="uangsaku_id">
+                                                    <option selected>Besaran sesuai dengan jabatan</option>
+
+                                                    @foreach ( $uangsakus as $uangsaku )
+                                                    <option value="{{ $uangsaku->id }}">{{ $uangsaku->jabatan->nama_jabatan }} (Rp. {{ $uangsaku->uang_saku }} )</option>
+                                                    @endforeach
+
+                                                </select>
                                             </div>
                                         </div>
 

@@ -2,11 +2,12 @@
 
 namespace Modules\Absen\Http\Controllers;
 
-use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
+use Modules\Absen\Entities\Jenispegawai;
+use Illuminate\Contracts\Support\Renderable;
 
-class TelatController extends Controller
+class JenispegawaiController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +15,9 @@ class TelatController extends Controller
      */
     public function index()
     {
-        return view('absen::telat.index');
+        return view('absen::jenispegawai.index', [
+            'jenispegawais' => Jenispegawai::all()
+        ]);
     }
 
     /**
@@ -33,7 +36,11 @@ class TelatController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Jenispegawai::create([
+            'nama_jenispegawai' => $request->nama_jenispegawai,
+        ]);
+
+        return redirect('/absen/jenispegawai');
     }
 
     /**
@@ -43,7 +50,7 @@ class TelatController extends Controller
      */
     public function show($id)
     {
-        return view('absen::show');
+        return view('absen::jenispegawai.tambah');
     }
 
     /**
@@ -53,7 +60,9 @@ class TelatController extends Controller
      */
     public function edit($id)
     {
-        return view('absen::edit');
+        $jenispegawai = Jenispegawai::find($id);
+
+        return view('absen::jenispegawai.edit', compact('jenispegawai'));
     }
 
     /**
@@ -64,7 +73,16 @@ class TelatController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $rules = [
+            'nama_jenispegawai'=> 'required',
+        ];
+
+        $validatedData = $request->validate($rules);
+
+        $input = $validatedData;
+        Jenispegawai::where('id', $id) 
+                ->update($input);
+        return redirect('/absen/jenispegawai')->with('success', 'Data jenispegawai Berhasil Di Ubah');
     }
 
     /**
@@ -74,6 +92,10 @@ class TelatController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $jenispegawai = Jenispegawai::find($id);
+        
+
+        $jenispegawai->delete();
+        return redirect('/absen/jenispegawai')->with('success', 'Data jenispegawai Berhasil Dihapus');
     }
 }

@@ -4,6 +4,9 @@ namespace Modules\Absen\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
+use Modules\Absen\Entities\Divisi;
+use Modules\Absen\Entities\Jabatan;
+use Modules\Absen\Entities\Pegawai;
 use Modules\Absen\Entities\Presensi;
 use Illuminate\Contracts\Support\Renderable;
 
@@ -36,7 +39,20 @@ class PresensiController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Presensi::create([
+            'pegawai_id' => $request->pegawai_id,
+            'user_id' => $request->user_id,
+            'tgl_absen' => $request->tgl_absen,
+            'divisi_id' => $request->divisi_id,
+            'jabatan_id' => $request->jabatan_id,
+            'keterangan' => $request->keterangan,
+            'jam_masuk' => $request->jam_masuk,
+            'jam_pulang' => $request->jam_pulang,
+            'waktukerja_id' => $request->waktukerja_id,
+
+        ]);
+
+        return redirect('/absen/presensi');
     }
 
     /**
@@ -46,7 +62,12 @@ class PresensiController extends Controller
      */
     public function show($id)
     {
-        return view('absen::pendidikan.tambah');
+        return view('absen::presensi.tambah', [
+            'presensis' => Presensi::all(),
+            'pegawais' => Pegawai::all(),
+            'divisis' => Divisi::all(),
+            'jabatans' => Jabatan::all(), 
+        ]);
     }
 
     /**
@@ -56,7 +77,14 @@ class PresensiController extends Controller
      */
     public function edit($id)
     {
-        return view('absen::edit');
+        $presensi = Presensi::find($id);
+
+        return view('absen::presensi.edit', compact('presensi'), [
+            'presensis' => Presensi::all(),
+            'pegawais' => Pegawai::all(),
+            'divisis' => Divisi::all(),
+            'jabatans' => Jabatan::all(), 
+        ]);
     }
 
     /**
@@ -67,7 +95,24 @@ class PresensiController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $rules = [
+            'pegawai_id' => 'required',
+            'user_id' => '',
+            'tgl_absen' => 'required',
+            'divisi_id' => 'required',
+            'jabatan_id' => 'required',
+            'keterangan' => 'required',
+            'jam_masuk' => 'required',
+            'jam_pulang' => 'required',
+            'waktukerja_id' => '',
+        ];
+
+        $validatedData = $request->validate($rules);
+
+        $input = $validatedData;
+        Presensi::where('id', $id) 
+                ->update($input);
+        return redirect('/absen/presensi')->with('success', 'Data pendidikan Berhasil Di Ubah');
     }
 
     /**
@@ -77,6 +122,10 @@ class PresensiController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $presensi = Presensi::find($id);
+        
+
+        $presensi->delete();
+        return redirect('/absen/presensi')->with('success', 'Data pendidikan Berhasil Dihapus');
     }
 }

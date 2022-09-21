@@ -2,9 +2,13 @@
 
 namespace Modules\Absen\Http\Controllers;
 
-use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
+use Modules\Absen\Entities\Divisi;
+use Modules\Absen\Entities\Jabatan;
+use Modules\Absen\Entities\Pegawai;
+use Modules\Absen\Entities\Suratcuti;
+use Illuminate\Contracts\Support\Renderable;
 
 class SuratcutiController extends Controller
 {
@@ -14,7 +18,9 @@ class SuratcutiController extends Controller
      */
     public function index()
     {
-        return view('absen::suratcuti.index');
+        return view('absen::suratcuti.index', [
+            'suratcutis' => Suratcuti::all(),
+        ]);
     }
 
     /**
@@ -23,7 +29,7 @@ class SuratcutiController extends Controller
      */
     public function create()
     {
-        return view('absen::create');
+        return view('absen::suratcuti.tambah');
     }
 
     /**
@@ -33,7 +39,31 @@ class SuratcutiController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validatedData = $request->validate([
+            'nama_pegawai' => '',
+            'nip' => '',
+            'jabatan' => '',
+            'divisi' => '',
+            'lama_cuti' => '',
+            'tgl_cuti' => '',
+            'akhir_tgl_cuti' => '',
+            'tujuan' => '',
+            'serah_tugas' => '',
+            'no_hp' => '',
+            'nama_atas' => '',
+            'nip_atas' => '',
+            'jabatan_atas' => '',
+            'divisi_atas' => '',
+            'jumlah_cuti' => '',
+            'ambil_cuti' => '',
+            'sisa_cuti' => '',
+            'catatan' => '',
+        ]);
+
+
+        Suratcuti::create($validatedData);
+
+        return redirect('/absen/suratcuti')->with('success', 'Data berhasil ditambahkan!');
     }
 
     /**
@@ -43,7 +73,12 @@ class SuratcutiController extends Controller
      */
     public function show($id)
     {
-        return view('absen::show');
+        return view('absen::suratcuti.tambah', [
+            'pegawais' => Pegawai::all(),
+            'jabatans' => Jabatan::all(),
+            'divisis' => Divisi::all(),
+            'suratcutis' => Suratcuti::all(),
+        ]);
     }
 
     /**

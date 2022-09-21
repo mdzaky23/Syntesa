@@ -28,6 +28,51 @@
 
             </div>
             <div class="content-body">
+<!-- Menu Atas -->      
+<div class="col-12 order-0 order-md-1">
+      <!-- User Pills -->
+      <ul class="nav nav-pills mb-2">
+        <li class="nav-item">
+          <a class="nav-link" href="/user">
+            <i data-feather="user" class="font-medium-3 me-50"></i><span class="fw-bold">User</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/absen/jabatan">
+            <i data-feather="star" class="font-medium-3 me-50"></i><span class="fw-bold">Jabatan</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/absen/divisi">
+            <i data-feather="trello" class="font-medium-3 me-50"></i><span class="fw-bold">Divisi</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/absen/golongan">
+            <i data-feather="codepen" class="font-medium-3 me-50"></i><span class="fw-bold">Golongan</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/absen/pendidikan">
+            <i data-feather="award" class="font-medium-3 me-50"></i><span class="fw-bold">Pendidikan</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" href="/absen/uangsaku">
+            <i data-feather="credit-card" class="font-medium-3 me-50"></i><span class="fw-bold">Uang Saku</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/absen/jenispegawai">
+            <i data-feather="user-check" class="font-medium-3 me-50"></i><span class="fw-bold">Jenis</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/absen/gajipokok">
+            <i data-feather="dollar-sign" class="font-medium-3 me-50"></i><span class="fw-bold">Gaji Pokok</span></a>
+        </li>
+      </ul>
+<!-- menu bawah -->
                 <!-- Card Advance -->
 
                 <div class="row match-height">
@@ -41,19 +86,19 @@
 
                                     <div class="row">
 
-                                        <div class="col-12">
+                                    <div class="col-12">
                                             <div class="mb-2">
-                                                <label class="form-label" for="jabatan_id">Nama Jabatan</label>
+                                                <label class="form-label" for="jabatan_id">Jabatan</label>
                                                 <select class="form-select" aria-label="Default select example" name="jabatan_id" id="jabatan_id" value="{{ $uangsaku->jabatan_id }}">
-                                                    <option selected>{{ $uangsaku->jabatan_id }}</option>
-                                                    <option value="1">Direktur Utama</option>
-                                                    <option value="2">Direktur</option>
-                                                    <option value="4">Manager</option>
-                                                    <option value="5">Kepala Divisi</option>
-                                                    <option value="6">Junior Manager</option>
-                                                    <option value="7">Staff</option>
-                                                    <option value="8">Sekretariat Perusahaan</option>
-                                                    <option value="9">Staff Pengembangan Bisnis</option> 
+                                                    
+                                                @foreach ( $jabatans as $jabatan )
+                                                    @if (old('jabatan_id' , $uangsaku->jabatan_id) == $jabatan->nama_jabatan)
+                                                        <option value="{{ $jabatan->id }}" selected>{{ $jabatan->nama_jabatan }}</option>
+                                                    @else
+                                                    <option value="{{ $jabatan->id }}">{{ $jabatan->nama_jabatan }}</option>
+                                                    @endif
+                                                @endforeach
+
                                                 </select>
                                             </div>
                                         </div>

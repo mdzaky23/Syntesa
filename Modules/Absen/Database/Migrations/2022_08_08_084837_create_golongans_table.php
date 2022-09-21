@@ -15,10 +15,7 @@ return new class extends Migration
     {
         Schema::create('golongans', function (Blueprint $table) {
             $table->id();
-            $table->string('pendidikan_id')->nullable();
-            $table->string('masa_kerja')->nullable();
             $table->string('nama_golongan')->nullable();
-            $table->string('gaji')->nullable();
             $table->timestamps();
         });
     }

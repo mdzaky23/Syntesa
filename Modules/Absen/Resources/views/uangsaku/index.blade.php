@@ -11,14 +11,10 @@
     <div class="content-header row">
     </div>
       <div class="content-body">
-                <!-- Menu Atas -->      
+<!-- Menu Atas -->      
 <div class="col-12 order-0 order-md-1">
       <!-- User Pills -->
       <ul class="nav nav-pills mb-2">
-        <li class="nav-item">
-          <a class="nav-link" href="/absen/pegawai">
-            <i data-feather="users" class="font-medium-3 me-50"></i><span class="fw-bold">Pegawai</span></a>
-        </li>
         <li class="nav-item">
           <a class="nav-link" href="/user">
             <i data-feather="user" class="font-medium-3 me-50"></i><span class="fw-bold">User</span>
@@ -30,7 +26,7 @@
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link " href="/absen/divisi">
+          <a class="nav-link" href="/absen/divisi">
             <i data-feather="trello" class="font-medium-3 me-50"></i><span class="fw-bold">Divisi</span>
           </a>
         </li>
@@ -48,6 +44,15 @@
           <a class="nav-link active" href="/absen/uangsaku">
             <i data-feather="credit-card" class="font-medium-3 me-50"></i><span class="fw-bold">Uang Saku</span>
           </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/absen/jenispegawai">
+            <i data-feather="user-check" class="font-medium-3 me-50"></i><span class="fw-bold">Jenis</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/absen/gajipokok">
+            <i data-feather="dollar-sign" class="font-medium-3 me-50"></i><span class="fw-bold">Gaji Pokok</span></a>
         </li>
       </ul>
 <!-- menu bawah -->

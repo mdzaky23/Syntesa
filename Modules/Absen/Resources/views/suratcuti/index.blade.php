@@ -17,7 +17,7 @@
   <div class="card card-company-table">
     <div class="card-body p-0">
       <div class="card-body">
-        <h2 class="fw-bolder mb-4">Pengajuan Surat Cuti</h2>
+        <h2 class="fw-bolder mb-4">Riwayat Surat Cuti</h2>
         <hr class="invoice-spacing">
            
         <!-- Basic table -->
@@ -27,22 +27,17 @@
     <div class="col-12">
       <div class="card">      
         <table class="datatables-basic table">
-        <a href="/absen/suratcuti/tambah"><button class="btn btn-primary" type="button">+ Form Surat Cuti</button></a>
+        <a href="/absen/suratcuti/tambah"><button class="btn btn-primary" type="button">+ Tambah Data</button></a>
           <thead>
             <tr>
               <th></th>
               <th></th>
-              <th>Nama</th>
-              <th>NIP</th>
-              <th>Jabatan</th>
-              <th>Lama Cuti</th>
-              <th>Tanggal Cuti</th>
-              <th>Tujuan Cuti</th>
-              <th>Penyerahan tugas</th>
               <th>No</th>
-              <th>Tanggal</th>
-              <th>jumlah cuti</th>
-              <th>sisa cuti</th>
+              <th>NIP</th>
+              <th>Nama</th>
+              <th>Jabatan</th>
+              <th>Tanggal Cuti</th>
+              <th>Lama Cuti</th>
               <th>Action</th>
               
               
@@ -50,21 +45,21 @@
           </thead>
 
           <tbody>
-          @if(!empty($pegawais))
-          @foreach($pegawais as $pegawai)
+          @if(!empty($suratcutis))
+          @foreach($suratcutis as $suratcuti)
 
             <tr>
               <td></td>
               <td></td>
 
               <td>
-                  <h5>{{ $pegawai->nip }}</h5>
+                  <h5>{{ $loop->iteration }}</h5>
               </td>
 
               <td>
                 <div class="d-flex align-items-center">
                   <div>
-                    <div class="fw-bolder">{{ $pegawai->nama_pegawai }}</div>
+                    <div class="fw-bolder">{{ $suratcuti->nip }}</div>
                   </div>
                 </div>
               </td>
@@ -72,7 +67,7 @@
               <td>
                 <div class="d-flex align-items-center">
                   <div>
-                    <div class="fw-bolder">{{ $pegawai->alamat }}</div>
+                    <div class="fw-bolder">{{ $suratcuti->nama_pegawai }}</div>
                   </div>
                 </div>
               </td>
@@ -80,7 +75,7 @@
               <td>
                 <div class="d-flex align-items-center">
                   <div>
-                    <div class="fw-bolder">{{ $pegawai->tp_lahir }} , {{ $pegawai->tgl_lahir }}</div>
+                    <div class="fw-bolder">{{ $suratcuti->jabatan }} {{ $suratcuti->divisi }}</div>
                   </div>
                 </div>
               </td>
@@ -88,7 +83,7 @@
               <td>
                 <div class="d-flex align-items-center">
                   <div>
-                    <div class="fw-bolder">{{ $pegawai->pendidikan->nama_pendidikan }}</div>
+                    <div class="fw-bolder">{{ $suratcuti->tgl_cuti }}</div>
                   </div>
                 </div>
               </td>
@@ -96,7 +91,7 @@
               <td>
                 <div class="d-flex align-items-center">
                   <div>
-                    <div class="fw-bolder">{{ $pegawai->jk }}</div>
+                    <div class="fw-bolder">{{ $suratcuti->lama_cuti }}</div>
                   </div>
                 </div>
               </td>
@@ -104,73 +99,10 @@
               <td>
                 <div class="d-flex align-items-center">
                   <div>
-                    <div class="fw-bolder">{{ $pegawai->tgl_masuk }}</div>
-                  </div>
-                </div>
-              </td>
 
-              <td>
-                <div class="d-flex align-items-center">
-                  <div>
-                    <div class="fw-bolder">{{ $pegawai->jenispegawai->nama_jenispegawai }}, {{ $pegawai->tgl_pengangkatan }}</div>
-                  </div>
-                </div>
-              </td>
-
-              <td>
-                <div class="d-flex align-items-center">
-                  <div>
-                    <div class="fw-bolder">{{ $pegawai->jabatan->nama_jabatan }}, {{ $pegawai->divisi->nama_divisi }}</div>
-                  </div>
-                </div>
-              </td>
-
-              <td>
-                <div class="d-flex align-items-center">
-                  <div>
-                    <div class="fw-bolder">{{ $pegawai->no_hp }}</div>
-                  </div>
-                </div>
-              </td>
-
-              <td>
-                <div class="d-flex align-items-center">
-                  <div>
-                    <div class="fw-bolder">{{ $pegawai->no_rek }}</div>
-                  </div>
-                </div>
-              </td>
-
-              <td>
-                <div class="d-flex align-items-center">
-                  <div>
-                    <div class="fw-bolder">{{ $pegawai->uangsaku->uang_saku }}</div>
-                  </div>
-                </div>
-              </td>
-
-              <td>
-                <div class="d-flex align-items-center">
-                  <div>
-                    <div class="fw-bolder">{{ $pegawai->uangsaku->uang_representatif }}</div>
-                  </div>
-                </div>
-              </td>
-
-              <td>
-                <div class="d-flex align-items-center">
-                  <div>
-                      <a href="/absen/pegawai/{{ $pegawai->id }}/edit" type="button" class="btn btn-icon btn-warning">
-                        <span data-feather="edit"></span>
-                      </a>
-
-                      <form action="{{ url('absen/pegawai', $pegawai->id) }}" method="POST" class="d-inline">
-                        @method('delete')
-                        @csrf
-                        <button class="btn btn-icon btn-danger" id="type-hapus" onclick="return confirm('Apakah anda yakin ingin menghapus data ini?')">
-                          <span data-feather="trash"></span>
-                        </button>
-                      </form>
+                    <a href="{{ url('absen/printsuratcuti/' . $suratcuti->id) }}" target="blank" class="btn btn-icon btn-info">
+                      <span data-feather="printer"></span>
+                    </a>
                   </div>
                 </div>
               </td>

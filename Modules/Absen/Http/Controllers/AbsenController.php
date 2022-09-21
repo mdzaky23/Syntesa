@@ -2,9 +2,15 @@
 
 namespace Modules\Absen\Http\Controllers;
 
-use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
+use Modules\Absen\Entities\Divisi;
+use Modules\Absen\Entities\Jabatan;
+use Modules\Absen\Entities\Pegawai;
+use Modules\Absen\Entities\Golongan;
+use Modules\Absen\Entities\Pendidikan;
+use Modules\Absen\Entities\Jenispegawai;
+use Illuminate\Contracts\Support\Renderable;
 
 class AbsenController extends Controller
 {
@@ -14,7 +20,20 @@ class AbsenController extends Controller
      */
     public function index()
     {
-        return view('absen::index');
+        return view('absen::index', [
+            'pegawais'=> Pegawai::all(),
+            'pendidikans'=> Pendidikan::all(),
+            'jenispegawais'=> Jenispegawai::all(),
+            'jabatans'=> Jabatan::all(),
+            'divisis'=> Divisi::all(),
+            'golongans'=> Golongan::all(),
+            'jumlahpegawai' => Pegawai::all()->count(),
+            'jumlahpendidikan' => pendidikan::all()->count(),
+            'jumlahjenispegawai' => Jenispegawai::all()->count(),
+            'jumlahjabatan'=> Jabatan::all()->count(),
+            'jumlahdivisi'=> Divisi::all()->count(),
+            'jumlahgolongan'=> Golongan::all()->count(),
+        ]);
     }
 
     /**

@@ -2,6 +2,7 @@
 
 namespace Modules\Absen\Entities;
 
+use Modules\Absen\Entities\Gajipokok;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
@@ -27,12 +28,25 @@ class Pegawai extends Model
         return $this->belongsTo(Golongan::class,'golongan_id','id');
     }
 
+    public function gajipokok(){
+        return $this->belongsTo(Gajipokok::class,'golongan_id','id');
+    }
+
     public function pendidikan(){
         return $this->belongsTo(Pendidikan::class,'pendidikan_id','id');
     }
 
     public function uangsaku(){
         return $this->belongsTo(Uangsaku::class,'uangsaku_id','id');
+    }
+
+
+    public function presensi(){
+        return $this->hasMany(Presensi::class,'presensi_id','id');
+    }
+
+    public function suratcuti(){
+        return $this->hasMany(Suratcuti::class);
     }
 
     // public function user(){

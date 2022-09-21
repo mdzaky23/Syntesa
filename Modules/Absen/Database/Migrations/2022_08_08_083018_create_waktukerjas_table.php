@@ -18,7 +18,6 @@ return new class extends Migration
             $table->string('jam_masuk')->nullable();
             $table->string('jam_pulang')->nullable();
             $table->string('batas_masuk')->nullable();
-            $table->string('keterangan')->nullable();
             $table->timestamps();
         });
     }

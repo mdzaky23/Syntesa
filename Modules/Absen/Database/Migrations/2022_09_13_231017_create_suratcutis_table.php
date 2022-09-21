@@ -15,13 +15,24 @@ return new class extends Migration
     {
         Schema::create('suratcutis', function (Blueprint $table) {
             $table->id();
-            $table->string('pegawai_id')->nullable();
-            $table->string('jabatan_id')->nullable();
+            $table->string('nama_pegawai')->nullable();
+            $table->string('nip')->nullable();
+            $table->string('jabatan')->nullable();
+            $table->string('divisi')->nullable();
             $table->string('lama_cuti')->nullable();
             $table->string('tgl_cuti')->nullable();
+            $table->string('akhir_tgl_cuti')->nullable();
             $table->string('tujuan')->nullable();
             $table->string('serah_tugas')->nullable();
+            $table->string('no_hp')->nullable();
+            $table->string('nama_atas')->nullable();
+            $table->string('nip_atas')->nullable();
+            $table->string('jabatan_atas')->nullable();
+            $table->string('divisi_atas')->nullable();
             $table->string('jumlah_cuti')->nullable();
+            $table->string('ambil_cuti')->nullable();
+            $table->string('sisa_cuti')->nullable();
+            $table->string('catatan')->nullable();
             $table->timestamps();
         });
     }

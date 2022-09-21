@@ -2,11 +2,13 @@
 
 namespace Modules\Absen\Http\Controllers;
 
-use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
+use Modules\Absen\Entities\Pegawai;
+use Modules\Absen\Entities\Suratcuti;
+use Illuminate\Contracts\Support\Renderable;
 
-class SakitController extends Controller
+class PrintsuratcutiController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +16,7 @@ class SakitController extends Controller
      */
     public function index()
     {
-        return view('absen::sakit.index');
+        return view('absen::index');
     }
 
     /**
@@ -23,7 +25,9 @@ class SakitController extends Controller
      */
     public function create()
     {
-        return view('absen::create');
+        return view('surat::suratcuti.tambah', [
+            'pegawais' => Pegawai::all(),
+        ]);
     }
 
     /**
@@ -33,7 +37,31 @@ class SakitController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validatedData = $request->validate([
+            'nama_pegawai' => '',
+            'nip' => '',
+            'jabatan' => '',
+            'divisi' => '',
+            'lama_cuti' => '',
+            'tgl_cuti' => '',
+            'akhir_tgl_cuti' => '',
+            'tujuan' => '',
+            'serah_tugas' => '',
+            'no_hp' => '',
+            'nama_atas' => '',
+            'nip_atas' => '',
+            'jabatan_atas' => '',
+            'divisi_atas' => '',
+            'jumlah_cuti' => '',
+            'ambil_cuti' => '',
+            'sisa_cuti' => '',
+            'catatan' => '',
+        ]);
+
+
+        Suratcuti::create($validatedData);
+
+        return redirect('/absen/suratcuti')->with('success', 'Data berhasil ditambahkan!');
     }
 
     /**
@@ -43,7 +71,10 @@ class SakitController extends Controller
      */
     public function show($id)
     {
-        return view('absen::show');
+
+        return view('absen::suratcuti.print', [
+            'suratcuti' => Suratcuti::select()->where('id', $id)->get()->first(),
+        ]);
     }
 
     /**

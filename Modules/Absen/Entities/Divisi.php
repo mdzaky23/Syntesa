@@ -14,9 +14,17 @@ class Divisi extends Model
     public function Pegawai(){
         return $this->hasmany(Pegawai::class);
     }
+
+    public function presensi(){
+        return $this->hasMany(Presensi::class,'presensi_id','id');
+    }
     
+    public function suratcuti(){
+        return $this->hasMany(Suratcuti::class);
+    }
+
     protected static function newFactory()
     {
-        return \Modules\Absen\Database\factories\DivisiFactory::new();
+        // return \Modules\Absen\Database\factories\DivisiFactory::new();
     }
 }

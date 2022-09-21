@@ -10,15 +10,16 @@
   <div class="content-wrapper container-xxl p-0">
     <div class="content-header row">
     </div>
-      <div class="content-body">
+    <div class="content-body">
 
 <!-- Company Table Card -->
 <div class="col-lg-12 col-12">
   <div class="card card-company-table">
     <div class="card-body p-0">
       <div class="card-body">
-        <h2 class="fw-bolder mb-4">Data Presensi</h2>
-        <hr class="invoice-spacing">
+        <h3 class="fw-bolder mb-2">Data presensi</h3>
+        <hr class="invoice-spacing mb-3">
+
            
         <!-- Basic table -->
 <section id="basic-datatable">
@@ -32,14 +33,15 @@
             <tr>
               <th></th>
               <th></th>
-              <th>NIP</th>
               <th>Nama Pegawai</th>
               <th>Tanggal Absen</th>
-              <th>Jabatan dan Divisi</th>
-              <th>Jam awal</th>
-              <th>Jam akhir</th>
+              <th>jabatan Dan Divisi</th>
+              <th>Jam Masuk</th>
+              <th>Jam Pulang</th>
               <th>Keterangan</th>
-              <th>Action</th>   
+              <th>Action</th>
+              
+              
             </tr>
           </thead>
 
@@ -74,7 +76,7 @@
               <td>
                 <div class="d-flex align-items-center">
                   <div>
-                    <div class="fw-bolder">{{ $presensi->divisi->nama_divisi }} , {{ $presensi->jabatan->nama_jabatan }}</div>
+                    <div class="fw-bolder">{{ $presensi->jabatan->nama_jabatan }}, {{ $presensi->divisi->nama_divisi }}</div>
                   </div>
                 </div>
               </td>
@@ -82,7 +84,7 @@
               <td>
                 <div class="d-flex align-items-center">
                   <div>
-                    <div class="fw-bolder">{{ $presensi->created_at }}</div>
+                    <div class="fw-bolder">{{ $presensi->jam_masuk }}</div>
                   </div>
                 </div>
               </td>
@@ -90,7 +92,7 @@
               <td>
                 <div class="d-flex align-items-center">
                   <div>
-                    <div class="fw-bolder">{{ $presensi->updated_at	 }}</div>
+                    <div class="fw-bolder">{{ $presensi->jam_pulang }}</div>
                   </div>
                 </div>
               </td>
@@ -98,7 +100,7 @@
               <td>
                 <div class="d-flex align-items-center">
                   <div>
-                    <div class="fw-bolder">{{ $presensi->waktukerja_id }}</div>
+                    <div class="fw-bolder">{{ $presensi->keterangan }}</div>
                   </div>
                 </div>
               </td>

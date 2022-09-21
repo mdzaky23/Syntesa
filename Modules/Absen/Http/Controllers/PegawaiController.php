@@ -8,6 +8,7 @@ use Modules\Absen\Entities\Divisi;
 use Modules\Absen\Entities\Jabatan;
 use Modules\Absen\Entities\Pegawai;
 use Modules\Absen\Entities\Golongan;
+use Modules\Absen\Entities\Uangsaku;
 use Modules\Absen\Entities\Pendidikan;
 use Modules\Absen\Entities\Jenispegawai;
 use Illuminate\Contracts\Support\Renderable;
@@ -78,6 +79,7 @@ class PegawaiController extends Controller
             'jabatans'=> Jabatan::all(),
             'divisis'=> Divisi::all(),
             'golongans'=> Golongan::all(),
+            'uangsakus'=> Uangsaku::all(),
         ]);
     }
 
@@ -90,7 +92,14 @@ class PegawaiController extends Controller
     {
         $pegawai = Pegawai::find($id);
 
-        return view('absen::pegawai.edit', compact('pegawai'));
+        return view('absen::pegawai.edit', compact('pegawai'), [
+            'pendidikans'=> Pendidikan::all(),
+            'jenispegawais'=> Jenispegawai::all(),
+            'jabatans'=> Jabatan::all(),
+            'divisis'=> Divisi::all(),
+            'golongans'=> Golongan::all(),
+            'uangsakus'=> Uangsaku::all(),
+        ]);
     }
 
     /**

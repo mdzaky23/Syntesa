@@ -16,10 +16,6 @@
       <!-- User Pills -->
       <ul class="nav nav-pills mb-2">
         <li class="nav-item">
-          <a class="nav-link" href="/absen/pegawai">
-            <i data-feather="users" class="font-medium-3 me-50"></i><span class="fw-bold">Pegawai</span></a>
-        </li>
-        <li class="nav-item">
           <a class="nav-link active" href="/user">
             <i data-feather="user" class="font-medium-3 me-50"></i><span class="fw-bold">User</span>
           </a>
@@ -48,6 +44,15 @@
           <a class="nav-link" href="/absen/uangsaku">
             <i data-feather="credit-card" class="font-medium-3 me-50"></i><span class="fw-bold">Uang Saku</span>
           </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/absen/jenispegawai">
+            <i data-feather="user-check" class="font-medium-3 me-50"></i><span class="fw-bold">Jenis</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/absen/gajipokok">
+            <i data-feather="dollar-sign" class="font-medium-3 me-50"></i><span class="fw-bold">Gaji Pokok</span></a>
         </li>
       </ul>
 <!-- menu bawah -->

@@ -12,155 +12,266 @@
         <div class="content-body"><!-- Dashboard Ecommerce Starts -->
 <section id="dashboard-ecommerce">
 
-  <!-- Stats Vertical Card -->
-  <div class="row">
+ <!-- Stats Vertical Card -->
+ <div class="row">
     <div class="col-xl-2 col-md-4 col-sm-6">
       <div class="card text-center">
-        <a href="/absen/hadir" class="link-dark">
         <div class="card-body">
-          <h2 class="fw-bolder mb-2">Hadir</h2>
-          <h3 class="fw-bolder mb-75 text-success">80%</h3>
-          <p class="card-text">12345 Pegawai</p>
+          <div class="avatar bg-light-info p-50 mb-1">
+            <div class="avatar-content">
+              <a href="/absen/pegawai"  class="link-info">
+              <i data-feather="users" class="font-medium-5"></i>
+            </a>
+            </div>
+          </div>
+          <h2 class="fw-bolder">{{ $jumlahpegawai }}</h2>
+          <p class="card-text">Pegawai</p>
         </div>
-        </a>
       </div>
     </div>
     <div class="col-xl-2 col-md-4 col-sm-6">
       <div class="card text-center">
-      <a href="/absen/telat" class="link-dark">
         <div class="card-body">
-          <h2 class="fw-bolder mb-2">Telat</h2>
-          <h3 class="fw-bolder mb-75 text-warning">80%</h3>
-          <p class="card-text">12345 Pegawai</p>
+          <div class="avatar bg-light-warning p-50 mb-1">
+            <div class="avatar-content">
+            <a href="/absen/divisi"  class="link-warning">
+              <i data-feather="trello" class="font-medium-5"></i>
+            </a>
+            </div>
+          </div>
+          <h2 class="fw-bolder">{{ $jumlahdivisi }}</h2>
+          <p class="card-text">Divisi</p>
         </div>
-        </a>
       </div>
     </div>
     <div class="col-xl-2 col-md-4 col-sm-6">
       <div class="card text-center">
-      <a href="/absen/izin" class="link-dark">
         <div class="card-body">
-          <h2 class="fw-bolder mb-2">Izin</h2>
-          <h2 class="fw-bolder mb-75 text-primary">80%</h2>
-          <p class="card-text">12345 Pegawai</p>
+          <div class="avatar bg-light-danger p-50 mb-1">
+            <div class="avatar-content">
+            <a href="/absen/jabatan" class="link-danger">
+              <i data-feather="star" class="font-medium-5"></i>
+              </a>
+            </div>
+          </div>
+          <h2 class="fw-bolder">{{ $jumlahjabatan }}</h2>
+          <p class="card-text">Jabatan</p>
         </div>
-        </a>
       </div>
     </div>
     <div class="col-xl-2 col-md-4 col-sm-6">
       <div class="card text-center">
-      <a href="/absen/sakit" class="link-dark">
         <div class="card-body">
-          <h2 class="fw-bolder mb-2">Sakit</h2>
-          <h2 class="fw-bolder mb-75 text-info">80%</h2>
-          <p class="card-text">12345 Pegawai</p>
+          <div class="avatar bg-light-primary p-50 mb-1">
+            <div class="avatar-content">
+            <a href="/absen/golongan" class="link-primary">
+              <i data-feather="codepen" class="font-medium-5"></i>
+              </a>
+            </div>
+          </div>
+          <h2 class="fw-bolder">{{ $jumlahgolongan }}</h2>
+          <p class="card-text">Golongan</p>
         </div>
-        </a>
       </div>
     </div>
     <div class="col-xl-2 col-md-4 col-sm-6">
       <div class="card text-center">
-      <a href="/absen/cuti" class="link-dark">
         <div class="card-body">
-          <h2 class="fw-bolder mb-2">Cuti</h2>
-          <h2 class="fw-bolder mb-75 text-secondary">80%</h2>
-          <p class="card-text">12345 Pegawai</p>
+          <div class="avatar bg-light-success p-50 mb-1">
+            <div class="avatar-content">
+            <a href="/absen/pendidikan" class="link-success">
+              <i data-feather="award" class="font-medium-5"></i>
+              </a>
+            </div>
+          </div>
+          <h2 class="fw-bolder">{{ $jumlahpendidikan }}</h2>
+          <p class="card-text">Pendidikan</p>
         </div>
-        </a>
       </div>
     </div>
     <div class="col-xl-2 col-md-4 col-sm-6">
       <div class="card text-center">
-      <a href="/absen/absent" class="link-dark">
         <div class="card-body">
-          <h2 class="fw-bolder mb-2">Absent</h2>
-          <h2 class="fw-bolder mb-75 text-danger">80%</h2>
-          <p class="card-text">12345 Pegawai</p>
+          <div class="avatar bg-light-danger p-50 mb-1">
+            <div class="avatar-content">
+            <a href="/absen/jenispegawai" class="link-danger">
+              <i data-feather="user-check" class="font-medium-5"></i>
+              </a>
+            </div>
+          </div>
+          <h2 class="fw-bolder">{{ $jumlahjenispegawai }}</h2>
+          <p class="card-text">Jenis Pegawai</p>
         </div>
-        </a>
       </div>
     </div>
   </div>
   <!--/ Stats Vertical Card -->
 
-      <!-- Browser States Card -->
-      <div class="row">
-      <div class="col-lg-4 col-md-6 col-12">
-      <div class="card card-browser-states">
-        <div class="card-header">
-          <div>
-            <h4 class="card-title">Presensi Divisi</h4>
-          </div>
-        </div>
-        <div class="card-body">
-          <div class="browser-states">
-            <div class="d-flex">
-              <h6 class="align-self-center mb-0">Divisi Keuangan</h6>
-            </div>
-            <div class="d-flex align-items-center">
-              <div class="fw-bold text-body-heading me-1">54.4%</div>
-              <div id="browser-state-chart-primary"></div>
-            </div>
-          </div>
-          <div class="browser-states">
-            <div class="d-flex">
-              <h6 class="align-self-center mb-0">Divisi SDM</h6>
-            </div>
-            <div class="d-flex align-items-center">
-              <div class="fw-bold text-body-heading me-1">6.1%</div>
-              <div id="browser-state-chart-warning"></div>
-            </div>
-          </div>
-          <div class="browser-states">
-            <div class="d-flex">
-              <h6 class="align-self-center mb-0">Divisi UMU</h6>
-            </div>
-            <div class="d-flex align-items-center">
-              <div class="fw-bold text-body-heading me-1">14.6%</div>
-              <div id="browser-state-chart-secondary"></div>
-            </div>
-          </div>
-          <div class="browser-states">
-            <div class="d-flex">
-              <h6 class="align-self-center mb-0">Divisi Operasional</h6>
-            </div>
-            <div class="d-flex align-items-center">
-              <div class="fw-bold text-body-heading me-1">4.2%</div>
-              <div id="browser-state-chart-info"></div>
-            </div>
-          </div>
-        </div>
-      </div>
-      </div>
-    <!--/ Browser States Card -->
+  <section id="basic-datatable">
 
-    <!-- Revenue Report Card -->
-    <div class="col-lg-8 col-md-6 col-12">
-      <div class="card card-revenue-budget">
-        <div class="row mx-0">
-          <div class="col-md- col-12 revenue-report-wrapper">
-            <div class="d-sm-flex justify-content-between align-items-center mb-3">
-              <h4 class="card-title mb-50 mb-sm-0">Grafik Kehadiran</h4>
-              <div class="d-flex align-items-center">
-                <div class="d-flex align-items-center me-2">
-                  <span class="bullet bullet-primary font-small-3 me-50 cursor-pointer"></span>
-                  <span>Hadir</span>
+  <div class="row">
+    <div class="col-12">
+      <div class="card">      
+        <table class="datatables-basic table">
+          <thead>
+            <tr>
+              <th></th>
+              <th></th>
+              <th>NIP</th>
+              <th>Nama Pegawai</th>
+              <th>Alamat</th>
+              <th>Tempat Tanggal Lahir</th>
+              <th>Pendidikan</th>
+              <th>Jenis Kelamin</th>
+              <th>Tanggal Masuk</th>
+              <th>Tanggal pengangkatan</th>
+              <th>Jabatan</th>
+              <th>No Hp</th>
+              <th>No Rekening</th>
+              <th>Uang Saku</th>
+              <th>Uang Representatif</th>
+              <th>Action</th>
+              
+              
+            </tr>
+          </thead>
+
+          <tbody>
+          @if(!empty($pegawais))
+          @foreach($pegawais as $pegawai)
+
+            <tr>
+              <td></td>
+              <td></td>
+
+              <td>
+                  <h5>{{ $pegawai->nip }}</h5>
+              </td>
+
+              <td>
+                <div class="d-flex align-items-center">
+                  <div>
+                    <div class="fw-bolder">{{ $pegawai->nama_pegawai }}</div>
+                  </div>
                 </div>
-                <div class="d-flex align-items-center ms-75">
-                  <span class="bullet bullet-warning font-small-3 me-50 cursor-pointer"></span>
-                  <span>Absent</span>
+              </td>
+
+              <td>
+                <div class="d-flex align-items-center">
+                  <div>
+                    <div class="fw-bolder">{{ $pegawai->alamat }}</div>
+                  </div>
                 </div>
-              </div>
-            </div>
-            <div id="revenue-report-chart"></div>
-          </div>
-        </div>
+              </td>
+
+              <td>
+                <div class="d-flex align-items-center">
+                  <div>
+                    <div class="fw-bolder">{{ $pegawai->tp_lahir }} , {{ $pegawai->tgl_lahir }}</div>
+                  </div>
+                </div>
+              </td>
+
+              <td>
+                <div class="d-flex align-items-center">
+                  <div>
+                    <div class="fw-bolder">{{ $pegawai->pendidikan->nama_pendidikan }}</div>
+                  </div>
+                </div>
+              </td>
+
+              <td>
+                <div class="d-flex align-items-center">
+                  <div>
+                    <div class="fw-bolder">{{ $pegawai->jk }}</div>
+                  </div>
+                </div>
+              </td>
+
+              <td>
+                <div class="d-flex align-items-center">
+                  <div>
+                    <div class="fw-bolder">{{ $pegawai->tgl_masuk }}</div>
+                  </div>
+                </div>
+              </td>
+
+              <td>
+                <div class="d-flex align-items-center">
+                  <div>
+                    <div class="fw-bolder">{{ $pegawai->jenispegawai->nama_jenispegawai }}, {{ $pegawai->tgl_pengangkatan }}</div>
+                  </div>
+                </div>
+              </td>
+
+              <td>
+                <div class="d-flex align-items-center">
+                  <div>
+                    <div class="fw-bolder">{{ $pegawai->jabatan->nama_jabatan }}, {{ $pegawai->divisi->nama_divisi }}</div>
+                  </div>
+                </div>
+              </td>
+
+              <td>
+                <div class="d-flex align-items-center">
+                  <div>
+                    <div class="fw-bolder">{{ $pegawai->no_hp }}</div>
+                  </div>
+                </div>
+              </td>
+
+              <td>
+                <div class="d-flex align-items-center">
+                  <div>
+                    <div class="fw-bolder">{{ $pegawai->no_rek }}</div>
+                  </div>
+                </div>
+              </td>
+
+              <td>
+                <div class="d-flex align-items-center">
+                  <div>
+                    <div class="fw-bolder">{{ $pegawai->uangsaku->uang_saku }}</div>
+                  </div>
+                </div>
+              </td>
+
+              <td>
+                <div class="d-flex align-items-center">
+                  <div>
+                    <div class="fw-bolder">{{ $pegawai->uangsaku->uang_representatif }}</div>
+                  </div>
+                </div>
+              </td>
+
+              <td>
+                <div class="d-flex align-items-center">
+                  <div>
+                      <a href="/absen/pegawai/{{ $pegawai->id }}/edit" type="button" class="btn btn-icon btn-warning">
+                        <span data-feather="edit"></span>
+                      </a>
+
+                      <form action="{{ url('absen/pegawai', $pegawai->id) }}" method="POST" class="d-inline">
+                        @method('delete')
+                        @csrf
+                        <button class="btn btn-icon btn-danger" id="type-hapus" onclick="return confirm('Apakah anda yakin ingin menghapus data ini?')">
+                          <span data-feather="trash"></span>
+                        </button>
+                      </form>
+                  </div>
+                </div>
+              </td>
+
+              
+            </tr>
+          @endforeach
+          @endif
+          </tbody>
+        </table>
       </div>
     </div>
-    <!--/ Revenue Report Card -->
   </div>
 </section>
-<!-- Dashboard Ecommerce ends -->
 
         </div>
       </div>

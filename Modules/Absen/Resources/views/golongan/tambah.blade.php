@@ -28,6 +28,51 @@
 
             </div>
             <div class="content-body">
+<!-- Menu Atas -->      
+<div class="col-12 order-0 order-md-1">
+      <!-- User Pills -->
+      <ul class="nav nav-pills mb-2">
+        <li class="nav-item">
+          <a class="nav-link" href="/user">
+            <i data-feather="user" class="font-medium-3 me-50"></i><span class="fw-bold">User</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/absen/jabatan">
+            <i data-feather="star" class="font-medium-3 me-50"></i><span class="fw-bold">Jabatan</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/absen/divisi">
+            <i data-feather="trello" class="font-medium-3 me-50"></i><span class="fw-bold">Divisi</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" href="/absen/golongan">
+            <i data-feather="codepen" class="font-medium-3 me-50"></i><span class="fw-bold">Golongan</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/absen/pendidikan">
+            <i data-feather="award" class="font-medium-3 me-50"></i><span class="fw-bold">Pendidikan</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/absen/uangsaku">
+            <i data-feather="credit-card" class="font-medium-3 me-50"></i><span class="fw-bold">Uang Saku</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/absen/jenispegawai">
+            <i data-feather="user-check" class="font-medium-3 me-50"></i><span class="fw-bold">Jenis</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/absen/gajipokok">
+            <i data-feather="dollar-sign" class="font-medium-3 me-50"></i><span class="fw-bold">Gaji Pokok</span></a>
+        </li>
+      </ul>
+<!-- menu bawah -->
                 <!-- Card Advance -->
 
                 <div class="row match-height">
@@ -39,40 +84,11 @@
                                     @csrf
                                     <div class="row">
 
-                                    <div class="col-12 position-relative">
-                                            <div class="mb-2">
-                                                <label class="form-label" for="pendidikan_id">Pendidikan</label>
-                                                <select class="form-select" aria-label="Default select example" name="pendidikan_id" id="pendidikan_id">
-                                                    <option selected>--Pilih Pendidikan --</option>
-
-                                                    @foreach ( $pendidikans as $pendidikan )
-                                                        <option value="{{ $pendidikan->id }}">{{ $pendidikan->nama_pendidikan }}</option>
-                                                    @endforeach
-                                                </select>
-                                            </div>
-                                        </div>
-
-                                        <div class="col-12">
-                                            <div class="mb-2">
-                                                <label class="form-label" for="masa_kerja">Masa Kerja</label>
-                                                <input type="number" id="masa_kerja" name="masa_kerja"class="form-control"
-                                                    placeholder="Input Masa Kerja" />
-                                            </div>
-                                        </div>
-
                                         <div class="col-12">
                                             <div class="mb-2">
                                                 <label class="form-label" for="nama_golongan">Nama Golongan</label>
                                                 <input type="text" id="nama_golongan" name="nama_golongan"class="form-control"
                                                     placeholder="Input Nama Golongan" />
-                                            </div>
-                                        </div>
-
-                                        <div class="col-12">
-                                            <div class="mb-2">
-                                                <label class="form-label" for="gaji">Gaji</label>
-                                                <input type="number" id="gaji" name="gaji"class="form-control"
-                                                    placeholder="Input Besaran Gaji" />
                                             </div>
                                         </div>
 

@@ -38,10 +38,7 @@ class GolonganController extends Controller
     public function store(Request $request)
     {
         Golongan::create([
-            'pendidikan_id' => $request->pendidikan_id,
-            'masa_kerja'=> $request->masa_kerja,
             'nama_golongan'=> $request->nama_golongan,
-            'gaji'=> $request->gaji,
         ]);
 
         return redirect('/absen/golongan');
@@ -54,9 +51,7 @@ class GolonganController extends Controller
      */
     public function show($id)
     {
-        return view('absen::golongan.tambah', [
-            'pendidikans' => Pendidikan::all()
-        ]);
+        return view('absen::golongan.tambah');
     }
 
     /**
@@ -80,10 +75,7 @@ class GolonganController extends Controller
     public function update(Request $request, $id)
     {
         $rules = [
-            'pendidikan_id'=> 'required',
-            'masa_kerja'=> 'required',
             'nama_golongan'=> 'required',
-            'gaji'=> 'required',
         ];
 
         $validatedData = $request->validate($rules);

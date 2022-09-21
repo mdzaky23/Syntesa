@@ -67,7 +67,9 @@ class UangsakuController extends Controller
     {
         $uangsaku = Uangsaku::find($id);
 
-        return view('absen::uangsaku.edit', compact('uangsaku'));
+        return view('absen::uangsaku.edit', compact('uangsaku'), [
+            'jabatans' => Jabatan::all()
+        ]);
     }
 
     /**
@@ -80,7 +82,7 @@ class UangsakuController extends Controller
     {
         $rules = [
             'jabatan_id'=> 'required',
-            'uang_Saku'=> 'required',
+            'uang_saku'=> 'required',
             'uang_representatif'=> 'required',
         ];
 

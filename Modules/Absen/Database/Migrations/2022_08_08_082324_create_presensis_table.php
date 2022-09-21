@@ -20,10 +20,14 @@ return new class extends Migration
             $table->string('tgl_absen')->nullable();
             $table->string('divisi_id')->nullable();
             $table->string('jabatan_id')->nullable();
+            $table->string('keterangan')->nullable();
+            $table->string('jam_masuk')->nullable();
+            $table->string('jam_pulang')->nullable();
             $table->string('waktukerja_id')->nullable();
             $table->timestamps();
         });
     }
+
 
     /**
      * Reverse the migrations.

@@ -2,11 +2,14 @@
 
 namespace Modules\Absen\Http\Controllers;
 
-use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
+use Modules\Absen\Entities\Pegawai;
+use Modules\Absen\Entities\Uangsaku;
+use Modules\Absen\Entities\Gajipokok;
+use Illuminate\Contracts\Support\Renderable;
 
-class HadirController extends Controller
+class GajiController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +17,11 @@ class HadirController extends Controller
      */
     public function index()
     {
-        return view('absen::hadir.index');
+        return view('absen::gaji.index', [
+            'pegawais' => Pegawai::all(),
+            'gajipokoks' => Gajipokok::all(),
+            'uangsakus' => Uangsaku::all(),
+        ]);
     }
 
     /**
@@ -43,7 +50,14 @@ class HadirController extends Controller
      */
     public function show($id)
     {
-        return view('absen::show');
+        $pegawai = Pegawai::find($id);
+
+        return view('absen::gaji.lihat', compact('pegawai'), [
+            'pegawais'=>$pegawai->get(),
+            'gajipokoks' => Gajipokok::all(),
+            'uangsakus' => Uangsaku::all(),
+            
+        ]);
     }
 
     /**

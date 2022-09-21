@@ -23,7 +23,9 @@ class Presensi extends Model
         return $this->belongsTo(Divisi::class,'divisi_id','id');
     }
 
-
+    public function waktukerja(){
+        return $this->belongsTo(Waktukerja::class,'waktukerja_id','id');
+    }
 
     protected static function newFactory()
     {

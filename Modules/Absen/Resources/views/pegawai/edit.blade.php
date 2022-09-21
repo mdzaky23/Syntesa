@@ -28,6 +28,52 @@
 
             </div>
             <div class="content-body">
+                <!-- Menu Atas -->      
+<div class="col-12 order-0 order-md-1">
+      <!-- User Pills -->
+      <ul class="nav nav-pills mb-2">
+        <li class="nav-item">
+          <a class="nav-link active" href="/absen/pegawai">
+            <i data-feather="users" class="font-medium-3 me-50"></i><span class="fw-bold">Pegawai</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/user">
+            <i data-feather="user" class="font-medium-3 me-50"></i><span class="fw-bold">User</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/absen/jabatan">
+            <i data-feather="star" class="font-medium-3 me-50"></i><span class="fw-bold">Jabatan</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/absen/divisi">
+            <i data-feather="trello" class="font-medium-3 me-50"></i><span class="fw-bold">Divisi</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/absen/golongan">
+            <i data-feather="codepen" class="font-medium-3 me-50"></i><span class="fw-bold">Golongan</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/absen/pendidikan">
+            <i data-feather="award" class="font-medium-3 me-50"></i><span class="fw-bold">Pendidikan</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/absen/uangsaku">
+            <i data-feather="credit-card" class="font-medium-3 me-50"></i><span class="fw-bold">Uang Saku</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/absen/jenispegawai">
+            <i data-feather="user-check" class="font-medium-3 me-50"></i><span class="fw-bold">Jenis</span>
+          </a>
+        </li>
+      </ul>
+<!-- menu bawah -->
+
                 <!-- Card Advance -->
 
                 <div class="row match-height">
@@ -98,11 +144,16 @@
                                             <div class="mb-2">
                                                 <label class="form-label" for="pendidikan_id">Pendidikan</label>
                                                 <select class="form-select" aria-label="Default select example" name="pendidikan_id" id="pendidikan_id" value="{{ $pegawai->pendidikan_id }}">
-                                                    <option selected>{{ $pegawai->pendidikan_id }}</option>
-                                                    <option value="1">SLTA</option>
-                                                    <option value="2">D3</option>
-                                                    <option value="3">S1</option> 
-                                                    <option value="4">S2</option>  
+                                                    
+                                                
+                                                @foreach ( $pendidikans as $pendidikan )
+                                                    @if (old('pendidikan_id' , $pegawai->pendidikan_id) == $pendidikan->nama_pendidikan)
+                                                        <option value="{{ $pendidikan->id }}" selected>{{ $pendidikan->nama_pendidikan }}</option>
+                                                    @else
+                                                    <option value="{{ $pendidikan->id }}">{{ $pendidikan->nama_pendidikan }}</option>
+                                                    @endif
+                                                @endforeach
+
                                                 </select>
                                             </div>
                                         </div>
@@ -129,9 +180,16 @@
                                             <div class="mb-2">
                                                 <label class="form-label" for="jenispegawai_id">Jenis Pegawai</label>
                                                 <select class="form-select" aria-label="Default select example" name="jenispegawai_id" id="jenispegawai_id" value="{{ $pegawai->jenispegawai_id}}">
-                                                    <option selected>{{ $pegawai->jenispegawai_id}}</option>
-                                                    <option value="1">Tetap</option>
-                                                    <option value="2">Kontrak</option>  
+                                                    
+                                                
+                                                @foreach ( $jenispegawais as $jenispegawai )
+                                                    @if (old('jenispegawai_id' , $pegawai->jenispegawai_id) == $jenispegawai->nama_jenispegawai)
+                                                        <option value="{{ $jenispegawai->id }}" selected>{{ $jenispegawai->nama_jenispegawai }}</option>
+                                                    @else
+                                                    <option value="{{ $jenispegawai->id }}">{{ $jenispegawai->nama_jenispegawai }}</option>
+                                                    @endif
+                                                @endforeach
+
                                                 </select>
                                             </div>
                                         </div>
@@ -140,15 +198,16 @@
                                             <div class="mb-2">
                                                 <label class="form-label" for="jabatan_id">Jabatan Pegawai</label>
                                                 <select class="form-select" aria-label="Default select example" name="jabatan_id" id="jabatan_id" value="{{ $pegawai->jabatan_id }}">
-                                                    <option selected>{{ $pegawai->jabatan_id }}</option>
-                                                    <option value="1">Direktur Utama</option>
-                                                    <option value="2">Direktur</option>
-                                                    <option value="4">Manager</option>
-                                                    <option value="5">Kepala Divisi</option>
-                                                    <option value="6">Junior Manager</option>
-                                                    <option value="7">Staff</option>
-                                                    <option value="8">Sekretariat Perusahaan</option>
-                                                    <option value="9">Staff Pengembangan Bisnis</option> 
+                                                    
+                                                
+                                                @foreach ( $jabatans as $jabatan )
+                                                    @if (old('jabatan_id' , $pegawai->jabatan_id) == $jabatan->nama_jabatan)
+                                                        <option value="{{ $jabatan->id }}" selected>{{ $jabatan->nama_jabatan }}</option>
+                                                    @else
+                                                    <option value="{{ $jabatan->id }}">{{ $jabatan->nama_jabatan }}</option>
+                                                    @endif
+                                                @endforeach
+
                                                 </select>
                                             </div>
                                         </div>
@@ -157,16 +216,16 @@
                                             <div class="mb-2">
                                                 <label class="form-label" for="divisi_id">Divisi Pegawai</label>
                                                 <select class="form-select" aria-label="Default select example" name="divisi_id" id="divisi_id" value="{{ $pegawai->divisi_id }}">
-                                                    <option selected>{{ $pegawai->divisi_id }}</option>
-                                                    <option value="1">Keuangan</option>
-                                                    <option value="2">SDM dan Umum</option>
-                                                    <option value="3">Operasional</option>
-                                                    <option value="4">Umum dan Keuangan</option>
-                                                    <option value="5">Keuangan dan Akuntansi</option>
-                                                    <option value="6">Staff IT dan Umum</option>
-                                                    <option value="7">Umum (Security)</option>
-                                                    <option value="8">Umum (Driver)</option>
-                                                    <option value="9">Kerumahtanggaan</option>
+                                                    
+
+                                                @foreach ( $divisis as $divisi )
+                                                    @if (old('divisi_id' , $pegawai->divisi_id) == $divisi->nama_divisi)
+                                                        <option value="{{ $divisi->id }}" selected>{{ $divisi->nama_divisi }}</option>
+                                                    @else
+                                                    <option value="{{ $divisi->id }}">{{ $divisi->nama_divisi }}</option>
+                                                    @endif
+                                                @endforeach
+
                                                 </select>
                                             </div>
                                         </div>
@@ -175,23 +234,15 @@
                                             <div class="mb-2">
                                                 <label class="form-label" for="golongan_id">Golongan Pegawai</label>
                                                 <select class="form-select" aria-label="Default select example" name="golongan_id" id="golongan_id" value="{{ $pegawai->golongan_id }}">
-                                                    <option selected>{{ $pegawai->golongan_id }}</option>
-                                                    <option value="1">A1</option>
-                                                    <option value="2">A2</option>
-                                                    <option value="3">A3</option>
-                                                    <option value="4">A4</option>
-                                                    <option value="5">B1</option>
-                                                    <option value="6">B2</option>
-                                                    <option value="7">B3</option>
-                                                    <option value="8">B4</option>
-                                                    <option value="9">C1</option>
-                                                    <option value="10">C2</option>
-                                                    <option value="11">C3</option>
-                                                    <option value="12">C4</option>
-                                                    <option value="13">D1</option>
-                                                    <option value="14">D2</option>
-                                                    <option value="15">D3</option>
-                                                    <option value="16">D4</option>
+                                                    
+                                                @foreach ( $golongans as $golongan )
+                                                    @if (old('golongan_id' , $pegawai->golongan_id) == $golongan->nama_golongan)
+                                                        <option value="{{ $golongan->id }}" selected>{{ $golongan->nama_golongan }}</option>
+                                                    @else
+                                                    <option value="{{ $golongan->id }}">{{ $golongan->nama_golongan }}</option>
+                                                    @endif
+                                                @endforeach
+
                                                 </select>
                                             </div>
                                         </div>
@@ -215,8 +266,17 @@
                                         <div class="col-12">
                                             <div class="mb-2">
                                                 <label class="form-label" for="uangsaku_id">Uang Saku</label>
-                                                <input type="number" id="uangsaku_id" name="uangsaku_id"class="form-control"
-                                                    placeholder="Input uang saku Pegawai" value="{{ $pegawai->uangsaku_id }}"/>
+                                                <select class="form-select" aria-label="Default select example" name="uangsaku_id" id="uangsaku_id" value="{{ $pegawai->uangsaku_id }}">
+                                                    
+                                                    @foreach ( $uangsakus as $uangsaku )
+                                                        @if (old('uangsaku_id' , $pegawai->uangsaku_id) == $uangsaku->uang_saku)
+                                                            <option value="{{ $uangsaku->id }}" selected> {{ $uangsaku->jabatan->nama_jabatan }} (Rp. {{ $uangsaku->uang_saku }} )</option>
+                                                        @else
+                                                        <option value="{{ $uangsaku->id }}">{{ $uangsaku->jabatan->nama_jabatan }} (Rp. {{ $uangsaku->uang_saku }} )</option>
+                                                        @endif
+                                                    @endforeach
+
+                                                </select>
                                             </div>
                                         </div>
 

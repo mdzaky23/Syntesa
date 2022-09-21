@@ -2,6 +2,7 @@
 
 namespace Modules\Absen\Entities;
 
+use Modules\Absen\Entities\Gajipokok;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
@@ -11,13 +12,10 @@ class Golongan extends Model
 
     protected $guarded = ['id'];
 
-    public function pendidikan(){
-        return $this->belongsTo(Pendidikan::class,'pendidikan_id','id');
+    public function Gajipokok(){
+        return $this->hasMany(Gajipokok::class,'golongan_id','id');
     }
-    
-    public function Pegawai(){
-        return $this->hasmany(Pegawai::class);
-    }
+
     
     protected static function newFactory()
     {

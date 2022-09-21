@@ -18,9 +18,17 @@ class Jabatan extends Model
     public function Uangsaku(){
         return $this->hasmany(Uangsaku::class);
     }
+
+    public function presensi(){
+        return $this->hasMany(Presensi::class,'presensi_id','id');
+    }
+
+    public function suratcuti(){
+        return $this->hasMany(Suratcuti::class);
+    }
     
     protected static function newFactory()
     {
-        return \Modules\Absen\Database\factories\JabatanFactory::new();
+        // return \Modules\Absen\Database\factories\JabatanFactory::new();
     }
 }
