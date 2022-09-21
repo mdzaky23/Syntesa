@@ -1,8 +1,6 @@
 @extends('pengajuan::layouts.main')
 
 @section('content')
-
-@if ($role==2 || $role==5 || $role==8)
     <div class="app-content content ">
         <div class="content-overlay"></div>
         <div class="header-navbar-shadow"></div>
@@ -72,7 +70,7 @@
                                             ->where('status', $histori->status)
                                             ->get()
                                             ->first();
-                                            $jabatan = Modules\Pengajuan\Entities\KeteranganJabatan::select()
+                                        $jabatan = Modules\Pengajuan\Entities\KeteranganJabatan::select()
                                           ->where('jabatan', $histori->jabatan)
                                           ->get()
                                           ->first();
@@ -80,7 +78,9 @@
                                         
                                          @endphp
 
-                                        @if ($histori->status==1)
+                                        @if ($histori->status==1 && $jabatan->jabatan==3 || 
+                                        $histori->status==1 && $jabatan->jabatan==1 || 
+                                        $histori->status==1 && $kategori->kategori==2 && $jabatan->jabatan==4 )
 
                                             <tr>
                                                 <td></td>
@@ -88,10 +88,8 @@
 
                                                 @if ($kategori->kategori==1)
                                                 <td style="text-align: center"> <span class="badge rounded-pill badge-light-primary">{{ $kategori->keterangan }} </span> </td>
-
                                                 @elseif ($kategori->kategori==2)
                                                 <td style="text-align: center"> <span class="badge rounded-pill badge-light-info">{{ $kategori->keterangan }} </span> </td>
-                                                
                                                 @endif
 
                                                 <td style="text-align: center">{{ $pengajuan_biasa->keterangan }}</td>
@@ -100,36 +98,32 @@
                                                 <td style="text-align: center">{{ $divisi->keterangan }}</td>
                                                 <td style="text-align: center">{{ $histori->updated_at }}</td> 
                                                 
-                                          
-
-                                                @if($jabatan->jabatan==4 )
-                                                    <td style="text-align: center">
+                                                @if($histori->status==1)
+                                                    @if($jabatan->jabatan==4)
+                                                        <td style="text-align: center">
                                                         <span
-                                                        class="badge rounded-pill badge-glow bg-info"> {{ $status->keterangan }}  {{ $jabatan->keterangan }}  </span> </td> 
-                                                @elseif($jabatan->jabatan==2 )
-                                                    <td style="text-align: center">
+                                                        class="badge rounded-pill badge-glow bg-info"> {{ $status->keterangan }} {{ $jabatan->keterangan }} </span> </td> 
+                                                    @elseif($jabatan->jabatan==3)
+                                                        <td style="text-align: center">
                                                         <span
-                                                        class="badge rounded-pill badge-glow bg-primary"> {{ $status->keterangan }}  {{ $jabatan->keterangan }}  </span> </td> 
-                                                @elseif($jabatan->jabatan==3 )
-                                                    <td style="text-align: center">
+                                                        class="badge rounded-pill badge-glow bg-primary"> {{ $status->keterangan }}  {{ $jabatan->keterangan }}</span> </td>
+                                                    @elseif($jabatan->jabatan==1)
+                                                        <td style="text-align: center">
                                                         <span
-                                                        class="badge rounded-pill badge-glow bg-primary"> {{ $status->keterangan }}  {{ $jabatan->keterangan }}  </span> </td> 
-                                                @elseif ($jabatan->jabatan==1)
-                                                    <td style="text-align: center">
-                                                        <span
-                                                        class="badge rounded-pill badge-glow bg-success"> {{ $status->keterangan }}  {{ $jabatan->keterangan }} </span> </td>
+                                                        class="badge rounded-pill badge-glow bg-success"> {{ $status->keterangan }}  {{ $jabatan->keterangan }}</span> </td>
+                                                    @endif
                                                 @endif
 
                                                 <td>
                                                     <div class="demo-inline-spacing">
                                                         <a type="button" class="btn btn-outline-primary round"
-                                                                href="{{ url('pengajuan/histori/' . $pengajuanbiasa->id)}}">Detail</a>
+                                                            href="{{ url('pengajuan/histori/' . $pengajuanbiasa->id)}}">Detail</a>
                                                         </a>
                                                     </div>
                                                 </td>
                                             
                                             </tr>
-                                            @endif
+                                        @endif
                                         @endforeach
                                     </tbody>
                                 </table>
@@ -137,5 +131,5 @@
             </div>
         </div>
     </div>
-@endif
+
 @endsection

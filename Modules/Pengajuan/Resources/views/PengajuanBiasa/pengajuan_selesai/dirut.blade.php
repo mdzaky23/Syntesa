@@ -1,6 +1,8 @@
 @extends('pengajuan::layouts.main')
 
 @section('content')
+
+
     <!-- BEGIN: Content-->
     <div class="app-content content ">
         <div class="content-overlay"></div>
@@ -41,6 +43,7 @@
                                             <th style="text-align: center">Divisi</th>
                                             <th style="text-align: center">Waktu Aksi</th>
                                             <th style="text-align: center">Status</th>
+                                            <th style="text-align: center">Action</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -54,26 +57,30 @@
                                             ->first();
 
                                         $pengajuan_biasa =  Modules\Pengajuan\Entities\PengajuanBiasa::select()
-                                        ->where('id', $histori->pengajuan_biasa_id)
-                                        ->get()
-                                        ->first();
+                                            ->where('id', $histori->pengajuan_biasa_id)
+                                            ->get()
+                                            ->first();
+
                                         $user = App\Models\User::select()
-                                          ->where('id', $pengajuan_biasa->user_id)
-                                          ->get()
-                                          ->first();
+                                            ->where('id', $pengajuan_biasa->user_id)
+                                            ->get()
+                                            ->first();
 
                                         $kategori = Modules\Pengajuan\Entities\kategori_pengajuan::select()
                                             ->where('kategori', $pengajuan_biasa->kategori)
                                             ->get()
                                             ->first();
+
                                         $divisi = Modules\Pengajuan\Entities\Divisi::select()
                                             ->where('divisi', $pengajuan_biasa->divisi)
                                             ->get()
                                             ->first();
+
                                         $status = Modules\Pengajuan\Entities\StatusPengajuan::select()
                                             ->where('status', $histori->status)
                                             ->get()
                                             ->first();
+
                                         $jabatan = Modules\Pengajuan\Entities\KeteranganJabatan::select()
                                           ->where('jabatan', $histori->jabatan)
                                           ->get()
@@ -82,19 +89,16 @@
                                         
                                          @endphp
 
-                                         @if ($status->status==5 )
+                                         @if ($status->status==3 )
                                         <tr>
                                             <td></td>
 
                                             <td style="text-align: center">{{ $loop->iteration }}</td>
 
-                                            @if ($kategori->kategori==1)
+                                           
                                             <td style="text-align: center"> <span class="badge rounded-pill badge-light-primary">{{ $kategori->keterangan }} </span> </td>
 
-                                            @elseif ($kategori->kategori==2)
-                                            <td style="text-align: center"> <span class="badge rounded-pill badge-light-info">{{ $kategori->keterangan }} </span> </td>
                                             
-                                            @endif
                                             <td>{{ $pengajuanbiasa->keterangan }}</td>
                                             <td>{{ $pengajuanbiasa->jumlah }}</td>
                                             <td>{{ $pengajuanbiasa->tanggal }}</td>
@@ -102,9 +106,17 @@
                                             <td>{{ $divisi->keterangan }}</td>
                                             <td>{{ $histori->updated_at  }}</td>
                                             <td style="text-align: center">
-                                                <span class="badge badge-glow bg-success"> {{ $status->keterangan }} 
-                                                </span> 
+                                                <span class="badge badge-glow bg-success"> {{ $status->keterangan }}</span> 
                                             </td> 
+
+                                            <td>
+                                                <div class="demo-inline-spacing">
+                                                    <a type="button" class="btn btn-outline-primary round"
+                                                            href="{{ url('pengajuan/histori/' . $pengajuanbiasa->id)}}">Detail</a>
+                                                    </a>
+                                                </div>
+                                            </td>
+
                                         </tr>
                                         @endif
                                     @endforeach

@@ -7,15 +7,32 @@
         <div class="header-navbar-shadow"></div>
         <div class="content-wrapper container-xxl p-0">
             <div class="content-header row">
+
+                @if (Session::has('berhasil'))
+                <div class="alert alert-success" role="alert">
+                    <h4 class="alert-heading">Berhasil</h4>
+                    <div class="alert-body">
+                        {{ session('berhasil') }}
+                    </div>
+                </div>
+                @elseif (Session::has('gagal'))
+                <div class="alert alert-danger" role="alert">
+                    <h4 class="alert-heading">Gagal</h4>
+                    <div class="alert-body">
+                        {{ session('gagal') }}
+                    </div>
+                </div>
+                @endif
+
                 <div class="content-header-left col-md-9 col-12 mb-2">
                     <div class="row breadcrumbs-top">
                         <div class="col-12">
-                            <h2 class="content-header-title float-start mb-0"> Pengajuan Masuk </h2>
+                            <h2 class="content-header-title float-start mb-0">Pengajuan Masuk</h2>
                             <div class="breadcrumb-wrapper">
                                 <ol class="breadcrumb">
-                                    <li class="breadcrumb-item"><a href="index.html"> Pencairan Pengajuan</a>
+                                    <li class="breadcrumb-item"><a href="index.html"> Pengajuan Biasa</a>
                                     </li>
-                                    <li class="breadcrumb-item active"><a href="#"> Pengajuan Masuk </a>
+                                    <li class="breadcrumb-item active"><a href="#">Pengajuan Masuk </a>
                                     </li>
                                 </ol>
                             </div>
@@ -83,61 +100,38 @@
                                      
                                       
                                        @endphp
-
-                                      @if ($histori->status==1 && $jabatan->jabatan==3  || $histori->status==1 && $jabatan->jabatan==9 ||
-                                        $histori->status==1 && $kategori->kategori==2 && $jabatan->jabatan==2  ||  $histori->status==1 && $kategori->kategori==2 && $jabatan->jabatan==8  )
-                                            <tr>
+                                        
+                                    
+                                        @if (
+                                        $histori->status==1 && $kategori->kategori==1 && $jabatan->jabatan==4 ) 
+                                            
+                                        <tr>
                 
-                                                <td>
-                                                    <button type="button"
+                                            <td>
+                                                <button type="button"
                                                         class="btn btn-icon btn-icon btn-flat-success">
                                                         <i data-feather="eye"></i>
-                                                    </button>
-                                                </td>
+                                                </button>
+                                            </td>
 
-                                                <td>{{ $loop->iteration }}</td>
-
-                                                @if ($kategori->kategori==1)
-                                                <td style="text-align: center"> <span class="badge rounded-pill badge-light-primary">{{ $kategori->keterangan }} </span> </td>
-
-                                                @elseif ($kategori->kategori==2)
-                                                <td style="text-align: center"> <span class="badge rounded-pill badge-light-info">{{ $kategori->keterangan }} </span> </td>
-                                                
-                                                @endif
-
-                                                <td>{{ $pengajuanbiasa->keterangan }}</td>
-                                                <td>{{ $pengajuanbiasa->jumlah }}</td>
-                                                <td>{{ $pengajuanbiasa->tanggal }}</td>
-                                                <td>{{ $user->name}}</td>
-                                                <td>{{ $divisi->keterangan }}</td>
-
-                                                
-                                                
-                                                @if($jabatan->jabatan==2 || $jabatan->jabatan==8 )
-                                                    <td style="text-align: center">
-                                                        <span
-                                                        class="badge rounded-pill badge-glow bg-primary"> {{ $status->keterangan }} {{ $jabatan->keterangan }} </span> </td> 
-                                                @elseif($jabatan->jabatan==3 || $jabatan->jabatan==9)
-                                                    <td style="text-align: center">
-                                                        <span
-                                                        class="badge rounded-pill badge-glow bg-success"> {{ $status->keterangan }}  {{ $jabatan->keterangan }}</span> </td>
-                                            @endif
-                                           
-                                               
-
-
+                                            <td>{{ $loop->iteration }}</td>
+                                            <td style="text-align: center"> <span class="badge rounded-pill badge-light-primary">{{ $kategori->keterangan }} </span> </td>
+                                            <td>{{ $pengajuanbiasa->keterangan }}</td>
+                                            <td>{{ $pengajuanbiasa->jumlah }}</td>
+                                            <td>{{ $pengajuanbiasa->tanggal }}</td>
+                                            <td>{{ $user->name}}</td>
+                                            <td>{{ $divisi->keterangan }}</td>
+                                            <td style="text-align: center">
+                                                <span
+                                                class="badge rounded-pill badge-glow bg-primary"> {{ $status->keterangan }} {{ $jabatan->keterangan }} </span> </td> 
                                             <td>
                                                 <div class="demo-inline-spacing">
-
                                                     <a type="button" class="btn btn-outline-primary round"
-                                                        href="{{ url('pengajuan/cair/' . $pengajuanbiasa->id)}}">Detail</a>
+                                                        href="{{ url('pengajuan/histori/' . $pengajuanbiasa->id)}}">Detail</a>
                                                     </a>
                                                 </div>
                                             </td>
 
-                                        </tr>
-
-                                     
                                     </tr>
 
                                         @endif

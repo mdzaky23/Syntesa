@@ -37,7 +37,7 @@
                                             <div class="col-xl-2 col-md-6 col-12">
                                                 <div class="mb-2">
                                                     <label class="form-label" for="no_project">No. Project</label>
-                                                    <input type="text" id="no_project" value="22.1" name="no_project"
+                                                    <input type="text" id="no_project" value="{{ $nomor }}" name="no_project"
                                                         class="form-control" />
                                                 </div>
                                             </div>

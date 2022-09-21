@@ -25,7 +25,7 @@ class PengajuanBiasaController extends Controller
             'role' => $role->role_id,
             'pengajuanbiasas' => PengajuanBiasa::all(),
         ]);
-        return redirect('/pengajuan/pengajuanBiasa/create');
+        return redirect('/pengajuan/diproses/show');
     }
 
     /**
@@ -35,87 +35,8 @@ class PengajuanBiasaController extends Controller
     public function create()
     { 
 
-        $role = Role::select()->where('user_id', Auth::user()->id)->get()->first();
-       
-        // return $historis;
-
-
-        if($role->divisi_id==1 && $role->jabatan_id==1) { 
-            
-            return view('pengajuan::PengajuanBiasa.pengajuan_diproses.index', [
-            'role' => $role->role_id,
-            'pengajuanbiasas'=> PengajuanBiasa::select()->where('divisi',1)->get(),
-         
-            ]); }
         
-        if($role->divisi_id==1 && $role->jabatan_id==2  ) {
-                return view('pengajuan::PengajuanBiasa.pengajuan_masuk.index', [
-                'role' => $role->role_id,
-                'pengajuanbiasas' => PengajuanBiasa::select()->where('divisi',1)->get(),
-                
-                ]); 
-
-        if($role->divisi_id==1 && $role->jabatan_id==3 ) {
-                return view('pengajuan::PengajuanBiasa.pengajuan_masuk.direktur', [
-                'role' => $role->role_id,
-                'pengajuanbiasas' => PengajuanBiasa::select()->where('divisi',1)->get(),
-                
-                ]);}
-            }
-
-
-
-        //keuangan
-        if($role->divisi_id==2 && $role->jabatan_id==4) { 
-            
-            return view('pengajuan::PengajuanBiasa.pengajuan_diproses.index', [
-            'role' => $role->role_id,
-            'pengajuanbiasas'=> PengajuanBiasa::select()->where('divisi',2)->get(),
-         
-            ]); }
-        
-        if($role->divisi_id==2 && $role->jabatan_id==5  ) {
-                return view('pengajuan::PengajuanBiasa.pengajuan_masuk.index', [
-                'role' => $role->role_id,
-                'pengajuanbiasas' => PengajuanBiasa::select()->where('divisi',2)->get(),
-                
-                ]); 
-
-        if($role->divisi_id==2 && $role->jabatan_id==3 ) {
-                return view('pengajuan::PengajuanBiasa.pengajuan_masuk.direktur', [
-                'role' => $role->role_id,
-                'pengajuanbiasas' => PengajuanBiasa::select()->where('divisi',2)->get(),
-                
-                ]);}
-            }
-
-
-        //sdm umum
-        if($role->divisi_id==3 && $role->jabatan_id==7) { 
-            
-            return view('pengajuan::PengajuanBiasa.pengajuan_diproses.index', [
-            'role' => $role->role_id,
-            'pengajuanbiasas'=> PengajuanBiasa::select()->where('divisi',3)->get(),
-         
-            ]); }
-        
-        if($role->divisi_id==3 && $role->jabatan_id==8  ) {
-                return view('pengajuan::PengajuanBiasa.pengajuan_masuk.index', [
-                'role' => $role->role_id,
-                'pengajuanbiasas' => PengajuanBiasa::select()->where('divisi',3)->get(),
-                
-                ]); 
-
-        if($role->divisi_id==3 && $role->jabatan_id==9 ) {
-                return view('pengajuan::PengajuanBiasa.pengajuan_masuk.direktur', [
-                'role' => $role->role_id,
-                'pengajuanbiasas' => PengajuanBiasa::select()->where('divisi',3)->get(),
-                
-                ]);}
-            }
-        
-        
-    }
+}
     
 
     /**
@@ -129,7 +50,7 @@ class PengajuanBiasaController extends Controller
         $hitung = PengajuanBiasa::select()->get()->count();
         $id = $hitung + 1;
 
-        // return $request;
+        // return $id;
         PengajuanBiasa::create([
             'id' => $id,
             'kategori' => $request->kategori,
@@ -140,7 +61,7 @@ class PengajuanBiasaController extends Controller
             'status'=> $request->status,
             'divisi' => $request->divisi,
             'catatan' => $request->catatan,
-            'lampiran_pengajuan_biasa_id' => $id,
+            // 'lampiran_pengajuan_biasa_id' => $id,
 
 
         ]);
@@ -160,11 +81,11 @@ class PengajuanBiasaController extends Controller
                 'lampiran' => $lampiran,
             ]);
 
-            $role=Role::select()->where('user_id', Auth::user()->id)->get()->first();
+            // $role=Role::select()->where('user_id', Auth::user()->id)->get()->first();
             HistoriPengajuanBiasa::create([
             'pengajuan_biasa_id' => $id,
             'user_id' => auth::user()->id,
-            'divisi_id' => $role->divisi_id,
+            // 'divisi_id' => $role->divisi_id,
             'keterangan' => $request->keterangan,
             'jabatan' => $request->jabatan,
             'status' => $request->status,
@@ -172,7 +93,7 @@ class PengajuanBiasaController extends Controller
             ]);
         }
        
-        return redirect('/pengajuan/pengajuanBiasa/create');
+        return redirect ('/pengajuan/diproses/show') -> with ( 'success' , 'Pengajuan Berhasil di Buat');
        
     }
 

@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('status_pengajuans', function (Blueprint $table) {
             $table->id();
-            $table->string('status')->unique();
+            $table->string('status');
             $table->string('keterangan');
             $table->timestamps();
         });

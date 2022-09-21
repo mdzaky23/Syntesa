@@ -29,7 +29,7 @@
                 <!-- Modern Horizontal Wizard -->
                 <section class="modern-horizontal-wizard">
                     <div class="bs-stepper wizard-modern modern-wizard-example">
-                        <form method="POST" action="/pengajuan/pengajuanBiasa" enctype="multipart/form-data">
+                        <form method="POST" action="/pengajuan/pengajuanbiasa" enctype="multipart/form-data">
 
                             @csrf
                             <div class="bs-stepper-header">
@@ -101,32 +101,23 @@
                                         </div>
 
                                         <input type="hidden" id="status" name="status" class="form-control"
-                                            value="6">
+                                            value="4">
+                                        <input type="hidden" id="jabatan" name="jabatan" class="form-control"
+                                            value="7">
 
                                             
                                         @if ($role==1)
-                                        <input type="hidden" id="jabatan" name="jabatan" class="form-control"
+                                        <input type="hidden" id="divisi" name="divisi" class="form-control"
                                             value="1">
                                         @elseif ($role==4)
-                                        <input type="hidden" id="jabatan" name="jabatan" class="form-control"
-                                            value="4">
+                                        <input type="hidden" id="divisi" name="divisi" class="form-control"
+                                            value="2">
                                         @elseif ($role==7)
-                                        <input type="hidden" id="jabatan" name="jabatan" class="form-control"
-                                            value="7">
+                                        <input type="hidden" id="divisi" name="divisi" class="form-control"
+                                            value="3">
                                         @endif
                                       
-                                           
-                                           
-                                    
-                                        <div class="mb-1 col-md-12">
-                                            <label class="form-label" for="divisi">Divisi</label>
-                                            <select class="form-select" id="divisi" name="divisi" required>
-                                                <option value="">Divisi</option>
-                                                <option value="1">Operasional</option>
-                                                <option value="2">Keuangan</option>
-                                                <option value="3">SDM dan Umum</option>
-                                            </select>
-                                        </div>
+                                        
                                         <div class="mb-1 col-md-12">
                                             <label class="d-block form-label" for="catatan">Catatan</label>
                                             <textarea class="form-control" id="catatan" name="catatan" placeholder="Catatan" rows="3" required></textarea>

@@ -48,46 +48,75 @@ class DiprosesController extends Controller
     {
         $role = Role::select()->where('user_id', Auth::user()->id)->get()->first();
      
-        if($role->divisi_id==1 && $role->jabatan_id==2 ) {
+        //keuangan
+        if($role->divisi_id==1 && $role->jabatan_id==7) { 
+            return view('pengajuan::PengajuanBiasa.pengajuan_diproses.staff', [
+            'role' => $role->role_id,
+            'pengajuanbiasas'=> PengajuanBiasa::select()->where('divisi',1)->get(),
+         
+            ]); }
+
+        if($role->divisi_id==1 && $role->jabatan_id==4 ) {
             return view('pengajuan::PengajuanBiasa.pengajuan_diproses.manager', [
             'role' => $role->role_id,
             'pengajuanbiasas' => PengajuanBiasa::select()->where('divisi',1)->get(),
             
             ]); }
-        if($role->divisi_id==1 && $role->jabatan_id==3 ) {
-            return view('pengajuan::PengajuanBiasa.pengajuan_diproses.direktur', [
-            'role' => $role->role_id,
-            'pengajuanbiasas' => PengajuanBiasa::select()->where('divisi',1)->get(),
-            
-            ]); }
+       
 
-            //keuangan
-        if($role->divisi_id==2 && $role->jabatan_id==5 ) {
+
+        //sdm umum
+        if($role->divisi_id==2 && $role->jabatan_id==7) { 
+            return view('pengajuan::PengajuanBiasa.pengajuan_diproses.staff', [
+            'role' => $role->role_id,
+            'pengajuanbiasas'=> PengajuanBiasa::select()->where('divisi',2)->get(),
+         
+            ]); }
+        if($role->divisi_id==2 && $role->jabatan_id==4) {
             return view('pengajuan::PengajuanBiasa.pengajuan_diproses.manager', [
             'role' => $role->role_id,
             'pengajuanbiasas' => PengajuanBiasa::select()->where('divisi',2)->get(),
             
             ]); }
-        if($role->divisi_id==2 && $role->jabatan_id==6 ) {
-            return view('pengajuan::PengajuanBiasa.pengajuan_diproses.direktur', [
-            'role' => $role->role_id,
-            'pengajuanbiasas' => PengajuanBiasa::select()->where('divisi',2)->get(),
-            
-            ]); }
+       
 
-            //sdm umum
-        if($role->divisi_id==3 && $role->jabatan_id==8 ) {
+        //operasional
+        if($role->divisi_id==3 && $role->jabatan_id==7) {  
+            return view('pengajuan::PengajuanBiasa.pengajuan_diproses.staff', [
+            'role' => $role->role_id,
+            'pengajuanbiasas'=> PengajuanBiasa::select()->where('divisi',3)->get(),
+         
+            ]); }
+        if($role->divisi_id==3 && $role->jabatan_id==4 ) {
             return view('pengajuan::PengajuanBiasa.pengajuan_diproses.manager', [
             'role' => $role->role_id,
             'pengajuanbiasas' => PengajuanBiasa::select()->where('divisi',3)->get(),
             
             ]); }
-        if($role->divisi_id==3 && $role->jabatan_id==9 ) {
-            return view('pengajuan::PengajuanBiasa.pengajuan_diproses.direktur', [
+        if($role->divisi_id==3 && $role->jabatan_id==3 ) {
+            return view('pengajuan::PengajuanBiasa.pengajuan_diproses.direktur_operasional', [
             'role' => $role->role_id,
             'pengajuanbiasas' => PengajuanBiasa::select()->where('divisi',3)->get(),
             
             ]); }
+
+
+        //umum keuangan
+        if($role->divisi_id==4 && $role->jabatan_id==2 ) {
+            return view('pengajuan::PengajuanBiasa.pengajuan_diproses.direktur_u&k', [
+            'role' => $role->role_id,
+            'pengajuanbiasas' => PengajuanBiasa::all(),
+            
+            ]);}
+
+        //dirut
+        if($role->divisi_id==4 && $role->jabatan_id==1 ) {
+            return view('pengajuan::PengajuanBiasa.pengajuan_diproses.dirut', [
+            'role' => $role->role_id,
+            'pengajuanbiasas' => PengajuanBiasa::all(),
+            
+            ]);} 
+
     }
 
     /**

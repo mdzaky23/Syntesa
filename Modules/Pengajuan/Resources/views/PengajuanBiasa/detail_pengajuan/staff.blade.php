@@ -1,6 +1,33 @@
 @extends('pengajuan::layouts.main')
 
 @section('content')
+@php
+ $histori = Modules\Pengajuan\Entities\HistoriPengajuanBiasa::select()
+    ->where('pengajuan_biasa_id', $detail->id)
+    ->orderby('created_at','desc')
+    ->get()
+    ->first();
+ $kategori = Modules\Pengajuan\Entities\kategori_pengajuan::select()
+     ->where('kategori', $detail->kategori)
+     ->get()
+     ->first();
+ $divisi = Modules\Pengajuan\Entities\Divisi::select()
+     ->where('divisi', $detail->divisi)
+     ->get()
+     ->first();
+ $user = App\Models\User::select()
+     ->where('id', $detail->user_id)
+     ->get()
+     ->first();
+ $status = Modules\Pengajuan\Entities\StatusPengajuan::select()
+     ->where('status', $histori->status)
+     ->get()
+     ->first();
+ $jabatan = Modules\Pengajuan\Entities\KeteranganJabatan::select()
+    ->where('jabatan', $histori->jabatan)
+    ->get()
+    ->first();
+ @endphp
     <!-- BEGIN: Content-->
     <div class="app-content content ">
         <div class="content-overlay"></div>
@@ -13,8 +40,18 @@
                             <h2 class="content-header-title float-start mb-0">Detail Pengajuan</h2>
                             <div class="breadcrumb-wrapper">
                                 <ol class="breadcrumb">
-                                    <li class="breadcrumb-item"><a href="/pengajuan/pengajuanBiasa/create">Pengajuan Masuk</a>
+                                    
+                                    @if ($status->status==1 || $status->status==4 )
+                                    <li class="breadcrumb-item"><a href="/pengajuan/diproses/show">Pengajuan Di Proses</a>
                                     </li>
+                                    @elseif ($status->status==3 )
+                                    <li class="breadcrumb-item"><a href="/pengajuan/selesai/show">Pengajuan Selesai</a>
+                                    </li>
+                                    @elseif ($status->status==2 )
+                                    <li class="breadcrumb-item"><a href="/pengajuan/ditolak/show">Pengajuan Di Tolak</a>
+                                    </li>
+                                    @endif
+
                                     <li class="breadcrumb-item active"><a href="#">Detail Pengajuan</a>
                                     </li>
                                 </ol>
@@ -31,20 +68,7 @@
                
                       <div class="card-body">
                         <p class="card-text">
-                      @php
-                       $kategori = Modules\Pengajuan\Entities\kategori_pengajuan::select()
-                            ->where('kategori', $detail->kategori)
-                            ->get()
-                            ->first();
-                        $divisi = Modules\Pengajuan\Entities\Divisi::select()
-                            ->where('divisi', $detail->divisi)
-                            ->get()
-                            ->first();
-                        $user = App\Models\User::select()
-                            ->where('id', $detail->user_id)
-                            ->get()
-                            ->first();
-                        @endphp
+                     
                         <div class="mt-2">
                             <h6>Kategori        : {{$kategori->keterangan}}</h6>
                         </div>
@@ -63,6 +87,19 @@
                         <div class="mt-2">
                             <h6>Divisi            : {{$divisi->keterangan}}</h6>
                         </div>
+
+                       
+                        @if($status->status==1)
+                        <div class="mt-2">
+                            <h6>Status            : {{$status->keterangan}}  {{$jabatan->keterangan}}</h6>
+                        </div>
+                        @elseif($status->status==3)
+                        <div class="mt-2">
+                            <h6>Status            : {{$status->keterangan}}</h6>
+                        </div>
+                        @endif
+                       
+
                         <div class="mt-2">
                             <h6>Catatan           : {{$detail->catatan}}</h6>
                         </div>
@@ -112,11 +149,56 @@
                                         </table>
                                     </div>
                             </div>
-  
 
+                            @if ($status->status==1)
+                            <div class="demo-inline-spacing mt-2">
+                                <button type="submit" class="btn btn-outline-primary round"><i data-feather="arrow-left" class="me-25"></i>  <a href=/pengajuan/pengajuanbiasa/create >Kembali</a></button>
+                            @endif
+                            
+          @if ($status->status==3)
+          <h3 class="mb-75 mt-5"> Lampiran Pencairan</h3>
+             
+            @foreach ($lampiran_cairs as $lampiran_cair)
+            @php
+               $lampiran= Modules\Pengajuan\Entities\Pencairan::select()
+                        ->where('id', $lampiran_cair->pengajuan_biasa_id)
+                        ->get()
+                        ->first();                                                    
+            @endphp
+
+            <div class="mt-2">
+                <h6>
+                    <a type="button" class="btn  btn-primary btn-lg" target="blank" href="{{ asset('storage/' . $lampiran_cair->lampiran_cair) }}">
+                      Lihat Lampiran
+                    </a></h6>
+            </div>
+            @endforeach
+
+            
+            @if ($status->status==1 && $jabatan->jabatan==4 && $kategori->kategori==1)
+            <div class="demo-inline-spacing mt-2">
+                <button type="submit" class="btn btn-outline-primary round"><i data-feather="arrow-left" class="me-25"></i>  <a href=/pengajuan/masuk/show >Kembali</a></button>
+            </div>
+
+            @elseif ($status->status==1 && $jabatan->jabatan==3 || $status->status==1 && $jabatan->jabatan==4 && $kategori->kategori==2)
+            <div class="demo-inline-spacing mt-2">
+                <button type="submit" class="btn btn-outline-primary round"><i data-feather="arrow-left" class="me-25"></i>  <a href=/pengajuan/diproses/show >Kembali</a></button>
+            </div>
+
+            @elseif ($status->status==2)
+            <div class="demo-inline-spacing mt-2">
+                <button type="submit" class="btn btn-outline-primary round"><i data-feather="arrow-left" class="me-25"></i>  <a href=/pengajuan/ditolak/show >Kembali</a></button>
+            </div>
+
+            @elseif ($status->status==3)
+            <div class="demo-inline-spacing mt-2">
+                <button type="submit" class="btn btn-outline-primary round"><i data-feather="arrow-left" class="me-25"></i>  <a href=/pengajuan/selesai/show >Kembali</a></button>
+            </div>
+
+            @endif
+            @endif
            
-                 <div class="demo-inline-spacing">
-                 <button type="submit" class="btn btn-outline-primary round">  <i data-feather="arrow-left" class="me-25"></i> <a href=/pengajuan/pengajuanBiasa/create >Kembali</a></button>
+                 
             
            
            

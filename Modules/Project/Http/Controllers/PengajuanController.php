@@ -27,6 +27,7 @@ class PengajuanController extends Controller
 
         $project = Project::select()->get();
         $project->load(['lampiran', 'biaya', 'pendapatan']);
+        
         // return $project;
         return view('project::pengajuan.index', [
             'projects' => $project,
@@ -41,8 +42,15 @@ class PengajuanController extends Controller
      * @return Renderable
      */
     public function create()
-    {
-        return view('project::pengajuan.tambah');
+    {   $no = Project::select()->orderby('created_at','desc')->get()->first();
+        $nomor = $no->no_project + 0.1;
+        
+        // return ($nomor);
+        return view('project::pengajuan.tambah', [
+
+            'nomor' => $nomor,
+        ]); 
+        
     }
 
     /**
@@ -53,17 +61,20 @@ class PengajuanController extends Controller
     public function store(Request $request)
     {
         // <!-- $this->validate($request,[
-        //     'image'        =>  'required|image|mimes:jpeg,png,jpg,pdf,csv,doc'
-        // ]); -->
-        extract($request->all());
+            //     'image'        =>  'required|image|mimes:jpeg,png,jpg,pdf,csv,doc'
+            // ]); -->
+            extract($request->all());
+            
+            $so="";
+            if ($request->file('sales_order')) {
+                $so = $request->file('sales_order')->store('public/sales_order_project');
+            }
+            $no = Project::select()->orderby('created_at','desc')->get()->first();
+        $nomor = $no->no_project + 0.1;
         
-        $so="";
-        if ($request->file('sales_order')) {
-            $so = $request->file('sales_order')->store('public/sales_order_project');
-        }
-            $no = 
-           $project= Project::create([
-                'no_project' => $request->no_project,
+        // return ($nomor);
+            $project= Project::create([
+                'no_project' => $nomor,
                 'pemegang_project' => $request->pemegang_project,
                 'tgl_project' => $request->tgl_project,
                 'nama_project' => $request->nama_project,
@@ -71,14 +82,14 @@ class PengajuanController extends Controller
                 'deskripsi' => $request->deskripsi,
                 'status' => $request->status,
             ]);
-        
-        if($kategori_biaya??false){
-            foreach ($kategori_biaya as $key=>$val) {
-            $total = $jumlah_biaya[$key] * $biaya_satuan_biaya[$key] * $waktu_biaya[$key];
-            $project->biaya()->create([
-                'kategori' => $kategori_biaya[$key],
-                'item' => $item_biaya[$key],
-                'jumlah' => $jumlah_biaya[$key],
+            
+            if($kategori_biaya??false){
+                foreach ($kategori_biaya as $key=>$val) {
+                    $total = $jumlah_biaya[$key] * $biaya_satuan_biaya[$key] * $waktu_biaya[$key];
+                    $project->biaya()->create([
+                        'kategori' => $kategori_biaya[$key],
+                        'item' => $item_biaya[$key],
+                        'jumlah' => $jumlah_biaya[$key],
                 'waktu' => $waktu_biaya[$key],
                 'biaya_satuan' => $biaya_satuan_biaya[$key],
                 'total_biaya' => $total,
@@ -240,7 +251,10 @@ class PengajuanController extends Controller
                 'tgl_project' => $request->tgl_project,
                 'nama_project' => $request->nama_project,
                 'deskripsi' => $request->deskripsi,
+                'status' => 'Perubahan',
+                
         ];
+        
         if ($request->hasFile('sales_order')) {
             $dtProject['sales_order'] = $request->file('sales_order')->store('public/sales_order_project');
         }

@@ -18,7 +18,6 @@ return new class extends Migration
             $table->string('pengajuan_biasa_id');
             $table->string('user_id');
             $table->string('jabatan');
-            $table->string('divisi_id');
             $table->text('catatan');
             $table->text('status'); 
             $table->timestamps();

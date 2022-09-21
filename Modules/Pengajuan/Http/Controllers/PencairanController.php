@@ -6,7 +6,9 @@ use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Auth;
+use Modules\Pengajuan\Entities\HistoriPengajuanBiasa;
 use Modules\Pengajuan\Entities\LampiranPengajuanBiasa;
+use Modules\Pengajuan\Entities\Pencairan;
 use Modules\Pengajuan\Entities\PengajuanBiasa;
 use Modules\Pengajuan\Entities\Role;
 
@@ -35,7 +37,7 @@ class PencairanController extends Controller
     {
         $role = Role::select()->where('user_id', Auth::user()->id)->get()->first();
     
-        return view('pengajuan::PengajuanBiasa.pencairan.index', [
+        return view('pengajuan::PengajuanBiasa.pencairan.masuk', [
         'role' => $role->role_id,
         'pengajuanbiasas' => PengajuanBiasa::all(),
         
@@ -65,13 +67,15 @@ class PencairanController extends Controller
             $role = Role::select()->where('user_id', Auth::user()->id)->get()->first();
             $detail= PengajuanBiasa::find($id);
             $pengajuanlampiran = LampiranPengajuanBiasa::select()->where('pengajuan_biasa_id',  $detail->id)->get();
+            $lampiran_cair = Pencairan::select()->where('pengajuan_biasa_id',  $detail->id)->get();
            
             
-            if ($role->divisi_id==2 && $role->jabatan_id==4) {
+            if ($role->divisi_id==1 && $role->jabatan_id==7) {
             return view('pengajuan::PengajuanBiasa.pencairan.detail', compact('detail'), [
                 'role' => $role->role_id,
                 'details' => PengajuanBiasa::select()->where('id',$detail->pengajuan_biasa_id)->get(),
                 'pengajuanlampirans' =>  $pengajuanlampiran,
+                'lampiran_cairs' =>  $lampiran_cair,
             ]); }
     }
     

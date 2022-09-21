@@ -1,8 +1,7 @@
 @extends('pengajuan::layouts.main')
 
 @section('content')
-
-@if ($role==1 || $role==4 || $role==7)
+@if ($role==6)
     <div class="app-content content ">
         <div class="content-overlay"></div>
         <div class="header-navbar-shadow"></div>
@@ -50,46 +49,43 @@
                                         
                                         @php
                                          $histori = Modules\Pengajuan\Entities\HistoriPengajuanBiasa::select()
-                                          ->where('pengajuan_biasa_id', $pengajuanbiasa->id)
-                                          ->orderby('created_at','desc')
-                                          ->get()
-                                          ->first();
+                                            ->where('pengajuan_biasa_id', $pengajuanbiasa->id)
+                                            ->orderby('created_at','desc')
+                                            ->get()
+                                            ->first();
 
-                                      $pengajuan_biasa =  Modules\Pengajuan\Entities\PengajuanBiasa::select()
-                                      ->where('id', $histori->pengajuan_biasa_id)
-                                      ->get()
-                                      ->first();
+                                        $pengajuan_biasa =  Modules\Pengajuan\Entities\PengajuanBiasa::select()
+                                        ->where('id', $histori->pengajuan_biasa_id)
+                                        ->get()
+                                        ->first();
 
-                                      $kategori = Modules\Pengajuan\Entities\kategori_pengajuan::select()
-                                          ->where('kategori', $pengajuan_biasa->kategori)
-                                          ->get()
-                                          ->first();
-                                      $user = App\Models\User::select()
-                                          ->where('id', $pengajuan_biasa->user_id)
-                                          ->get()
-                                          ->first();
-                                      $divisi = Modules\Pengajuan\Entities\Divisi::select()
-                                          ->where('divisi', $pengajuan_biasa->divisi)
-                                          ->get()
-                                          ->first();
-                                      $status = Modules\Pengajuan\Entities\StatusPengajuan::select()
-                                          ->where('status', $histori->status)
-                                          ->get()
-                                          ->first();
-                                      $jabatan = Modules\Pengajuan\Entities\KeteranganJabatan::select()
+                                        $kategori = Modules\Pengajuan\Entities\kategori_pengajuan::select()
+                                            ->where('kategori', $pengajuan_biasa->kategori)
+                                            ->get()
+                                            ->first();
+                                        $divisi = Modules\Pengajuan\Entities\Divisi::select()
+                                            ->where('divisi', $pengajuan_biasa->divisi)
+                                            ->get()
+                                            ->first();
+                                        $status = Modules\Pengajuan\Entities\StatusPengajuan::select()
+                                            ->where('status', $histori->status)
+                                            ->get()
+                                            ->first();
+                                        $jabatan = Modules\Pengajuan\Entities\KeteranganJabatan::select()
                                           ->where('jabatan', $histori->jabatan)
                                           ->get()
                                           ->first();
-
+                                        
                                         
                                          @endphp
 
-                                         @if($histori->status==6 || $histori->status==1 || $histori->status==3)
-                                        
+                                        @if ($histori->status==1 && $jabatan->jabatan==2 || 
+                                        $histori->status==1 && $jabatan->jabatan==1 || 
+                                         $histori->status==1 && $jabatan->jabatan==4 && $kategori->kategori==2)
+
                                             <tr>
                                                 <td></td>
                                                 <td style="text-align: center">{{ $loop->iteration }}</td>
-
                                                 @if ($kategori->kategori==1)
                                                 <td style="text-align: center"> <span class="badge rounded-pill badge-light-primary">{{ $kategori->keterangan }} </span> </td>
 
@@ -97,54 +93,44 @@
                                                 <td style="text-align: center"> <span class="badge rounded-pill badge-light-info">{{ $kategori->keterangan }} </span> </td>
                                                 
                                                 @endif
-
-                                                <td>{{ $pengajuanbiasa->keterangan }}</td>
-                                                <td>{{ $pengajuanbiasa->jumlah }}</td>
-                                                <td>{{ $pengajuanbiasa->tanggal }}</td>
-                                                <td>{{ $divisi->keterangan }}</td>
-                                                <td>{{ $histori->updated_at }}</td>
-
-                                                @if($histori->status==6 || $jabatan->jabatan==1 || $jabatan->jabatan==4 || $jabatan->jabatan==7)
-                                                    <td style="text-align: center">
+                                                <td style="text-align: center">{{ $pengajuan_biasa->keterangan }}</td>
+                                                <td style="text-align: center">{{ $pengajuan_biasa->jumlah }}</td>
+                                                <td style="text-align: center">{{ $pengajuan_biasa->tanggal }}</td>
+                                                <td style="text-align: center">{{ $divisi->keterangan }}</td>
+                                                <td style="text-align: center">{{ $histori->updated_at }}</td> 
+                                                
+                                                @if($histori->status==1)
+                                                    @if($jabatan->jabatan==4)
+                                                        <td style="text-align: center">
                                                         <span
-                                                        class="badge rounded-pill badge-glow bg-warning"> {{ $status->keterangan }} {{ $jabatan->keterangan }} </span> </td> 
-                                                
-                                                @elseif($histori->status==1)
-                                                    @if($jabatan->jabatan==2 || $jabatan->jabatan==5 || $jabatan->jabatan==8 )
+                                                        class="badge rounded-pill badge-glow bg-info"> {{ $status->keterangan }} {{ $jabatan->keterangan }} </span> </td> 
+                                                    @elseif($jabatan->jabatan==2)
                                                         <td style="text-align: center">
-                                                            <span
-                                                            class="badge rounded-pill badge-glow bg-primary"> {{ $status->keterangan }}  {{ $jabatan->keterangan }} </span> </td> 
-                                                    @elseif ($jabatan->jabatan==3 || $jabatan->jabatan==6 || $jabatan->jabatan==9)
+                                                        <span
+                                                        class="badge rounded-pill badge-glow bg-primary"> {{ $status->keterangan }}  {{ $jabatan->keterangan }}</span> </td>
+                                                    @elseif($jabatan->jabatan==1)
                                                         <td style="text-align: center">
-                                                            <span
-                                                            class="badge rounded-pill badge-glow bg-success"> {{ $status->keterangan }}  {{ $jabatan->keterangan }}</span> </td>
-                                                
+                                                        <span
+                                                        class="badge rounded-pill badge-glow bg-success"> {{ $status->keterangan }}  {{ $jabatan->keterangan }}</span> </td>
                                                     @endif
                                                 @endif
 
                                                 <td>
                                                     <div class="demo-inline-spacing">
                                                         <a type="button" class="btn btn-outline-primary round"
-                                                                href="{{ url('pengajuan/HistoriBiasa/' . $pengajuanbiasa->id)}}">Detail</a>
+                                                            href="{{ url('pengajuan/histori/' . $pengajuanbiasa->id)}}">Detail</a>
                                                         </a>
                                                     </div>
                                                 </td>
-
-                                                   
                                             
                                             </tr>
-                                            @endif
+                                        @endif
                                         @endforeach
                                     </tbody>
                                 </table>
-                
-                            </div>
-                        </div>
-                    </div>
-                 </section>
+                </section>
             </div>
         </div>
-        </div>
     </div>
-@endif
+    @endif
 @endsection

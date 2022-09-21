@@ -1,10 +1,7 @@
 <?php
 
 
-use Modules\Pengajuan\Http\Controllers\EditFormController;
 use Modules\Pengajuan\Http\Controllers\PengajuanBiasaController;
-use Modules\Pengajuan\Http\Controllers\PengajuanProjekController;
-use Modules\Pengajuan\Http\Controllers\PengajuanDinasController;
 use Modules\Pengajuan\Http\Controllers\DetailPengajuanController;
 use Modules\Pengajuan\Http\Controllers\HistoriBiasaController;
 use Modules\Pengajuan\Http\Controllers\DitolakController;
@@ -26,15 +23,12 @@ use Modules\Pengajuan\Http\Controllers\SelesaiController;
 
 Route::prefix('pengajuan')->group(function () {
     Route::get('/', 'PengajuanController@index');
-    Route::resource('/editForm', EditFormController::class);
-    Route::resource('/pengajuanBiasa', PengajuanBiasaController::class);
-    Route::resource('/pengajuanProjek', PengajuanProjekController::class);
-    Route::resource('/pengajuanDinas', PengajuanDinasController::class);
-    Route::resource('/detailPengajuan', DetailPengajuanController::class);
-    Route::resource('/HistoriBiasa', HistoriBiasaController::class);
+    Route::resource('/pengajuanbiasa', PengajuanBiasaController::class);
+    Route::resource('/detail', DetailPengajuanController::class);
+    Route::resource('/histori', HistoriBiasaController::class);
     Route::resource('/ditolak', DitolakController::class);
     Route::resource('/diproses', DiprosesController::class);
-    Route::resource('/masukbiasa', MasukBiasaController::class);
-    Route::resource('/cair', PencairanController::class);
-    Route::resource('/Selesai', SelesaiController::class);
+    Route::resource('/masuk', MasukBiasaController::class);
+    Route::resource('/pencairan', PencairanController::class);
+    Route::resource('/selesai', SelesaiController::class);
 });

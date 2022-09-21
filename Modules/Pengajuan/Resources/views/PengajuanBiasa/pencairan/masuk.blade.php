@@ -10,12 +10,12 @@
                 <div class="content-header-left col-md-9 col-12 mb-2">
                     <div class="row breadcrumbs-top">
                         <div class="col-12">
-                            <h2 class="content-header-title float-start mb-0">Pengajuan Masuk</h2>
+                            <h2 class="content-header-title float-start mb-0"> Pengajuan Masuk </h2>
                             <div class="breadcrumb-wrapper">
                                 <ol class="breadcrumb">
-                                    <li class="breadcrumb-item"><a href="index.html">Approval Pengajuan</a>
+                                    <li class="breadcrumb-item"><a href="index.html"> Pencairan Pengajuan</a>
                                     </li>
-                                    <li class="breadcrumb-item active"><a href="#">Pengajuan Masuk </a>
+                                    <li class="breadcrumb-item active"><a href="#"> Pengajuan Masuk </a>
                                     </li>
                                 </ol>
                             </div>
@@ -84,7 +84,7 @@
                                       
                                        @endphp
 
-                                      @if ($histori->status==6)
+                                      @if ($histori->status==1 && $jabatan->jabatan==1 || $histori->status==1 && $kategori->kategori==2 && $jabatan->jabatan==4)
                                             <tr>
                 
                                                 <td>
@@ -111,10 +111,17 @@
                                                 <td>{{ $divisi->keterangan }}</td>
 
                                                 
-                                                <td style="text-align: center">
-                                                    <span class="badge rounded-pill badge-glow bg-warning"> {{ $status->keterangan }} {{ $jabatan->keterangan }} 
-                                                    </span> 
-                                                </td> 
+                                                
+                                                @if($jabatan->jabatan==4 )
+                                                    <td style="text-align: center">
+                                                        <span
+                                                        class="badge rounded-pill badge-glow bg-info"> {{ $status->keterangan }} {{ $jabatan->keterangan }} </span> </td> 
+                                                @elseif($jabatan->jabatan==1)
+                                                    <td style="text-align: center">
+                                                        <span
+                                                        class="badge rounded-pill badge-glow bg-success"> {{ $status->keterangan }}  {{ $jabatan->keterangan }}</span> </td>
+                                                @endif
+                                           
                                                
 
 
@@ -122,44 +129,14 @@
                                                 <div class="demo-inline-spacing">
 
                                                     <a type="button" class="btn btn-outline-primary round"
-                                                        href="{{ url('pengajuan/HistoriBiasa/' . $pengajuanbiasa->id)}}">Detail</a>
+                                                        href="{{ url('pengajuan/pencairan/' . $pengajuanbiasa->id)}}">Detail</a>
                                                     </a>
                                                 </div>
                                             </td>
 
                                         </tr>
 
-                                        {{-- @elseif ($histori->status==1 || $kategori->kategori==1)
-                                            
-                                        <tr>
-                
-                                            <td>
-                                                <button type="button"
-                                                        class="btn btn-icon btn-icon btn-flat-success">
-                                                        <i data-feather="eye"></i>
-                                                </button>
-                                            </td>
-
-                                            <td>{{ $loop->iteration }}</td>
-                                            <td>{{ $kategori->keterangan }}</td>
-                                            <td>{{ $pengajuanbiasa->keterangan }}</td>
-                                            <td>{{ $pengajuanbiasa->jumlah }}</td>
-                                            <td>{{ $pengajuanbiasa->tanggal }}</td>
-                                            <td>{{ $user->name}}</td>
-                                            <td>{{ $divisi->keterangan }}</td>
-                                            <td>{{ $status->keterangan }}</td>
-                                           
-
-
-                                        <td>
-                                            <div class="demo-inline-spacing">
-
-                                                <a type="button" class="btn btn-outline-primary round"
-                                                    href="{{ url('pengajuan/HistoriBiasa/' . $pengajuanbiasa->id)}}">Detail</a>
-                                                </a>
-                                            </div>
-                                        </td> --}}
-
+                                     
                                     </tr>
 
                                         @endif

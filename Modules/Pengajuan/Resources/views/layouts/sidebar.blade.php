@@ -88,7 +88,7 @@
         </div>
     </div>
     <!-- END: Main Menu-->
-@elseif ($role == 1)
+@elseif ($role == 7)
     <!-- staff travel-->
     <!-- BEGIN: Main Menu-->
     <div class="main-menu menu-fixed menu-light menu-accordion menu-shadow" data-scroll-to-active="true">
@@ -122,7 +122,7 @@
                             data-feather="circle"></i><span class="menu-title text-truncate"
                             data-i18n="buatpengajuan"> Pengajuan Biasa</span></a>
                     <ul class="menu-content">
-                        <li><a class="d-flex align-items-center" href="/pengajuan/pengajuanBiasa"><i
+                        <li><a class="d-flex align-items-center" href="/pengajuan/pengajuanbiasa"><i
                             data-feather="circle"></i><span class="menu-item text-truncate"
                             data-i18n="buatpengajuan">Buat Pengajuan</span></a>
                         </li>
@@ -130,19 +130,19 @@
                             data-feather="circle"></i><span class="menu-item text-truncate"
                             data-i18n="pengajuanbiasa">Lihat Pengajuan</span></a>
                         </li> --}}
-                        <li><a class="d-flex align-items-center" href="/pengajuan/pengajuanBiasa/show"><i
+                        {{-- <li><a class="d-flex align-items-center" href="/pengajuan/pengajuanbiasa/show"><i
                             data-feather="circle"></i><span class="menu-item text-truncate"
                             data-i18n="lampiranpengajuanbiasa">Lampiran</span></a>
-                        </li>
-                        <li><a class="d-flex align-items-center" href="/pengajuan/pengajuanBiasa/create"><i
+                        </li> --}}
+                        <li><a class="d-flex align-items-center" href="/pengajuan/diproses/show"><i
                             data-feather="circle"></i><span class="menu-item text-truncate"
                             data-i18n="pengajuanproses">Pengajuan Di Proses</span></a>
                         </li>
-                        <li><a class="d-flex align-items-center" href="/pengajuan/Selesai/show"><i
+                        <li><a class="d-flex align-items-center" href="/pengajuan/selesai/show"><i
                             data-feather="circle"></i><span class="menu-item text-truncate"
                             data-i18n="pengajuanselesai">Pengajuan Selesai</span></a>
                         </li>
-                        <li><a class="d-flex align-items-center" href="/pengajuan/pengajuanBiasa/show"><i
+                        <li><a class="d-flex align-items-center" href="/pengajuan/ditolak/show"><i
                             data-feather="circle"></i><span class="menu-item text-truncate"
                             data-i18n="pengajuantolak">Pengajuan Di Tolak</span></a>
                         </li>
@@ -151,40 +151,14 @@
                     </ul>
 
              
-                <li class=" nav-item"><a class="d-flex align-items-center" href="/pengajuan/lihatpengajuanstaf"><i
-                            data-feather="circle"></i><span class="menu-title text-truncate" data-i18n="surat">Pengajuan
-                            Projek</span></a>
-                    <ul class="menu-content">
-                      
-                        {{-- <li><a class="d-flex align-items-center" href="/pengajuan/pengajuanProjek"><i
-                            data-feather="circle"></i><span class="menu-item text-truncate"
-                            data-i18n="pengajuanprojek">Buat Pengajuan</span></a>
-                        </li> --}}
-                       
-                        <li><a class="d-flex align-items-center" href="/pengajuan/pengajuanProjek/create"><i
-                                    data-feather="circle"></i><span class="menu-item text-truncate"
-                                    data-i18n="pengajuanprojek">Lihat Pengajuan</span></a>
-                        </li>
-                        <li><a class="d-flex align-items-center" href="/pengajuan/pengajuanBiasa/show"><i
-                            data-feather="circle"></i><span class="menu-item text-truncate"
-                            data-i18n="pengajuanproses">Pengajuan Di Proses</span></a>
-                        </li>
-                        <li><a class="d-flex align-items-center" href="/pengajuan/pengajuanBiasa/show"><i
-                            data-feather="circle"></i><span class="menu-item text-truncate"
-                            data-i18n="pengajuanselesai">Pengajuan Selesai</span></a>
-                        </li>
-                        <li><a class="d-flex align-items-center" href="/pengajuan/pengajuanBiasa/show"><i
-                            data-feather="circle"></i><span class="menu-item text-truncate"
-                            data-i18n="pengajuantolak">Pengajuan Di Tolak</span></a>
-                        </li>
-                    </ul>
+               
                  
 
         </div>
     </div>
     <!-- END: Main Menu-->
 
-@elseif ($role == 2)
+@elseif ($role == 8)
     <!-- manager travel-->
     <!-- BEGIN: Main Menu-->
     <div class="main-menu menu-fixed menu-light menu-accordion menu-shadow" data-scroll-to-active="true">
@@ -220,11 +194,11 @@
 
 
                     <li class=" nav-item"><a class="d-flex align-items-center"
-                            href="/pengajuan/lihatpengajuanstaf"><i data-feather="circle"></i><span
+                            href="/pengajuan"><i data-feather="circle"></i><span
                                 class="menu-title text-truncate" data-i18n="surat">Pengajuan Biasa</span></a>
                         <ul class="menu-content">
                             <li class=" nav-item"><a class="d-flex align-items-center"
-                                    href="/pengajuan/pengajuanBiasa/create"><i data-feather="circle"></i><span
+                                    href="/pengajuan/masuk/show"><i data-feather="circle"></i><span
                                         class="menu-item text-truncate" data-i18n="pmasuk">Pengajuan
                                         Masuk</span></a>
                             </li>
@@ -233,12 +207,12 @@
                                         data-i18n="pproses">Pengajuan Di
                                         Proses</span></a>
                             </li>
-                            <li class=" nav-item"><a class="d-flex align-items-center" href="/pengajuan/HistoriBiasa/create"><i
+                            <li class=" nav-item"><a class="d-flex align-items-center" href="/pengajuan/selesai/show"><i
                                         data-feather="circle"></i><span class="menu-item text-truncate"
                                         data-i18n="pselesai">Pengajuan
                                         Selesai</span></a>
                             </li>
-                            <li class=" nav-item"><a class="d-flex align-items-center" href="/pengajuan/ditolak"><i
+                            <li class=" nav-item"><a class="d-flex align-items-center" href="/pengajuan/ditolak/show"><i
                                         data-feather="circle"></i><span class="menu-item text-truncate"
                                         data-i18n="ptolak">Pengajuan Di
                                         Tolak</span></a>
@@ -286,7 +260,7 @@
 
 
     <!-- END: Main Menu-->
-@elseif($role == 3)
+@elseif($role == 9)
 
    <!-- Direktur Operasional-->
     <!-- BEGIN: Main Menu-->
@@ -324,10 +298,10 @@
 
                     <li class=" nav-item"><a class="d-flex align-items-center"
                             href="#"><i data-feather="circle"></i><span
-                                class="menu-title text-truncate" data-i18n="surat">Pengajuan Biasa</span></a>
+                                class="menu-title text-truncate" data-i18n="pengajuanbiasa">Pengajuan Biasa</span></a>
                         <ul class="menu-content">
                             <li class=" nav-item"><a class="d-flex align-items-center"
-                                    href="/pengajuan/masukbiasa/create"><i data-feather="circle"></i><span
+                                    href="/pengajuan/masuk/show"><i data-feather="circle"></i><span
                                         class="menu-item text-truncate" data-i18n="pmasuk">Pengajuan
                                         Masuk</span></a>
                             </li>
@@ -336,12 +310,12 @@
                                         data-i18n="pproses">Pengajuan Di
                                         Proses</span></a>
                             </li>
-                            <li class=" nav-item"><a class="d-flex align-items-center" href="/pengajuan/HistoriBiasa/create"><i
+                            <li class=" nav-item"><a class="d-flex align-items-center" href="/pengajuan/selesai/show"><i
                                         data-feather="circle"></i><span class="menu-item text-truncate"
                                         data-i18n="pselesai">Pengajuan
                                         Selesai</span></a>
                             </li>
-                            <li class=" nav-item"><a class="d-flex align-items-center" href="/pengajuan/ditolak"><i
+                            <li class=" nav-item"><a class="d-flex align-items-center" href="/pengajuan/ditolak/show"><i
                                         data-feather="circle"></i><span class="menu-item text-truncate"
                                         data-i18n="ptolak">Pengajuan Di
                                         Tolak</span></a>
@@ -352,12 +326,11 @@
                     </li>
 
 
-                <li class=" nav-item"><a class="d-flex align-items-center"
-                    href="/pengajuan/lihatpengajuanstaf"><i data-feather="circle"></i><span
+                <li class=" nav-item"><a class="d-flex align-items-center"><i data-feather="circle"></i><span
                         class="menu-title text-truncate" data-i18n="surat">Pengajuan Projek</span></a>
                 <ul class="menu-content">
                     <li class=" nav-item"><a class="d-flex align-items-center"
-                            href="/pengajuan/pengajuan_masukM"><i data-feather="arrow-down"></i><span
+                            href="/pengajuan/"><i data-feather="arrow-down"></i><span
                                 class="menu-item text-truncate" data-i18n="pmasuk">Pengajuan
                                 Masuk</span></a>
                     </li>
@@ -392,7 +365,7 @@
 
 
 
-@elseif ($role == 4)
+@elseif ($role == 1)
  <!-- staff keuangan-->
  <!-- BEGIN: Main Menu-->
  <div class="main-menu menu-fixed menu-light menu-accordion menu-shadow" data-scroll-to-active="true">
@@ -426,24 +399,24 @@
                          data-feather="circle"></i><span class="menu-title text-truncate"
                          data-i18n="buatpengajuan"> Pengajuan Biasa</span></a>
                  <ul class="menu-content">
-                     <li><a class="d-flex align-items-center" href="/pengajuan/pengajuanBiasa"><i
+                     <li><a class="d-flex align-items-center" href="/pengajuan/pengajuanbiasa"><i
                          data-feather="circle"></i><span class="menu-item text-truncate"
                          data-i18n="buatpengajuan">Buat Pengajuan</span></a>
                      </li>
                     
-                     <li><a class="d-flex align-items-center" href="/pengajuan/pengajuanBiasa/show"><i
+                     {{-- <li><a class="d-flex align-items-center" href="/pengajuan/pengajuanBiasa/show"><i
                          data-feather="circle"></i><span class="menu-item text-truncate"
                          data-i18n="lampiranpengajuanbiasa">Lampiran</span></a>
-                     </li>
-                     <li><a class="d-flex align-items-center" href="/pengajuan/pengajuanBiasa/create"><i
+                     </li> --}}
+                     <li><a class="d-flex align-items-center" href="/pengajuan/diproses/show"><i
                          data-feather="circle"></i><span class="menu-item text-truncate"
                          data-i18n="pengajuanproses">Pengajuan Di Proses</span></a>
                      </li>
-                     <li><a class="d-flex align-items-center" href="/pengajuan/pengajuanBiasa/show"><i
+                     <li><a class="d-flex align-items-center" href="/pengajuan/selesai/show"><i
                          data-feather="circle"></i><span class="menu-item text-truncate"
                          data-i18n="pengajuanselesai">Pengajuan Selesai</span></a>
                      </li>
-                     <li><a class="d-flex align-items-center" href="/pengajuan/pengajuanBiasa/show"><i
+                     <li><a class="d-flex align-items-center" href="/pengajuan/ditolak/show"><i
                          data-feather="circle"></i><span class="menu-item text-truncate"
                          data-i18n="pengajuantolak">Pengajuan Di Tolak</span></a>
                      </li>
@@ -453,15 +426,15 @@
 
                  <li class=" nav-item"><a class="d-flex align-items-center" href=""><i
                     data-feather="circle"></i><span class="menu-title text-truncate"
-                    data-i18n="buatpengajuan"> Pencairan </span></a>
+                    data-i18n="pencairan"> Pencairan </span></a>
                     <ul class="menu-content">
                     <li class=" nav-item"><a class="d-flex align-items-center"
-                    href="/pengajuan/cair/create"><i data-feather="circle"></i><span
+                    href="/pengajuan/pencairan/create"><i data-feather="circle"></i><span
                         class="menu-item text-truncate" data-i18n="pmasuk">Pengajuan Masuk
                         </span></a>
                     </li>
                     <li class=" nav-item"><a class="d-flex align-items-center"
-                    href="/pengajuan/cair/"><i data-feather="circle"></i><span
+                    href="/pengajuan/pencairan"><i data-feather="circle"></i><span
                         class="menu-item text-truncate" data-i18n="pmasuk">Pengajuan Selesai
                         </span></a>
                     </li>
@@ -474,7 +447,7 @@
  </div>
  <!-- END: Main Menu-->
 
-@elseif ($role == 5)
+@elseif ($role == 2)
  <!-- manager keuangan-->
  <!-- BEGIN: Main Menu-->
  <div class="main-menu menu-fixed menu-light menu-accordion menu-shadow" data-scroll-to-active="true">
@@ -509,12 +482,11 @@
                  </li>
 
 
-                 <li class=" nav-item"><a class="d-flex align-items-center"
-                         href="/pengajuan/lihatpengajuanstaf"><i data-feather="circle"></i><span
+                 <li class=" nav-item"><a class="d-flex align-items-center"><i data-feather="circle"></i><span
                              class="menu-title text-truncate" data-i18n="surat">Pengajuan Biasa</span></a>
                      <ul class="menu-content">
                          <li class=" nav-item"><a class="d-flex align-items-center"
-                                 href="/pengajuan/pengajuanBiasa/create"><i data-feather="circle"></i><span
+                                 href="/pengajuan/masuk/show"><i data-feather="circle"></i><span
                                      class="menu-item text-truncate" data-i18n="pmasuk">Pengajuan
                                      Masuk</span></a>
                          </li>
@@ -523,12 +495,12 @@
                                      data-i18n="pproses">Pengajuan Di
                                      Proses</span></a>
                          </li>
-                         <li class=" nav-item"><a class="d-flex align-items-center" href="/pengajuan/HistoriBiasa/create"><i
+                         <li class=" nav-item"><a class="d-flex align-items-center" href="/pengajuan/selesai/show"><i
                                      data-feather="circle"></i><span class="menu-item text-truncate"
                                      data-i18n="pselesai">Pengajuan
                                      Selesai</span></a>
                          </li>
-                         <li class=" nav-item"><a class="d-flex align-items-center" href="/pengajuan/ditolak"><i
+                         <li class=" nav-item"><a class="d-flex align-items-center" href="/pengajuan/ditolak/show"><i
                                      data-feather="circle"></i><span class="menu-item text-truncate"
                                      data-i18n="ptolak">Pengajuan Di
                                      Tolak</span></a>
@@ -553,7 +525,7 @@
 
 
  <!-- END: Main Menu-->
-@elseif($role == 6)
+@elseif($role == 3)
 
  <!-- Direktur Umum dan Keuangan-->
   <!-- BEGIN: Main Menu-->
@@ -594,7 +566,7 @@
                               class="menu-title text-truncate" data-i18n="surat">Pengajuan Biasa</span></a>
                       <ul class="menu-content">
                           <li class=" nav-item"><a class="d-flex align-items-center"
-                                  href="/pengajuan/masukbiasa/create"><i data-feather="circle"></i><span
+                                  href="/pengajuan/masuk/show"><i data-feather="circle"></i><span
                                       class="menu-item text-truncate" data-i18n="pmasuk">Pengajuan
                                       Masuk</span></a>
                           </li>
@@ -603,12 +575,12 @@
                                       data-i18n="pproses">Pengajuan Di
                                       Proses</span></a>
                           </li>
-                          <li class=" nav-item"><a class="d-flex align-items-center" href="/pengajuan/HistoriBiasa/create"><i
+                          <li class=" nav-item"><a class="d-flex align-items-center" href="/pengajuan/selesai/show"><i
                                       data-feather="circle"></i><span class="menu-item text-truncate"
                                       data-i18n="pselesai">Pengajuan
                                       Selesai</span></a>
                           </li>
-                          <li class=" nav-item"><a class="d-flex align-items-center" href="/pengajuan/ditolak"><i
+                          <li class=" nav-item"><a class="d-flex align-items-center" href="/pengajuan/ditolak/show"><i
                                       data-feather="circle"></i><span class="menu-item text-truncate"
                                       data-i18n="ptolak">Pengajuan Di
                                       Tolak</span></a>
@@ -616,32 +588,6 @@
                          
                      
                       </ul>
-                  </li>
-
-
-              <li class=" nav-item"><a class="d-flex align-items-center"
-                  href="/pengajuan/lihatpengajuanstaf"><i data-feather="circle"></i><span
-                      class="menu-title text-truncate" data-i18n="surat">Pengajuan Projek</span></a>
-              <ul class="menu-content">
-                  <li class=" nav-item"><a class="d-flex align-items-center"
-                          href="/pengajuan/pengajuan_masukM"><i data-feather="arrow-down"></i><span
-                              class="menu-item text-truncate" data-i18n="pmasuk">Pengajuan
-                              Masuk</span></a>
-                  </li>
-                  <li class=" nav-item"><a class="d-flex align-items-center" href="/pengajuan/diproses"><i
-                              data-feather="activity"></i><span class="menu-item text-truncate"
-                              data-i18n="pproses">Pengajuan Di
-                              Proses</span></a>
-                  </li>
-                  <li class=" nav-item"><a class="d-flex align-items-center" href="/pengajuan/selesai"><i
-                              data-feather="check"></i><span class="menu-item text-truncate"
-                              data-i18n="pselesai">Pengajuan
-                              Selesai</span></a>
-                  </li>
-                  <li class=" nav-item"><a class="d-flex align-items-center" href="/pengajuan/ditolak"><i
-                              data-feather="x"></i><span class="menu-item text-truncate"
-                              data-i18n="ptolak">Pengajuan Di
-                              Tolak</span></a>
                   </li>
                  
              
@@ -653,7 +599,7 @@
       </div>
   </div>
 
-@elseif ($role == 7)
+@elseif ($role == 4)
   <!-- staff SDM dan Umum-->
   <!-- BEGIN: Main Menu-->
   <div class="main-menu menu-fixed menu-light menu-accordion menu-shadow" data-scroll-to-active="true">
@@ -683,31 +629,31 @@
               <li class=" navigation-header"><span data-i18n="Apps &amp; Pages"> Menu Utama </span><i
                       data-feather="more-horizontal"></i>
               </li>
-              <li class=" nav-item"><a class="d-flex align-items-center" href=""><i
+              <li class=" nav-item"><a class="d-flex align-items-center"><i
                           data-feather="circle"></i><span class="menu-title text-truncate"
                           data-i18n="buatpengajuan"> Pengajuan Biasa</span></a>
                   <ul class="menu-content">
-                      <li><a class="d-flex align-items-center" href="/pengajuan/pengajuanBiasa"><i
+                      <li><a class="d-flex align-items-center" href="/pengajuan/pengajuanbiasa"><i
                           data-feather="circle"></i><span class="menu-item text-truncate"
                           data-i18n="buatpengajuan">Buat Pengajuan</span></a>
                       </li>
                       {{-- <li><a class="d-flex align-items-center" href="/pengajuan/pengajuanBiasa/create"><i
                           data-feather="circle"></i><span class="menu-item text-truncate"
                           data-i18n="pengajuanbiasa">Lihat Pengajuan</span></a>
-                      </li> --}}
+                      </li>
                       <li><a class="d-flex align-items-center" href="/pengajuan/pengajuanBiasa/show"><i
                           data-feather="circle"></i><span class="menu-item text-truncate"
                           data-i18n="lampiranpengajuanbiasa">Lampiran</span></a>
-                      </li>
-                      <li><a class="d-flex align-items-center" href="/pengajuan/pengajuanBiasa/create"><i
+                      </li> --}}
+                      <li><a class="d-flex align-items-center" href="/pengajuan/diproses/show"><i
                           data-feather="circle"></i><span class="menu-item text-truncate"
                           data-i18n="pengajuanproses">Pengajuan Di Proses</span></a>
                       </li>
-                      <li><a class="d-flex align-items-center" href="/pengajuan/Selesai/show"><i
+                      <li><a class="d-flex align-items-center" href="/pengajuan/selesai/show"><i
                           data-feather="circle"></i><span class="menu-item text-truncate"
                           data-i18n="pengajuanselesai">Pengajuan Selesai</span></a>
                       </li>
-                      <li><a class="d-flex align-items-center" href="/pengajuan/pengajuanBiasa/show"><i
+                      <li><a class="d-flex align-items-center" href="/pengajuan/ditolak/show"><i
                           data-feather="circle"></i><span class="menu-item text-truncate"
                           data-i18n="pengajuantolak">Pengajuan Di Tolak</span></a>
                       </li>
@@ -723,7 +669,7 @@
   </div>
   <!-- END: Main Menu-->
 
-@elseif ($role == 8)
+@elseif ($role == 5)
   <!-- manager SDM dan Umum-->
   <!-- BEGIN: Main Menu-->
   <div class="main-menu menu-fixed menu-light menu-accordion menu-shadow" data-scroll-to-active="true">
@@ -758,12 +704,11 @@
                   </li>
 
 
-                  <li class=" nav-item"><a class="d-flex align-items-center"
-                          href="/pengajuan/lihatpengajuanstaf"><i data-feather="circle"></i><span
+                  <li class=" nav-item"><a class="d-flex align-items-center"><i data-feather="circle"></i><span
                               class="menu-title text-truncate" data-i18n="surat">Pengajuan Biasa</span></a>
                       <ul class="menu-content">
                           <li class=" nav-item"><a class="d-flex align-items-center"
-                                  href="/pengajuan/pengajuanBiasa/create"><i data-feather="circle"></i><span
+                                  href="/pengajuan/masuk/show"><i data-feather="circle"></i><span
                                       class="menu-item text-truncate" data-i18n="pmasuk">Pengajuan
                                       Masuk</span></a>
                           </li>
@@ -772,12 +717,12 @@
                                       data-i18n="pproses">Pengajuan Di
                                       Proses</span></a>
                           </li>
-                          <li class=" nav-item"><a class="d-flex align-items-center" href="/pengajuan/HistoriBiasa/create"><i
+                          <li class=" nav-item"><a class="d-flex align-items-center" href="/pengajuan/selesai/show"><i
                                       data-feather="circle"></i><span class="menu-item text-truncate"
                                       data-i18n="pselesai">Pengajuan
                                       Selesai</span></a>
                           </li>
-                          <li class=" nav-item"><a class="d-flex align-items-center" href="/pengajuan/ditolak"><i
+                          <li class=" nav-item"><a class="d-flex align-items-center" href="/pengajuan/ditolak/show"><i
                                       data-feather="circle"></i><span class="menu-item text-truncate"
                                       data-i18n="ptolak">Pengajuan Di
                                       Tolak</span></a>
@@ -802,7 +747,7 @@
 
 
   <!-- END: Main Menu-->
-@elseif($role == 9)
+@elseif($role == 6)
 
  <!-- Direktur SDM dan Umum-->
   <!-- BEGIN: Main Menu-->
@@ -838,12 +783,11 @@
                   </li>
 
 
-                  <li class=" nav-item"><a class="d-flex align-items-center"
-                          href="#"><i data-feather="circle"></i><span
+                  <li class=" nav-item"><a class="d-flex align-items-center"><i data-feather="circle"></i><span
                               class="menu-title text-truncate" data-i18n="surat">Pengajuan Biasa</span></a>
                       <ul class="menu-content">
                           <li class=" nav-item"><a class="d-flex align-items-center"
-                                  href="/pengajuan/masukbiasa/show"><i data-feather="circle"></i><span
+                                  href="/pengajuan/masuk/show"><i data-feather="circle"></i><span
                                       class="menu-item text-truncate" data-i18n="pmasuk">Pengajuan
                                       Masuk</span></a>
                           </li>
@@ -852,12 +796,12 @@
                                       data-i18n="pproses">Pengajuan Di
                                       Proses</span></a>
                           </li>
-                          <li class=" nav-item"><a class="d-flex align-items-center" href="/pengajuan/HistoriBiasa/create"><i
+                          <li class=" nav-item"><a class="d-flex align-items-center" href="/pengajuan/selesai/show"><i
                                       data-feather="circle"></i><span class="menu-item text-truncate"
                                       data-i18n="pselesai">Pengajuan
                                       Selesai</span></a>
                           </li>
-                          <li class=" nav-item"><a class="d-flex align-items-center" href="/pengajuan/ditolak"><i
+                          <li class=" nav-item"><a class="d-flex align-items-center" href="/pengajuan/ditolak/show"><i
                                       data-feather="circle"></i><span class="menu-item text-truncate"
                                       data-i18n="ptolak">Pengajuan Di
                                       Tolak</span></a>
@@ -923,7 +867,7 @@
                               class="menu-title text-truncate" data-i18n="surat">Pengajuan Biasa</span></a>
                       <ul class="menu-content">
                           <li class=" nav-item"><a class="d-flex align-items-center"
-                                  href="/pengajuan/masukbiasa/create"><i data-feather="circle"></i><span
+                                  href="/pengajuan/masuk/show"><i data-feather="circle"></i><span
                                       class="menu-item text-truncate" data-i18n="pmasuk">Pengajuan
                                       Masuk</span></a>
                           </li>
@@ -932,12 +876,12 @@
                                       data-i18n="pproses">Pengajuan Di
                                       Proses</span></a>
                           </li>
-                          <li class=" nav-item"><a class="d-flex align-items-center" href="/pengajuan/HistoriBiasa/create"><i
+                          <li class=" nav-item"><a class="d-flex align-items-center" href="/pengajuan/selesai/show"><i
                                       data-feather="circle"></i><span class="menu-item text-truncate"
                                       data-i18n="pselesai">Pengajuan
                                       Selesai</span></a>
                           </li>
-                          <li class=" nav-item"><a class="d-flex align-items-center" href="/pengajuan/ditolak"><i
+                          <li class=" nav-item"><a class="d-flex align-items-center" href="/pengajuan/ditolak/show"><i
                                       data-feather="circle"></i><span class="menu-item text-truncate"
                                       data-i18n="ptolak">Pengajuan Di
                                       Tolak</span></a>
@@ -948,30 +892,7 @@
                   </li>
 
 
-              <li class=" nav-item"><a class="d-flex align-items-center"
-                  href="/pengajuan/lihatpengajuanstaf"><i data-feather="circle"></i><span
-                      class="menu-title text-truncate" data-i18n="surat">Pengajuan Projek</span></a>
-              <ul class="menu-content">
-                  <li class=" nav-item"><a class="d-flex align-items-center"
-                          href="/pengajuan/pengajuan_masukM"><i data-feather="arrow-down"></i><span
-                              class="menu-item text-truncate" data-i18n="pmasuk">Pengajuan
-                              Masuk</span></a>
-                  </li>
-                  <li class=" nav-item"><a class="d-flex align-items-center" href="/pengajuan/diproses"><i
-                              data-feather="activity"></i><span class="menu-item text-truncate"
-                              data-i18n="pproses">Pengajuan Di
-                              Proses</span></a>
-                  </li>
-                  <li class=" nav-item"><a class="d-flex align-items-center" href="/pengajuan/selesai"><i
-                              data-feather="check"></i><span class="menu-item text-truncate"
-                              data-i18n="pselesai">Pengajuan
-                              Selesai</span></a>
-                  </li>
-                  <li class=" nav-item"><a class="d-flex align-items-center" href="/pengajuan/ditolak"><i
-                              data-feather="x"></i><span class="menu-item text-truncate"
-                              data-i18n="ptolak">Pengajuan Di
-                              Tolak</span></a>
-                  </li>
+             
                  
              
               </ul>

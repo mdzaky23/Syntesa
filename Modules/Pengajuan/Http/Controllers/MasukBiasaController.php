@@ -6,6 +6,7 @@ use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Auth;
+use Modules\Pengajuan\Entities\HistoriPengajuanBiasa;
 use Modules\Pengajuan\Entities\PengajuanBiasa;
 use Modules\Pengajuan\Entities\Role;
 
@@ -47,23 +48,56 @@ class MasukBiasaController extends Controller
     public function show($id)
     {
         $role = Role::select()->where('user_id', Auth::user()->id)->get()->first();
-        $historis=PengajuanBiasa::select()->get();
-        if($role->divisi_id==1 && $role->jabatan_id==3 ) {
-            return view('pengajuan::PengajuanBiasa.pengajuan_masuk.direktur', [
+        $historis=HistoriPengajuanBiasa::select()->get();
+
+        //keuangan
+        if($role->divisi_id==1 && $role->jabatan_id==4  ) {
+            return view('pengajuan::PengajuanBiasa.pengajuan_masuk.manager', [
             'role' => $role->role_id,
             'pengajuanbiasas' => PengajuanBiasa::select()->where('divisi',1)->get(),
             
             ]); }
-        if($role->divisi_id==2 && $role->jabatan_id==6 ) {
-            return view('pengajuan::PengajuanBiasa.pengajuan_masuk.direktur', [
+
+
+        //sdm umum
+        if($role->divisi_id==2 && $role->jabatan_id==4  ) {
+            return view('pengajuan::PengajuanBiasa.pengajuan_masuk.manager', [
             'role' => $role->role_id,
             'pengajuanbiasas' => PengajuanBiasa::select()->where('divisi',2)->get(),
             
             ]); }
-        if($role->divisi_id==3 && $role->jabatan_id==9 ) {
-            return view('pengajuan::PengajuanBiasa.pengajuan_masuk.direktur', [
+
+
+        //operasional
+        if($role->divisi_id==3 && $role->jabatan_id==4  ) {
+            return view('pengajuan::PengajuanBiasa.pengajuan_masuk.manager', [
             'role' => $role->role_id,
             'pengajuanbiasas' => PengajuanBiasa::select()->where('divisi',3)->get(),
+            
+            ]); }
+
+        if($role->divisi_id==3 && $role->jabatan_id==3 ) {
+            return view('pengajuan::PengajuanBiasa.pengajuan_masuk.direktur_operasional', [
+            'role' => $role->role_id,
+            'pengajuanbiasas' => PengajuanBiasa::select()->where('divisi',3)->get(),
+            
+            ]);}
+
+
+        // umum keuangan
+        if($role->divisi_id==4 && $role->jabatan_id==2 ) {
+            return view('pengajuan::PengajuanBiasa.pengajuan_masuk.direktur_u&k', [
+            'role' => $role->role_id,
+            'pengajuanbiasas' => PengajuanBiasa::all(),
+            
+            ]); }
+        
+            
+        //dirut
+        if($role->divisi_id==4 && $role->jabatan_id==1 ) {
+            return view('pengajuan::PengajuanBiasa.pengajuan_masuk.dirut', [
+            'role' => $role->role_id,
+            'pengajuanbiasas' => PengajuanBiasa::all(),
             
             ]); }
     }

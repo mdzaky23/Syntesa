@@ -41,6 +41,7 @@
                                             <th>Yang Mengajukan</th>
                                             <th>Divisi</th>
                                             <th>Status</th>
+                                            <th>Action</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -82,7 +83,7 @@
                                         
                                          @endphp
 
-                                         @if ($status->status==5)
+                                         @if ($status->status==3)
                                         <tr>
                                             <td></td>
 
@@ -103,7 +104,14 @@
                                             <td style="text-align: center">
                                                 <span class="badge badge-glow bg-success"> {{ $status->keterangan }} 
                                                 </span> 
-                                            </td> 
+                                            </td>
+                                            <td>
+                                                <div class="demo-inline-spacing">
+                                                    <a type="button" class="btn btn-outline-primary round"
+                                                        href="{{ url('pengajuan/pencairan/' . $pengajuanbiasa->id)}}">Detail</a>
+                                                    </a>
+                                                </div>
+                                            </td>
                                         </tr>
                                         @endif
                                     @endforeach

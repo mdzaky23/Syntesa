@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Auth;
 use Modules\Pengajuan\Entities\LampiranPengajuanBiasa;
+use Modules\Pengajuan\Entities\Pencairan;
 use Modules\Pengajuan\Entities\Role;
 use Modules\Pengajuan\Entities\PengajuanBiasa;
 
@@ -62,6 +63,7 @@ class DetailPengajuanController extends Controller
     {
         $role = Role::select()->where('user_id', Auth::user()->id)->get()->first();
         $detail= PengajuanBiasa::find($id);
+        $lampiran_cair = Pencairan::select()->where('pengajuan_biasa_id',  $detail->id)->get();
         $pengajuanlampiran = LampiranPengajuanBiasa::select()->where('pengajuan_biasa_id',  $detail->id)->get();
         return view('pengajuan::PengajuanBiasa.detail_pengajuan.index', compact('detail'), [
             'role' => $role->role_id,

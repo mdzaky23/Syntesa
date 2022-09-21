@@ -109,5 +109,13 @@
             </div>
         </div>
         <!-- END: Content-->
+
+{{-- <div class="visible-print text-center">
+    {!! QrCode::size(100)->generate (Request::url()); !!}
+
+</div> --}}
+
     </body>
+
+
 @endsection

@@ -21,6 +21,10 @@ class PengajuanBiasa extends Model
     {
         return $this->belongsTo(LampiranPengajuanBiasa::class,'lampiran_pengajuan_biasa_id', 'pengajuan_biasa_id');
     }
+    public function lampiran_cair()
+    {
+        return $this->belongsTo(Pencairan::class);
+    }
     public function kategori()
     {
         return $this->belongsTo(kategori_pengajuan::class, 'kategori_pengajuan_id' , 'pengajuan_biasa_id'  );

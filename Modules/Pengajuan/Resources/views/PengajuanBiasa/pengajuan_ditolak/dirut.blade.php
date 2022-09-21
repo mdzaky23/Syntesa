@@ -12,12 +12,12 @@
                 <div class="content-header-left col-md-9 col-12 mb-2">
                     <div class="row breadcrumbs-top">
                         <div class="col-12">
-                            <h2 class="content-header-title float-start mb-0">Pengajuan Selesai</h2>
+                            <h2 class="content-header-title float-start mb-0">Pengajuan Di Tolak</h2>
                             <div class="breadcrumb-wrapper">
                                 <ol class="breadcrumb">
                                     <li class="breadcrumb-item"><a href="index.html">Pengajuan Biasa</a>
                                     </li>
-                                    <li class="breadcrumb-item active"><a href="#">Pengajuan Selesai </a>
+                                    <li class="breadcrumb-item active"><a href="#">Pengajuan Di Tolak </a>
                                     </li>
                                 </ol>
                             </div>
@@ -89,29 +89,20 @@
                                         
                                          @endphp
 
-                                         @if ($status->status==3 )
+                                         @if ($status->status==2)
                                         <tr>
                                             <td></td>
 
                                             <td style="text-align: center">{{ $loop->iteration }}</td>
-
-                                            @if ($kategori->kategori==1)
-                                            <td style="text-align: center"> <span class="badge rounded-pill badge-light-primary">{{ $kategori->keterangan }} </span> </td>
-
-                                            @elseif ($kategori->kategori==2)
                                             <td style="text-align: center"> <span class="badge rounded-pill badge-light-info">{{ $kategori->keterangan }} </span> </td>
-                                            
-                                            @endif
                                             <td>{{ $pengajuanbiasa->keterangan }}</td>
                                             <td>{{ $pengajuanbiasa->jumlah }}</td>
                                             <td>{{ $pengajuanbiasa->tanggal }}</td>
-                                           
                                             <td>{{ $divisi->keterangan }}</td>
                                             <td>{{ $histori->updated_at  }}</td>
                                             <td style="text-align: center">
-                                                <span class="badge badge-glow bg-success"> {{ $status->keterangan }}</span> 
+                                                <span class="badge badge-glow bg-danger"> {{ $status->keterangan }} {{ $jabatan->keterangan }}</span> 
                                             </td> 
-
                                             <td>
                                                 <div class="demo-inline-spacing">
                                                     <a type="button" class="btn btn-outline-primary round"

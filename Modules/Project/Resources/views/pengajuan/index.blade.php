@@ -43,6 +43,15 @@
                                     <tbody>
                                         @if (!empty($projects))
                                             @foreach ($projects as $project)
+
+                                            @php
+                                            $status = Modules\Project\Entities\Project::select()
+                                             ->where('id', $project->id)
+                                             ->orderby('created_at','desc')
+                                             ->get()
+                                             ->first();
+                                             @endphp
+
                                                 <tr>
                                                     <td> </td>
                                                     <td> </td>
@@ -70,7 +79,7 @@
                                                     <td>
 
                                                         @if ($project->status == "Perubahan")
-                                                        <span class="badge rounded-pill badge-light-danger">Perubahan</span>
+                                                        <span class="badge rounded-pill badge-light-warning">Perubahan</span>
                                                         @elseif ($project->status == "Normal")
                                                         <span class="badge rounded-pill badge-light-info">Normal</span>
                                                         @endif
