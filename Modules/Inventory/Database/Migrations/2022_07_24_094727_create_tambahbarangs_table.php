@@ -27,7 +27,7 @@ return new class extends Migration
             $table->string('ruangan_lokasi');
             $table->string('lantai_lokasi');
             $table->string('tgl_beli');
-            $table->string('tgl_peremajaan');
+            $table->string('tgl_peremajaan')->nullable();
             $table->string('umur_ekonomi');
             $table->timestamps();
         });

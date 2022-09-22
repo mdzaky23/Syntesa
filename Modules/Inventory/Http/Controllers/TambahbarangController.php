@@ -147,7 +147,7 @@ class TambahbarangController extends Controller
             'ruangan_lokasi' => 'required',
             'lantai_lokasi' => 'required',
             'tgl_beli' => 'required',
-            'tgl_peremajaan' => 'required',
+            'tgl_peremajaan' => '',
             'merk_brg' => 'required',
             'harga_brg' => 'required',
             'umur_ekonomi' => 'required',

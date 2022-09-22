@@ -69,36 +69,36 @@
                                     $tanggalsekarang = Carbon\Carbon::now();
                                     @endphp
                                     <tr>
-                                        @if ($tanggalsekarang > $barang->tgl_peremajaan )
-                                        <td></td>
+                                        @if ($tanggalsekarang < $barang->umur_ekonomi )
+                                            <td></td>
 
-                                        @if ($barang->kategori_id == 1)
-                                        <td> {{$barang->nomer_inventaris}}.1.{{$hari}}.{{ $bln}}.{{$tahun}} </td>
-                                        @elseif ($barang->kategori_id == 2)
-                                        <td> {{$barang->nomer_inventaris}}.2.{{$hari}}.{{ $bln}}.{{$tahun}} </td>
-                                        @elseif ($barang->kategori_id == 3)
-                                        <td> {{$barang->nomer_inventaris}}.3.{{$hari}}.{{ $bln}}.{{$tahun}} </td>
-                                        @else
-                                        <td> {{$barang->nomer_inventaris}}.4.{{$hari}}.{{ $bln}}.{{$tahun}} </td>
-                                        @endif
-                                        <td>{{$barang->nama_brg}}</td>
-                                        <td>{{$barang->tipe_brg}}</td>
-                                        <td>{{$tanggal}}</td>
-                                        <td>{{$barang->umur_ekonomi}}</td>
-                                        <td>Expired</td>
-                                        <td>{{$barang->kategori_lokasi}}</td>
-                                        @if ($barang->kategori_id == 1)
-                                        <td>Alat Kerja</td>
-                                        @elseif ($barang->kategori_id == 2)
-                                        <td>Kebutuhan Oprasional</td>
-                                        @elseif ($barang->kategori_id == 3)
-                                        <td>Elektronik</td>
-                                        @else
-                                        <td>Furniture</td>
-                                        @endif
-                                        @endif
-                                        @endforeach
-                                        @endif
+                                            @if ($barang->kategori_id == 1)
+                                            <td> {{$barang->nomer_inventaris}}.1.{{$hari}}.{{ $bln}}.{{$tahun}} </td>
+                                            @elseif ($barang->kategori_id == 2)
+                                            <td> {{$barang->nomer_inventaris}}.2.{{$hari}}.{{ $bln}}.{{$tahun}} </td>
+                                            @elseif ($barang->kategori_id == 3)
+                                            <td> {{$barang->nomer_inventaris}}.3.{{$hari}}.{{ $bln}}.{{$tahun}} </td>
+                                            @else
+                                            <td> {{$barang->nomer_inventaris}}.4.{{$hari}}.{{ $bln}}.{{$tahun}} </td>
+                                            @endif
+                                            <td>{{$barang->nama_brg}}</td>
+                                            <td>{{$barang->tipe_brg}}</td>
+                                            <td>{{$tanggal}}</td>
+                                            <td>{{$barang->umur_ekonomi}}</td>
+                                            <td>Expired</td>
+                                            <td>{{$barang->kategori_lokasi}}</td>
+                                            @if ($barang->kategori_id == 1)
+                                            <td>Alat Kerja</td>
+                                            @elseif ($barang->kategori_id == 2)
+                                            <td>Kebutuhan Oprasional</td>
+                                            @elseif ($barang->kategori_id == 3)
+                                            <td>Elektronik</td>
+                                            @else
+                                            <td>Furniture</td>
+                                            @endif
+                                            @endif
+                                            @endforeach
+                                            @endif
                                     </tr>
 
                                 </tbody>

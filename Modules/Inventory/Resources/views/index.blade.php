@@ -31,10 +31,7 @@
                     <p class="card-text m-auto w-75">
                       Sudah Memasuki Tanggal Peremajaan <strong>22-02-2020</strong> Silahkan Untuk Mengecek Barang.
                     </p>
-
                     <a class="btn btn-success mt-1" hidden href="">Perbaharui</a>
-                    <a class="btn btn-danger mt-1" hidden href="">Hapus</a>
-
                   </div>
                 </div>
               </div>
@@ -110,8 +107,6 @@
                           $bulan = Carbon\Carbon::parse($barang->tgl_beli)->format('m');
                           $tahun = Carbon\Carbon::parse($barang->tgl_beli)->format('y');
                           $tanggal = Carbon\Carbon::parse($barang->tgl_beli)->format('d-m-Y');
-
-
                           $array_bln = [
                           '01' => '1',
                           '02' => '2',
@@ -124,15 +119,10 @@
                           '09' => '9',
                           ];
                           $bln =$array_bln[$bulan];
-                          $day = Carbon\Carbon::parse($barang->tgl_peremajaan)->format('d');
-                          $month = Carbon\Carbon::parse($barang->tgl_peremajaan)->format('m');
-                          $years = Carbon\Carbon::parse($barang->tgl_peremajaan)->format('Y');
-                          $year =(int)((mktime (0,0,0,$month,$day,$years) - time())/31104000);
-                          $months =(int)((mktime (0,0,0,$month,$day,$years) - time())/2592000);
-                          $days =(int)((mktime (0,0,0,$month,$day,$years) - time())/86400);
+                          $umurekonomi = Carbon\Carbon::parse($barang->tgl_beli)->submonths($barang->umur_ekonomi);
+                          $tanggalsekarang = Carbon\Carbon::now();
+                          $hitungumurekonomi = $umurekonomi -> diffasCarboninterval($tanggalsekarang);
                           @endphp
-
-
                           <tr>
                             @if ($tanggalsekarang < $barang->tgl_peremajaan)
                               @if ($barang->kategori_id == 1)
@@ -155,9 +145,9 @@
                               <td>Furniture</td>
                               @endif
                               <td>{{$tanggal}}</td>
-                              <td>{{$barang->umur_ekonomi}}</td>
+                              <td>{{$barang->umur_ekonomi}} Bulan</td>
                               <td>
-                                <p> Tersisa {{$year}} Tahun {{$months}} Bulan {{$days}} Hari </p>
+                                <p> Tersisa {{$hitungumurekonomi}}</p>
                               </td>
                               <td>
                                 <div class="dropdown">
