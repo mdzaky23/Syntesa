@@ -132,7 +132,7 @@
                                     <td>{{$barang->nama_brg}}</td>
                                     <td>{{$barang->tipe_brg}}</td>
                                     <td>{{$tanggal}}</td>
-                                    <td>{{$barang->umur_ekonomi}}</td>
+                                    <td>{{$barang->umur_ekonomi}} Bulan</td>
                                     <td>{{$barang->tgl_peremajaan}}</td>
                                     <td>{{$barang->kategori_lokasi}}</td>
                                     <td>{{$barang->ruangan_lokasi}}</td>

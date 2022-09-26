@@ -27,6 +27,7 @@ class InventoryController extends Controller
         }
         $nomer_invetaris = $no . '/IN/SWB/' . $cek->format('m') . '/' . $cek->format('Y');
 
+
         $jumlah_brg = Tambahbarang::all()->count();
         return view('inventory::index', [
             'nomer_inventaris' => $nomer_invetaris,

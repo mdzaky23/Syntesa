@@ -100,11 +100,80 @@
                     </div>
                     <div class="mb-1 col-md-6">
                       <label class="form-label" for="umur_ekonomi">Umur Ekonomi</label>
-                      <select class="select2 w-100" id="umur_ekonomi" name="umur_ekonomi" value="{{$barang->umur_ekonomi}}">
-                        <option label=" ">{{$barang->umur_ekonomi}}</option>
-                        <option>1 Tahun</option>
-                        <option>3 Tahun</option>
-                        <option>5 Tahun</option>
+                      <select class="select2 w-100" id="umur_ekonomi" name="umur_ekonomi">
+                        <option label=" ">{{$barang->umur_ekonomi}} Bulan</option>
+                        <option value="1">1 Bulan</option>
+                        <option value="2">2 Bulan</option>
+                        <option value="3">3 Bulan</option>
+                        <option value="4">4 Bulan</option>
+                        <option value="5">5 Bulan</option>
+                        <option value="6">6 Bulan</option>
+                        <option value="7">7 Bulan</option>
+                        <option value="8">8 Bulan</option>
+                        <option value="9">9 Bulan</option>
+                        <option value="10">10 Bulan</option>
+                        <option value="11">11 Bulan</option>
+                        <option value="12">1 Tahun</option>
+                        <option value="13">1 Tahun 1 Bulan</option>
+                        <option value="14">1 Tahun 2 Bulan</option>
+                        <option value="15">1 Tahun 3 Bulan</option>
+                        <option value="16">1 Tahun 4 Bulan</option>
+                        <option value="17">1 Tahun 5 Bulan</option>
+                        <option value="18">1 Tahun 6 Bulan</option>
+                        <option value="19">1 Tahun 7 Bulan</option>
+                        <option value="20">1 Tahun 8 Bulan</option>
+                        <option value="21">1 Tahun 9 Bulan</option>
+                        <option value="22">1 Tahun 10 Bulan</option>
+                        <option value="23">1 Tahun 11 Bulan</option>
+                        <option value="24">2 Tahun</option>
+                        <option value="25">2 Tahun 1 Bulan</option>
+                        <option value="26">2 Tahun 2 Bulan</option>
+                        <option value="27">2 Tahun 3 Bulan</option>
+                        <option value="28">2 Tahun 4 Bulan</option>
+                        <option value="29">2 Tahun 5 Bulan</option>
+                        <option value="30">2 Tahun 6 Bulan</option>
+                        <option value="31">2 Tahun 7 Bulan</option>
+                        <option value="32">2 Tahun 8 Bulan</option>
+                        <option value="33">2 Tahun 9 Bulan</option>
+                        <option value="34">2 Tahun 10 Bulan</option>
+                        <option value="35">2 Tahun 11 Bulan</option>
+                        <option value="36">3 Tahun</option>
+                        <option value="37">3 Tahun 1 Bulan</option>
+                        <option value="38">3 Tahun 2 Bulan</option>
+                        <option value="39">3 Tahun 3 Bulan</option>
+                        <option value="40">3 Tahun 4 Bulan</option>
+                        <option value="41">3 Tahun 5 Bulan</option>
+                        <option value="42">3 Tahun 6 Bulan</option>
+                        <option value="43">3 Tahun 7 Bulan</option>
+                        <option value="44">3 Tahun 8 Bulan</option>
+                        <option value="45">3 Tahun 9 Bulan</option>
+                        <option value="46">3 Tahun 10 Bulan</option>
+                        <option value="47">3 Tahun 11 Bulan</option>
+                        <option value="48">4 Tahun</option>
+                        <option value="49">4 Tahun 1 Bulan</option>
+                        <option value="50">4 Tahun 2 Bulan</option>
+                        <option value="51">4 Tahun 3 Bulan</option>
+                        <option value="52">4 Tahun 4 Bulan</option>
+                        <option value="53">4 Tahun 5 Bulan</option>
+                        <option value="54">4 Tahun 6 Bulan</option>
+                        <option value="55">4 Tahun 7 Bulan</option>
+                        <option value="56">4 Tahun 8 Bulan</option>
+                        <option value="57">4 Tahun 9 Bulan</option>
+                        <option value="58">4 Tahun 10 Bulan</option>
+                        <option value="59">4 Tahun 11 Bulan</option>
+                        <option value="60">5 Tahun</option>
+                        <option value="61">5 Tahun 1 Bulan</option>
+                        <option value="62">5 Tahun 2 Bulan</option>
+                        <option value="63">5 Tahun 3 Bulan</option>
+                        <option value="64">5 Tahun 4 Bulan</option>
+                        <option value="65">5 Tahun 5 Bulan</option>
+                        <option value="66">5 Tahun 6 Bulan</option>
+                        <option value="67">5 Tahun 7 Bulan</option>
+                        <option value="68">5 Tahun 8 Bulan</option>
+                        <option value="69">5 Tahun 9 Bulan</option>
+                        <option value="70">5 Tahun 10 Bulan</option>
+                        <option value="71">5 Tahun 11 Bulan</option>
+                        <option value="72">6 Tahun</option>
                       </select>
                     </div>
                     <div class="mb-1 col-md-6">

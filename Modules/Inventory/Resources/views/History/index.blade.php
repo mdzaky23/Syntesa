@@ -66,11 +66,13 @@
                                     '09' => '9',
                                     ];
                                     $bln =$array_bln[$bulan];
+                                    $umurekonomi = Carbon\Carbon::parse($barang->tgl_beli)->submonths($barang->umur_ekonomi);
                                     $tanggalsekarang = Carbon\Carbon::now();
+                                    $hitungumurekonomi = $umurekonomi -> diffasCarboninterval($tanggalsekarang);
                                     @endphp
                                     <tr>
-                                        @if ($tanggalsekarang < $barang->umur_ekonomi )
-                                            <td></td>
+                                        @if ($tanggalsekarang < $umurekonomi ) <td>
+                                            </td>
 
                                             @if ($barang->kategori_id == 1)
                                             <td> {{$barang->nomer_inventaris}}.1.{{$hari}}.{{ $bln}}.{{$tahun}} </td>

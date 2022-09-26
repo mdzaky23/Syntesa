@@ -27,7 +27,7 @@
                     </div>
                   </div>
                   <div class="text-center">
-                    <h1 class="mb-1 text-white">Laptop Asus,</h1>
+                    <h1 class="mb-1 text-white">Laptop Asus</h1>
                     <p class="card-text m-auto w-75">
                       Sudah Memasuki Tanggal Peremajaan <strong>22-02-2020</strong> Silahkan Untuk Mengecek Barang.
                     </p>
@@ -47,7 +47,7 @@
                     </div>
                   </div>
                   <h2 class="fw-bolder mt-1"> {{$jumlah_brg}}</h2>
-                  <p class="card-text">Jumlah Data Barang</p>
+                  <p class="card-text">Jumlah Data Barang Aktif</p>
                 </div>
                 <div id="order-chart"></div>
               </div>
@@ -65,7 +65,7 @@
                   if($tanggalsekarang )
                   @endphp -->
                   <h2 class="fw-bolder mt-1">12</h2>
-                  <p class="card-text">Barang Yang Mendekati Tanggal Peremajaan</p>
+                  <p class="card-text">Jumlah Data Barang Non-Aktif</p>
                 </div>
                 <div id="gained-chart"></div>
               </div>
@@ -121,62 +121,61 @@
                           $bln =$array_bln[$bulan];
                           $umurekonomi = Carbon\Carbon::parse($barang->tgl_beli)->submonths($barang->umur_ekonomi);
                           $tanggalsekarang = Carbon\Carbon::now();
-                          $hitungumurekonomi = $umurekonomi -> diffasCarboninterval($tanggalsekarang);
+                          $hitungumurekonomi = $umurekonomi -> diffAsCarboninterval($tanggalsekarang);
                           @endphp
                           <tr>
-                            @if ($tanggalsekarang < $barang->tgl_peremajaan)
-                              @if ($barang->kategori_id == 1)
-                              <td> {{$barang->nomer_inventaris}}.1.{{$hari}}.{{ $bln}}.{{$tahun}} </td>
-                              @elseif ($barang->kategori_id == 2)
-                              <td> {{$barang->nomer_inventaris}}.2.{{$hari}}.{{ $bln}}.{{$tahun}} </td>
-                              @elseif ($barang->kategori_id == 3)
-                              <td> {{$barang->nomer_inventaris}}.3.{{$hari}}.{{ $bln}}.{{$tahun}} </td>
-                              @else
-                              <td> {{$barang->nomer_inventaris}}.4.{{$hari}}.{{ $bln}}.{{$tahun}} </td>
-                              @endif
-                              <td>{{$barang->nama_brg}}</td>
-                              @if ($barang->kategori_id == 1)
-                              <td>Alat Kerja</td>
-                              @elseif ($barang->kategori_id == 2)
-                              <td>Kebutuhan Oprasional</td>
-                              @elseif ($barang->kategori_id == 3)
-                              <td>Elektronik</td>
-                              @else
-                              <td>Furniture</td>
-                              @endif
-                              <td>{{$tanggal}}</td>
-                              <td>{{$barang->umur_ekonomi}} Bulan</td>
-                              <td>
-                                <p> Tersisa {{$hitungumurekonomi}}</p>
-                              </td>
-                              <td>
-                                <div class="dropdown">
-                                  <button type="button" class="btn btn-sm dropdown-toggle hide-arrow py-0" data-bs-toggle="dropdown">
-                                    <i data-feather="more-vertical"></i>
-                                  </button>
-                                  <div class="dropdown-menu dropdown-menu-end">
-                                    <a class="dropdown-item" href="/inventory/tambahbarang/{{$barang->id}}">
-                                      <i data-feather="eye" class="me-50"></i>
-                                      <span>Lihat</span>
-                                    </a>
-                                    <a class="dropdown-item" href="/inventory/tambahbarang/{{$barang->id}}/edit">
-                                      <i data-feather="edit-2" class="me-50"></i>
-                                      <span>Edit</span>
-                                    </a>
-                                    <form action="/inventory/tambahbarang/{{$barang->id}}" method="POST">
-                                      @method ('delete')
-                                      @csrf
-                                      <button class="dropdown-item" onclick="return confirm('Apakah Anda Yakin Ingin Menghapus?')">
-                                        <i data-feather="trash" class="me-50"></i>
-                                        <span>Delete</span>
-                                      </button>
-                                    </form>
-                                  </div>
+                            @if ($tanggalsekarang > $umurekonomi) @if ($barang->kategori_id == 1)
+                            <td> {{$barang->nomer_inventaris}}.1.{{$hari}}.{{ $bln}}.{{$tahun}} </td>
+                            @elseif ($barang->kategori_id == 2)
+                            <td> {{$barang->nomer_inventaris}}.2.{{$hari}}.{{ $bln}}.{{$tahun}} </td>
+                            @elseif ($barang->kategori_id == 3)
+                            <td> {{$barang->nomer_inventaris}}.3.{{$hari}}.{{ $bln}}.{{$tahun}} </td>
+                            @else
+                            <td> {{$barang->nomer_inventaris}}.4.{{$hari}}.{{ $bln}}.{{$tahun}} </td>
+                            @endif
+                            <td>{{$barang->nama_brg}}</td>
+                            @if ($barang->kategori_id == 1)
+                            <td>Alat Kerja</td>
+                            @elseif ($barang->kategori_id == 2)
+                            <td>Kebutuhan Oprasional</td>
+                            @elseif ($barang->kategori_id == 3)
+                            <td>Elektronik</td>
+                            @else
+                            <td>Furniture</td>
+                            @endif
+                            <td>{{$tanggal}}</td>
+                            <td>{{$barang->umur_ekonomi}} Bulan</td>
+                            <td>
+                              <p> Tersisa {{$hitungumurekonomi}}</p>
+                            </td>
+                            <td>
+                              <div class="dropdown">
+                                <button type="button" class="btn btn-sm dropdown-toggle hide-arrow py-0" data-bs-toggle="dropdown">
+                                  <i data-feather="more-vertical"></i>
+                                </button>
+                                <div class="dropdown-menu dropdown-menu-end">
+                                  <a class="dropdown-item" href="/inventory/tambahbarang/{{$barang->id}}">
+                                    <i data-feather="eye" class="me-50"></i>
+                                    <span>Lihat</span>
+                                  </a>
+                                  <a class="dropdown-item" href="/inventory/tambahbarang/{{$barang->id}}/edit">
+                                    <i data-feather="edit-2" class="me-50"></i>
+                                    <span>Edit</span>
+                                  </a>
+                                  <form action="/inventory/tambahbarang/{{$barang->id}}" method="POST">
+                                    @method ('delete')
+                                    @csrf
+                                    <button class="dropdown-item" onclick="return confirm('Apakah Anda Yakin Ingin Menghapus?')">
+                                      <i data-feather="trash" class="me-50"></i>
+                                      <span>Delete</span>
+                                    </button>
+                                  </form>
                                 </div>
-                              </td>
-                              @endif
-                              @endforeach
-                              @endif
+                              </div>
+                            </td>
+                            @endif
+                            @endforeach
+                            @endif
                         </tbody>
                       </table>
                     </div>
