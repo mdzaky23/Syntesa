@@ -59,8 +59,8 @@
                                         </div>
                                         <div class="col-12">
                                             <div class="mb-2">
-                                                <label class="form-label" for="batas_Masuk">Batas Masuk</label>
-                                                <input type="time" id="batas_Masuk" name="batas_Masuk"class="form-control"
+                                                <label class="form-label" for="batas_masuk">Batas Masuk</label>
+                                                <input type="time" id="batas_masuk" name="batas_masuk"class="form-control"
                                                     placeholder="Setting batas waktu" />
                                             </div>
                                         </div>

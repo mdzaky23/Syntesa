@@ -36,12 +36,12 @@
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link active" href="/absen/pendidikan">
+          <a class="nav-link" href="/absen/pendidikan">
             <i data-feather="award" class="font-medium-3 me-50"></i><span class="fw-bold">Pendidikan</span>
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="/absen/uangtunjangan">
+          <a class="nav-link active" href="/absen/uangtunjangan">
             <i data-feather="credit-card" class="font-medium-3 me-50"></i><span class="fw-bold">Uang tunjangan</span>
           </a>
         </li>
@@ -62,7 +62,7 @@
   <div class="card card-company-table">
     <div class="card-body p-0">
       <div class="card-body">
-        <h2 class="fw-bolder mb-4">Data Pendidikan</h2>
+        <h2 class="fw-bolder mb-4">Data Besaran Uang tunjangan</h2>
         <hr class="invoice-spacing">
            
         <!-- Basic table -->
@@ -72,13 +72,15 @@
     <div class="col-12">
       <div class="card">      
         <table class="datatables-basic table">
-        <a href="/absen/pendidikan/tambah"><button class="btn btn-primary" type="button">+ Tambah Data</button></a>
+        <a href="/absen/uangtunjangan/tambah"><button class="btn btn-primary" type="button">+ Tambah Data</button></a>
           <thead>
             <tr>
               <th></th>
               <th></th>
               <th>No</th>
-              <th>Nama pendidikan</th>
+              <th>Jabatan</th>
+              <th>Uang Jabatan</th>
+              <th>Uang Transport</th>
               <th>Action</th>
               
               
@@ -86,8 +88,8 @@
           </thead>
 
           <tbody>
-          @if(!empty($pendidikans))
-          @foreach($pendidikans as $pendidikan)
+          @if(!empty($uangtunjangans))
+          @foreach($uangtunjangans as $uangtunjangan)
 
             <tr>
               <td></td>
@@ -96,11 +98,11 @@
               <td>
                   <h5>{{ $loop->iteration }}</h5>
               </td>
-              
+
               <td>
                 <div class="d-flex align-items-center">
                   <div>
-                    <div class="fw-bolder">{{ $pendidikan->nama_pendidikan }}</div>
+                    <div class="fw-bolder">{{ $uangtunjangan->jabatan->nama_jabatan }}</div>
                   </div>
                 </div>
               </td>
@@ -108,11 +110,27 @@
               <td>
                 <div class="d-flex align-items-center">
                   <div>
-                    <a href="/absen/pendidikan/{{ $pendidikan->id }}/edit" type="button" class="btn btn-icon btn-warning">
+                    <div class="fw-bolder">{{ $uangtunjangan->uang_jabatan }}</div>
+                  </div>
+                </div>
+              </td>
+
+              <td>
+                <div class="d-flex align-items-center">
+                  <div>
+                    <div class="fw-bolder">{{ $uangtunjangan->uang_transport }}</div>
+                  </div>
+                </div>
+              </td>
+
+              <td>
+                <div class="d-flex align-items-center">
+                  <div>
+                  <a href="/absen/uangtunjangan/{{ $uangtunjangan->id }}/edit" type="button" class="btn btn-icon btn-warning">
                       <span data-feather="edit"></span>
                     </a>
 
-                      <form action="{{ url('absen/pendidikan', $pendidikan->id) }}" method="POST" class="d-inline">
+                      <form action="{{ url('absen/uangtunjangan', $uangtunjangan->id) }}" method="POST" class="d-inline">
                         @method('delete')
                         @csrf
                         <button class="btn btn-icon btn-danger" id="type-hapus" onclick="return confirm('Apakah anda yakin ingin menghapus data ini?')">

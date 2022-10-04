@@ -84,22 +84,22 @@
                                                         @endif
                                                         @endforeach
 
-                                                        @if ($pegawai->uangsaku->uang_saku)
-                                                        <dt class="col-sm-4 fw-bolder mb-1">Tunjangan uang saku</dt>
-                                                        <dd class="col-sm-8 mb-1">: {{ $pegawai->uangsaku->uang_saku }}</dd>
+                                                        @if ($pegawai->uangtunjangan->uang_jabatan)
+                                                        <dt class="col-sm-4 fw-bolder mb-1">Tunjangan uang tunjangan</dt>
+                                                        <dd class="col-sm-8 mb-1">: {{ $pegawai->uangtunjangan->uang_jabatan }}</dd>
                                                         @else
-                                                        <dt class="col-sm-4 fw-bolder mb-1">Tunjangan uang saku</dt>
+                                                        <dt class="col-sm-4 fw-bolder mb-1">Tunjangan jabatan</dt>
                                                         <dd class="col-sm-8 mb-1">: </dd>
                                                         @endif
 
                                                         <dt class="col-sm-4 fw-bolder mb-1">Tunjangan Transport</dt>
-                                                        <dd class="col-sm-8 mb-1">: {{ $pegawai->uangsaku->uang_representatif }}</dd>
+                                                        <dd class="col-sm-8 mb-1">: {{ $pegawai->uangtunjangan->uang_transport }}</dd>
 
                                                         <dt class="col-sm-4 fw-bolder mb-1"> </dt>
                                                         <dd class="col-sm-8 mb-1"> </dd>
 
                                                         <dt class="col-sm-8 fw-bolder mb-1"></dt>
-                                                        <dd class="col-sm-4 fw-bolder mb-1">Total : {{ $gajipokok->gaji + $pegawai->uangsaku->uang_saku+$pegawai->uangsaku->uang_representatif }}</dd>
+                                                        <dd class="col-sm-4 fw-bolder mb-1">Total : {{ $gajipokok->gaji + $pegawai->uangtunjangan->uang_jabatan+$pegawai->uangtunjangan->uang_transport }}</dd>
                                                     </dl>
                                                 </div>
                                             </div>

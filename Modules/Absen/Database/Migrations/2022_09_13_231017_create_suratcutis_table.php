@@ -15,8 +15,8 @@ return new class extends Migration
     {
         Schema::create('suratcutis', function (Blueprint $table) {
             $table->id();
-            $table->string('nama_pegawai')->nullable();
             $table->string('nip')->nullable();
+            $table->string('nama_pegawai')->nullable();
             $table->string('jabatan')->nullable();
             $table->string('divisi')->nullable();
             $table->string('lama_cuti')->nullable();

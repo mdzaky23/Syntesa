@@ -172,8 +172,8 @@
                                                                         <input
                                                                             class="form-check-input"
                                                                             type="radio"
-                                                                            name="JK"
-                                                                            id="JK"
+                                                                            name="jK"
+                                                                            id="jK"
                                                                             value="Laki-laki"
                                                                         />
                                                                         <label class="form-check-label" for="jk">Laki-laki</label>
@@ -262,20 +262,6 @@
                                                 <label class="form-label" for="no_rek">No Rekening</label>
                                                 <input type="number" id="no_rek" name="no_rek"class="form-control"
                                                     placeholder="Input No rekening Pegawai" />
-                                            </div>
-                                        </div>
-
-                                        <div class="col-12">
-                                            <div class="mb-2">
-                                                <label class="form-label" for="uangsaku_id">Uang Saku</label>                                    
-                                                <select class="form-select" aria-label="Default select example" name="uangsaku_id" id="uangsaku_id">
-                                                    <option selected>Besaran sesuai dengan jabatan</option>
-
-                                                    @foreach ( $uangsakus as $uangsaku )
-                                                    <option value="{{ $uangsaku->id }}">{{ $uangsaku->jabatan->nama_jabatan }} (Rp. {{ $uangsaku->uang_saku }} )</option>
-                                                    @endforeach
-
-                                                </select>
                                             </div>
                                         </div>
 

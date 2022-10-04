@@ -18,6 +18,7 @@ use Modules\Absen\Http\Controllers\LpsrtabsenController;
 use Modules\Absen\Http\Controllers\PendidikanController;
 use Modules\Absen\Http\Controllers\WaktukerjaController;
 use Modules\Absen\Http\Controllers\JenispegawaiController;
+use Modules\Absen\Http\Controllers\UangtunjanganController;
 use Modules\Absen\Http\Controllers\PrintsuratcutiController;
 
 
@@ -52,4 +53,5 @@ Route::prefix('absen')->group(function() {
     Route::resource('/printsuratcuti', PrintsuratcutiController::class);
     Route::resource('/waktukerja', WaktukerjaController::class);
     Route::resource('/bpjs', BpjsController::class);
+    Route::resource('/uangtunjangan', UangtunjanganController::class);
 });

@@ -44,8 +44,6 @@
               <th>Jabatan</th>
               <th>No Hp</th>
               <th>No Rekening</th>
-              <th>Uang Saku</th>
-              <th>Uang Representatif</th>
               <th>Action</th>
               
               
@@ -140,22 +138,6 @@
                 <div class="d-flex align-items-center">
                   <div>
                     <div class="fw-bolder">{{ $pegawai->no_rek }}</div>
-                  </div>
-                </div>
-              </td>
-
-              <td>
-                <div class="d-flex align-items-center">
-                  <div>
-                    <div class="fw-bolder">{{ $pegawai->uangsaku->uang_saku }}</div>
-                  </div>
-                </div>
-              </td>
-
-              <td>
-                <div class="d-flex align-items-center">
-                  <div>
-                    <div class="fw-bolder">{{ $pegawai->uangsaku->uang_representatif }}</div>
                   </div>
                 </div>
               </td>

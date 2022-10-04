@@ -4,6 +4,7 @@ namespace Modules\Absen\Entities;
 
 use Modules\Absen\Entities\Gajipokok;
 use Illuminate\Database\Eloquent\Model;
+use Modules\Absen\Entities\Uangtunjangan;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Pegawai extends Model
@@ -38,6 +39,10 @@ class Pegawai extends Model
 
     public function uangsaku(){
         return $this->belongsTo(Uangsaku::class,'uangsaku_id','id');
+    }
+
+    public function Uangtunjangan(){
+        return $this->belongsTo(Uangtunjangan::class, 'jabatan_id','id');
     }
 
 

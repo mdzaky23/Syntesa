@@ -41,57 +41,37 @@
 
                                         <div class="col-12 position-relative">
                                             <div class="mb-2">
-                                                <label class="form-label" for="nama_pegawai">Nama</label>
-                                                <select class="form-select" aria-label="Default select example" name="nama_pegawai" id="nama_pegawai">
-                                                    
-                                                    <option selected>Masukan Nama</option>
-
-                                                    @foreach ( $pegawais as $pegawai )
-                                                    <option value="{{ $pegawai->nama_pegawai }}">{{ $pegawai->nama_pegawai }}</option>
-                                                    @endforeach  
-                                                </select>
+                                                <label class="form-label" for="nip">NIP :</label>
+                                                <input type="text" id="nip" name="nip" class="form-control" onkeyup="isi_otomatis()"
+                                                    placeholder="Masukan lama cuti">
+                                                </input>
                                             </div>
                                         </div>
+
                                         <div class="col-12 position-relative">
                                             <div class="mb-2">
-                                                <label class="form-label" for="nip">NIP :</label>
-                                                <select class="form-select" aria-label="Default select example" name="nip" id="nip">
-                                                    
-                                                    <option selected>Masukan NIP</option>
-
-                                                    @foreach ( $pegawais as $pegawai )
-                                                    <option value="{{ $pegawai->nip }}">{{ $pegawai->nip }} || {{ $pegawai->nama_pegawai }}</option>
-                                                    @endforeach  
-                                                </select>
+                                                <label class="form-label" for="nama_pegawai">Nama</label>
+                                                <input type="text" id="nama_pegawai" name="nama_pegawai" class="form-control" 
+                                                    placeholder="Masukan lama cuti">
+                                                </input>
                                             </div>
                                         </div>
+                                    
 
                                         <div class="col-12">
                                             <div class="mb-2">
                                                 <label class="form-label" for="jabatan">Jabatan :</label>
-                                                <select class="form-select" aria-label="Default select example" name="jabatan" id="jabatan">
-                                                    
-                                                    <option selected>Masukan Jabatan</option>
-
-                                                    @foreach ( $jabatans as $jabatan )
-                                                    <option value="{{ $jabatan->nama_jabatan }}">{{ $jabatan->nama_jabatan }}</option>
-                                                    @endforeach  
-
-                                                </select>
+                                                <input type="text" id="jabatan" name="jabatan" class="form-control" 
+                                                    placeholder="Masukan lama cuti">
+                                                </input>
                                             </div>
                                         </div>
                                         <div class="col-12">
                                             <div class="mb-2">
                                                 <label class="form-label" for="divisi">Divisi :</label>
-                                                <select class="form-select" aria-label="Default select example" name="divisi" id="divisi">
-                                                    
-                                                    <option selected>Masukan divisi</option>
-
-                                                    @foreach ( $divisis as $divisi )
-                                                    <option value="{{ $divisi->nama_divisi }}">{{ $divisi->nama_divisi }}</option>
-                                                    @endforeach  
-
-                                                </select>
+                                                <input type="text" id="divisi" name="divisi" class="form-control" 
+                                                    placeholder="Masukan lama cuti">
+                                                </input>
                                             </div>
                                         </div>
 
@@ -413,5 +393,24 @@
             selector: '#isi'
         })
     </script>
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script type="text/javascript">
+            function isi_otomatis(){
+                var nip = $("#nip").val();
+                $.ajax({
+                    url: 'ajax.php',
+                    data:"nip="+nip ,
+                }).success(function (data) {
+                    var json = data,
+                    obj = JSON.parse(json);
+                    $('#nama_pegawai').val(obj.nama_pegawai);
+                    $('#jabatan').val(obj.jabatan);
+                    $('#divisi').val(obj.jurusan);
+                });
+            }
+        </script>
+
+
 
 @endsection

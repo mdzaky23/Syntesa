@@ -4,13 +4,11 @@ namespace Modules\Absen\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
-use Modules\Absen\Entities\Pegawai;
-use Modules\Absen\Entities\Uangsaku;
-use Modules\Absen\Entities\Gajipokok;
+use Modules\Absen\Entities\Jabatan;
 use Modules\Absen\Entities\Uangtunjangan;
 use Illuminate\Contracts\Support\Renderable;
 
-class GajiController extends Controller
+class UangtunjanganController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -18,11 +16,8 @@ class GajiController extends Controller
      */
     public function index()
     {
-        return view('absen::gaji.index', [
-            'pegawais' => Pegawai::all(),
-            'gajipokoks' => Gajipokok::all(),
-            'uangsakus' => Uangsaku::all(),
-            'uangtunjangans' => Uangtunjangan::all(),
+        return view('absen::uangtunjangan.index', [
+            'uangtunjangans' => Uangtunjangan::all()
         ]);
     }
 
@@ -42,7 +37,13 @@ class GajiController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Uangtunjangan::create([
+            'jabatan_id' => $request->jabatan_id,
+            'uang_jabatan'=> $request->uang_jabatan,
+            'uang_transport'=> $request->uang_transport,
+        ]);
+
+        return redirect('/absen/uangtunjangan');
     }
 
     /**
@@ -52,14 +53,8 @@ class GajiController extends Controller
      */
     public function show($id)
     {
-        $pegawai = Pegawai::find($id);
-
-        return view('absen::gaji.lihat', compact('pegawai'), [
-            'pegawais'=>$pegawai->get(),
-            'gajipokoks' => Gajipokok::all(),
-            'uangsakus' => Uangsaku::all(),
-            'uangtunjangans' => Uangtunjangan::all()
-            
+        return view('absen::uangtunjangan.tambah', [
+            'jabatans' => Jabatan::all()
         ]);
     }
 
@@ -70,7 +65,11 @@ class GajiController extends Controller
      */
     public function edit($id)
     {
-        return view('absen::edit');
+        $uangtunjangan = Uangtunjangan::find($id);
+
+        return view('absen::uangtunjangan.edit', compact('uangtunjangan'), [
+            'jabatans' => Jabatan::all()
+        ]);
     }
 
     /**
@@ -81,7 +80,18 @@ class GajiController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $rules = [
+            'jabatan_id'=> 'required',
+            'uang_jabatan'=> 'required',
+            'uang_transport'=> 'required',
+        ];
+
+        $validatedData = $request->validate($rules);
+
+        $input = $validatedData;
+        Uangtunjangan::where('id', $id) 
+                ->update($input);
+        return redirect('/absen/uangtunjangan')->with('success', 'Data uang tunjangan Berhasil Di Ubah');
     }
 
     /**
@@ -91,6 +101,10 @@ class GajiController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $uangtunjangan = Uangtunjangan::find($id);
+        
+
+        $uangtunjangan->delete();
+        return redirect('/absen/uangtunjangan')->with('success', 'Data uangtunjangan Berhasil Dihapus');
     }
 }

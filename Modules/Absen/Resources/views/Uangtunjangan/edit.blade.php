@@ -11,14 +11,14 @@
                 <div class="content-header-left col-md-9 col-12 mb-2">
                     <div class="row breadcrumbs-top">
                         <div class="col-12">
-                            <h2 class="content-header-title float-start mb-0">Tambah Data Jabatan</h2>
+                            <h2 class="content-header-title float-start mb-0">Edit Data uang tunjangan</h2>
                             <div class="breadcrumb-wrapper">
                                 <ol class="breadcrumb">
                                     <li class="breadcrumb-item"><a href="/absen">Home</a>
                                     </li>
-                                    <li class="breadcrumb-item"><a href="/absen/jabatan">Data Jabatan</a>
+                                    <li class="breadcrumb-item"><a href="/absen/uangtunjangan">Data uang tunjangan</a>
                                     </li>
-                                    <li class="breadcrumb-item active">Tambah Data Jabatan
+                                    <li class="breadcrumb-item active">Edit Data uang tunjangan
                                     </li>
                                 </ol>
                             </div>
@@ -38,7 +38,7 @@
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link active" href="/absen/jabatan">
+          <a class="nav-link" href="/absen/jabatan">
             <i data-feather="star" class="font-medium-3 me-50"></i><span class="fw-bold">Jabatan</span>
           </a>
         </li>
@@ -58,7 +58,7 @@
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="/absen/uangtunjangan">
+          <a class="nav-link active" href="/absen/uangtunjangan">
             <i data-feather="credit-card" class="font-medium-3 me-50"></i><span class="fw-bold">Uang tunjangan</span>
           </a>
         </li>
@@ -73,6 +73,7 @@
         </li>
       </ul>
 <!-- menu bawah -->
+
                 <!-- Card Advance -->
 
                 <div class="row match-height">
@@ -80,21 +81,48 @@
                     <div class="col-lg-12 col-md-12 col-12">
                         <div class="card card-payment">
                             <div class="card-body">
-                                <form action="/absen/jabatan" class="form" method="post">
+                                <form action="{{ url('absen/uangtunjangan', $uangtunjangan->id) }}" class="form" method="post">
                                     @csrf
+                                    @method('put')
+
                                     <div class="row">
+
+                                    <div class="col-12">
+                                            <div class="mb-2">
+                                                <label class="form-label" for="jabatan_id">Jabatan</label>
+                                                <select class="form-select" aria-label="Default select example" name="jabatan_id" id="jabatan_id" value="{{ $uangtunjangan->jabatan_id }}">
+                                                    
+                                                @foreach ( $jabatans as $jabatan )
+                                                    @if (old('jabatan_id' , $uangtunjangan->jabatan_id) == $jabatan->nama_jabatan)
+                                                        <option value="{{ $jabatan->id }}" selected>{{ $jabatan->nama_jabatan }}</option>
+                                                    @else
+                                                    <option value="{{ $jabatan->id }}">{{ $jabatan->nama_jabatan }}</option>
+                                                    @endif
+                                                @endforeach
+
+                                                </select>
+                                            </div>
+                                        </div>
 
                                         <div class="col-12">
                                             <div class="mb-2">
-                                                <label class="form-label" for="nama_jabatan">Nama Jabatan</label>
-                                                <input type="text" id="nama_jabatan" name="nama_jabatan"class="form-control"
-                                                    placeholder="Input Nama Golongan" />
+                                                <label class="form-label" for="uang_jabatan">Besaran uang jabatan</label>
+                                                <input type="number" class="form-control" id="uang_jabatan"  
+                                                    placeholder="Input besaran uang jabatan" name="uang_jabatan" value="{{ $uangtunjangan->uang_jabatan }}"/>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-12">
+                                            <div class="mb-2">
+                                                <label class="form-label" for="uang_transport">uang transport</label>
+                                                <input type="number" class="form-control" id="uang_transport"  
+                                                    placeholder="Input besaran uang transport" name="uang_transport" value="{{ $uangtunjangan->uang_transport }}"/>
                                             </div>
                                         </div>
 
                                         <div class="col-12">
                                             <div class="d-grid col-12">
-                                                <button type="submit" class="btn btn-primary">Tambah Data</button>
+                                                <button type="submit" class="btn btn-primary">Edit Uang tunjangan</button>
                                             </div>
                                         </div>
                                 </form>

@@ -30,7 +30,6 @@ return new class extends Migration
             $table->string('golongan_id')->nullable();
             $table->string('no_hp')->nullable();
             $table->string('no_rek')->nullable();
-            $table->string('uangsaku_id')->nullable();
             $table->string('user_id')->nullable();
             $table->timestamps();
         });

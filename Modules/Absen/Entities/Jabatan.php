@@ -19,6 +19,10 @@ class Jabatan extends Model
         return $this->hasmany(Uangsaku::class);
     }
 
+    public function Uangtunjangan(){
+        return $this->hasmany(Uangtunjangan::class);
+    }
+
     public function presensi(){
         return $this->hasMany(Presensi::class,'presensi_id','id');
     }

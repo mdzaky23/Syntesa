@@ -36,8 +36,8 @@
               <th>Nama Pegawai</th>
               <th>Jabatan</th>
               <th>Gaji Pokok</th>
-              <th>Uang Saku</th>
-              <th>Uang Representatif</th>
+              <th>Uang Jabatan</th>
+              <th>Uang Transport</th>
               <th>No rekening</th>
               <th>Action</th>             
             </tr>
@@ -82,7 +82,7 @@
               <td>
                 <div class="d-flex align-items-center">
                   <div>
-                    <div class="fw-bolder">{{ $pegawai->uangsaku->uang_saku }}</div>
+                    <div class="fw-bolder">{{ $pegawai->uangtunjangan->uang_transport }}</div>
                   </div>
                 </div>
               </td>
@@ -90,7 +90,7 @@
               <td>
                 <div class="d-flex align-items-center">
                   <div>
-                    <div class="fw-bolder">{{ $pegawai->uangsaku->uang_representatif }}</div>
+                    <div class="fw-bolder">{{ $pegawai->uangtunjangan->uang_jabatan }}</div>
                   </div>
                 </div>
               </td>

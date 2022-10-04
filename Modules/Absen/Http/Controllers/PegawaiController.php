@@ -11,6 +11,7 @@ use Modules\Absen\Entities\Golongan;
 use Modules\Absen\Entities\Uangsaku;
 use Modules\Absen\Entities\Pendidikan;
 use Modules\Absen\Entities\Jenispegawai;
+use Modules\Absen\Entities\Uangtunjangan;
 use Illuminate\Contracts\Support\Renderable;
 
 class PegawaiController extends Controller
@@ -23,6 +24,7 @@ class PegawaiController extends Controller
     {
         return view('absen::pegawai.index', [
             'pegawais' => Pegawai::all(),
+            'uangtunjangans' =>Uangtunjangan::all(),
         ]);
     }
 
@@ -59,7 +61,6 @@ class PegawaiController extends Controller
             'golongan_id'=> $request->golongan_id,
             'no_hp'=> $request->no_hp,
             'no_rek'=> $request->no_rek,
-            'uangsaku_id'=> $request->uangsaku_id,
             'user_id'=> $request->user_id,
         ]);
 
@@ -125,7 +126,6 @@ class PegawaiController extends Controller
             'golongan_id'=> 'required',
             'no_hp'=> 'required',
             'no_rek'=> 'required',
-            'uangsaku_id'=> 'required',
         ];
 
         $validatedData = $request->validate($rules);

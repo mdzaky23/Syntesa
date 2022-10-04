@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Modules\Absen\Entities\Golongan;
 use Modules\Absen\Entities\Gajipokok;
+use Modules\Absen\Entities\Uangtunjangan;
 use Illuminate\Contracts\Support\Renderable;
 
 class GajipokokController extends Controller
@@ -17,7 +18,8 @@ class GajipokokController extends Controller
     public function index()
     {
         return view('absen::gajipokok.index', [
-            'gajipokoks' => Gajipokok::all()
+            'gajipokoks' => Gajipokok::all(),
+            'uangtunjangans' => Uangtunjangan::all()
         ]);
     }
 

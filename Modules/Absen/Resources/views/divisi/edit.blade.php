@@ -59,8 +59,8 @@
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="/absen/uangsaku">
-            <i data-feather="credit-card" class="font-medium-3 me-50"></i><span class="fw-bold">Uang Saku</span>
+          <a class="nav-link" href="/absen/uangtunjangan">
+            <i data-feather="credit-card" class="font-medium-3 me-50"></i><span class="fw-bold">Uang tunjangan</span>
           </a>
         </li>
         <li class="nav-item">

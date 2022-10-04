@@ -264,23 +264,6 @@
                                         </div>
 
                                         <div class="col-12">
-                                            <div class="mb-2">
-                                                <label class="form-label" for="uangsaku_id">Uang Saku</label>
-                                                <select class="form-select" aria-label="Default select example" name="uangsaku_id" id="uangsaku_id" value="{{ $pegawai->uangsaku_id }}">
-                                                    
-                                                    @foreach ( $uangsakus as $uangsaku )
-                                                        @if (old('uangsaku_id' , $pegawai->uangsaku_id) == $uangsaku->uang_saku)
-                                                            <option value="{{ $uangsaku->id }}" selected> {{ $uangsaku->jabatan->nama_jabatan }} (Rp. {{ $uangsaku->uang_saku }} )</option>
-                                                        @else
-                                                        <option value="{{ $uangsaku->id }}">{{ $uangsaku->jabatan->nama_jabatan }} (Rp. {{ $uangsaku->uang_saku }} )</option>
-                                                        @endif
-                                                    @endforeach
-
-                                                </select>
-                                            </div>
-                                        </div>
-
-                                        <div class="col-12">
                                             <div class="d-grid col-12">
                                                 <button type="submit" class="btn btn-primary">Edit Pegawai</button>
                                             </div>

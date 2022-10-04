@@ -35,7 +35,7 @@
               </li>
               <li><a class="d-flex align-items-center" href="/absen/pendidikan"><i data-feather="award"></i><span class="menu-item text-truncate" data-i18n="Preview">Pendidikan</span></a>
               </li>
-              <li><a class="d-flex align-items-center" href="/absen/uangsaku"><i data-feather="credit-card"></i><span class="menu-item text-truncate" data-i18n="Preview">Uang Saku</span></a>
+              <li><a class="d-flex align-items-center" href="/absen/uangtunjangan"><i data-feather="credit-card"></i><span class="menu-item text-truncate" data-i18n="Preview">Uang tunjangan</span></a>
               </li>
               <li><a class="d-flex align-items-center" href="/absen/jenispegawai"><i data-feather="user-check"></i><span class="menu-item text-truncate" data-i18n="Preview">Jenis Pegawai</span></a>
               </li>
@@ -78,8 +78,6 @@
 
           <li class=" nav-item"><a class="d-flex align-items-center" href="#"><i data-feather="folder"></i><span class="menu-title text-truncate" data-i18n="Documentation">Absensi</span></a>
             <ul class="menu-content">
-              <li class=" nav-item"><a class="d-flex align-items-center" href="/absen/laporan"><i data-feather="folder"></i><span class="menu-title text-truncate" data-i18n="Documentation">Laporan Absensi</span></a>
-              </li>
               <li><a class="d-flex align-items-center" href="/absen/presensi"><i data-feather="check-square"></i><span class="menu-item text-truncate" data-i18n="Edit">Presensi</span></a>
               </li>
               <li><a class="d-flex align-items-center" href="/absen/waktukerja"><i data-feather="settings"></i><span class="menu-item text-truncate" data-i18n="Edit">Waktu Kerja</span></a>
