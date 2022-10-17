@@ -3,6 +3,45 @@
 <body class="vertical-layout vertical-menu-modern  navbar-floating footer-static  " data-open="click" data-menu="vertical-menu-modern" data-col="">
 
   @section('content')
+
+  @php
+  $barang = Modules\Inventory\Entities\TambahBarang::select()->get();
+
+  $aktif = 0;
+  foreach ($barangs as $barang) {
+
+  $histori = Modules\Inventory\Entities\HistoryInventory::select()
+  ->where('tambahbarang_id', $barang->id)
+  ->orderby('created_at','desc')
+  ->get()
+  ->first();
+
+  $tambah_barang = Modules\Inventory\Entities\Tambahbarang::select()
+  ->where('id', $histori->tambahbarang_id)
+  ->get()
+  ->first();
+
+  if($histori->status==1 ) { $aktif ++;}
+  }
+
+  $nonaktif = 0;
+  foreach ($barangs as $barang) {
+
+  $histori = Modules\Inventory\Entities\HistoryInventory::select()
+  ->where('tambahbarang_id', $barang->id)
+  ->orderby('created_at','desc')
+  ->get()
+  ->first();
+
+  $tambah_barang = Modules\Inventory\Entities\Tambahbarang::select()
+  ->where('id', $histori->tambahbarang_id)
+  ->get()
+  ->first();
+
+  if($histori->status==2 ) { $nonaktif ++;}
+  }
+
+  @endphp
   <!-- BEGIN: Body-->
 
   <!-- BEGIN: Content-->
@@ -32,6 +71,7 @@
                       Sudah Memasuki Tanggal Peremajaan <strong>22-02-2020</strong> Silahkan Untuk Mengecek Barang.
                     </p>
                     <a class="btn btn-success mt-1" hidden href="">Perbaharui</a>
+                    <a class="btn btn-danger mt-1" hidden href="">Masukan Barang Ke History</a>
                   </div>
                 </div>
               </div>
@@ -46,7 +86,7 @@
                       <i data-feather="package" class="font-medium-5"></i>
                     </div>
                   </div>
-                  <h2 class="fw-bolder mt-1"> {{$jumlah_brg}}</h2>
+                  <h2 class="fw-bolder mt-1"> {{$aktif}}</h2>
                   <p class="card-text">Jumlah Data Barang Aktif</p>
                 </div>
                 <div id="order-chart"></div>
@@ -60,12 +100,19 @@
                       <i data-feather="box" class="font-medium-5"></i>
                     </div>
                   </div>
-                  <!-- @php
+                  @foreach ($barangs as $barang )
+                  @php
+                  $umurekonomi = Carbon\Carbon::parse($barang->tgl_beli)->submonths($barang->umur_ekonomi);
                   $tanggalsekarang = Carbon\Carbon::now();
-                  if($tanggalsekarang )
-                  @endphp -->
-                  <h2 class="fw-bolder mt-1">12</h2>
+                  $hitungumurekonomi = $umurekonomi -> diffAsCarboninterval($tanggalsekarang);
+                  $barangnonaktif = ($tanggalsekarang > $umurekonomi);
+                  @endphp
+                  @endforeach
+                  @if ($tanggalsekarang > $umurekonomi)
+
+                  <h2 class="fw-bolder mt-1">{{$nonaktif}}</h2>
                   <p class="card-text">Jumlah Data Barang Non-Aktif</p>
+                  @endif
                 </div>
                 <div id="gained-chart"></div>
               </div>
@@ -98,15 +145,21 @@
                           @if(!empty($barangs))
                           @foreach ($barangs as $barang )
                           @php
-                          $barang = Modules\Inventory\Entities\Tambahbarang::select()
-                          ->where('id', $barang->id)
+                          $histori = Modules\Inventory\Entities\HistoryInventory::select()
+                          ->where('tambahbarang_id', $barang->id)
+                          ->orderby('created_at','desc')
                           ->get()
                           ->first();
 
-                          $hari = Carbon\Carbon::parse($barang->tgl_beli)->format('d');
-                          $bulan = Carbon\Carbon::parse($barang->tgl_beli)->format('m');
-                          $tahun = Carbon\Carbon::parse($barang->tgl_beli)->format('y');
-                          $tanggal = Carbon\Carbon::parse($barang->tgl_beli)->format('d-m-Y');
+                          $tambah_barang = Modules\Inventory\Entities\Tambahbarang::select()
+                          ->where('id', $histori->tambahbarang_id)
+                          ->get()
+                          ->first();
+
+                          $hari = Carbon\Carbon::parse($tambah_barang->tgl_beli)->format('d');
+                          $bulan = Carbon\Carbon::parse($tambah_barang->tgl_beli)->format('m');
+                          $tahun = Carbon\Carbon::parse($tambah_barang->tgl_beli)->format('y');
+                          $tanggal = Carbon\Carbon::parse($tambah_barang->tgl_beli)->format('d-m-Y');
                           $array_bln = [
                           '01' => '1',
                           '02' => '2',
@@ -117,34 +170,46 @@
                           '07' => '7',
                           '08' => '8',
                           '09' => '9',
+                          '10' => '10',
+                          '11' => '11',
+                          '12' => '12',
+
                           ];
                           $bln =$array_bln[$bulan];
-                          $umurekonomi = Carbon\Carbon::parse($barang->tgl_beli)->submonths($barang->umur_ekonomi);
+                          $umurekonomi = Carbon\Carbon::parse($tambah_barang->tgl_beli)->submonths($tambah_barang->umur_ekonomi);
                           $tanggalsekarang = Carbon\Carbon::now();
                           $hitungumurekonomi = $umurekonomi -> diffAsCarboninterval($tanggalsekarang);
                           @endphp
+
+                          @if ($histori->status==1 )
+
+
                           <tr>
-                            @if ($tanggalsekarang > $umurekonomi) @if ($barang->kategori_id == 1)
-                            <td> {{$barang->nomer_inventaris}}.1.{{$hari}}.{{ $bln}}.{{$tahun}} </td>
-                            @elseif ($barang->kategori_id == 2)
-                            <td> {{$barang->nomer_inventaris}}.2.{{$hari}}.{{ $bln}}.{{$tahun}} </td>
-                            @elseif ($barang->kategori_id == 3)
-                            <td> {{$barang->nomer_inventaris}}.3.{{$hari}}.{{ $bln}}.{{$tahun}} </td>
+                            @if ($tanggalsekarang > $umurekonomi) @if ($tambah_barang->kategori_id == 1)
+                            <td> {{$tambah_barang->nomer_inventaris}}.1.{{$hari}}.{{ $bln}}.{{$tahun}} </td>
+                            @elseif ($tambah_barang->kategori_id == 2)
+                            <td> {{$tambah_barang->nomer_inventaris}}.2.{{$hari}}.{{ $bln}}.{{$tahun}} </td>
+                            @elseif ($tambah_barang->kategori_id == 3)
+                            <td> {{$tambah_barang->nomer_inventaris}}.3.{{$hari}}.{{ $bln}}.{{$tahun}} </td>
                             @else
-                            <td> {{$barang->nomer_inventaris}}.4.{{$hari}}.{{ $bln}}.{{$tahun}} </td>
+                            <td> {{$tambah_barang->nomer_inventaris}}.4.{{$hari}}.{{ $bln}}.{{$tahun}} </td>
                             @endif
-                            <td>{{$barang->nama_brg}}</td>
-                            @if ($barang->kategori_id == 1)
+
+
+                            <td>{{$tambah_barang->nama_brg}}</td>
+
+                            @if ($tambah_barang->kategori_id == 1)
                             <td>Alat Kerja</td>
-                            @elseif ($barang->kategori_id == 2)
-                            <td>Kebutuhan Oprasional</td>
-                            @elseif ($barang->kategori_id == 3)
+                            @elseif ($tambah_barang->kategori_id == 2)
+                            <td>Amenities</td>
+                            @elseif ($tambah_barang->kategori_id == 3)
                             <td>Elektronik</td>
                             @else
                             <td>Furniture</td>
                             @endif
+
                             <td>{{$tanggal}}</td>
-                            <td>{{$barang->umur_ekonomi}} Bulan</td>
+                            <td>{{$tambah_barang->umur_ekonomi}} Bulan</td>
                             <td>
                               <p> Tersisa {{$hitungumurekonomi}}</p>
                             </td>
@@ -154,15 +219,15 @@
                                   <i data-feather="more-vertical"></i>
                                 </button>
                                 <div class="dropdown-menu dropdown-menu-end">
-                                  <a class="dropdown-item" href="/inventory/tambahbarang/{{$barang->id}}">
+                                  <a class="dropdown-item" href="/inventory/tambahbarang/{{$tambah_barang->id}}">
                                     <i data-feather="eye" class="me-50"></i>
                                     <span>Lihat</span>
                                   </a>
-                                  <a class="dropdown-item" href="/inventory/tambahbarang/{{$barang->id}}/edit">
+                                  <a class="dropdown-item" href="/inventory/tambahbarang/{{$tambah_barang->id}}/edit">
                                     <i data-feather="edit-2" class="me-50"></i>
                                     <span>Edit</span>
                                   </a>
-                                  <form action="/inventory/tambahbarang/{{$barang->id}}" method="POST">
+                                  <form action="/inventory/tambahbarang/{{$tambah_barang->id}}" method="POST">
                                     @method ('delete')
                                     @csrf
                                     <button class="dropdown-item" onclick="return confirm('Apakah Anda Yakin Ingin Menghapus?')">
@@ -174,6 +239,7 @@
                               </div>
                             </td>
                             @endif
+                            @endif
                             @endforeach
                             @endif
                         </tbody>
@@ -183,35 +249,4 @@
                 </div>
               </section>
 
-              <script>
-                var tgl_peremajaan = "{{$barang->tgl_peremajaan}}"
-                // Set the date we're counting down to
-                var countDownDate = new Date(tgl_peremajaan).getTime();
-
-                // Update the count down every 1 second
-                var x = setInterval(function() {
-
-                  // Get today's date and time
-                  var now = new Date().getTime();
-
-                  // Find the distance between now and the count down date
-                  var distance = countDownDate - now;
-
-                  // Time calculations for days, hours, minutes and seconds
-                  var years = Math.floor(distance / (1000 * 60 * 60 * 24) / 365);
-                  var days = Math.floor(distance / (1000 * 60 * 60 * 24)) % 365;
-                  var months = Math.floor(distance / (1000 * 365) / 30);
-                  var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-
-
-                  // Output the result in an element with id="demo"
-                  document.getElementById("$barang").innerHTML = "Tersisa " + years + " Tahun " + days + " Hari ";
-
-                  // If the count down is over, write some text 
-                  if (distance < 0) {
-                    clearInterval(x);
-                    document.getElementById("$barang").innerHTML = "EXPIRED";
-                  }
-                }, 1000);
-              </script>
               @endsection

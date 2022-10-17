@@ -33,6 +33,7 @@ class InventoryController extends Controller
             'nomer_inventaris' => $nomer_invetaris,
             'barangs' => Tambahbarang::all(),
             'kategori_barangs' => KategoriBarang::all(),
+
         ])->with('jumlah_brg', $jumlah_brg);
     }
 

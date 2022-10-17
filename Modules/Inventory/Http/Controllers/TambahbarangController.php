@@ -7,9 +7,10 @@ use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Contracts\Support\Renderable;
+use Modules\Inventory\Entities\HistoryInventory;
 use Modules\Inventory\Entities\Tambahbarang;
 use Modules\Inventory\Entities\KategoriBarang;
-
+use Modules\Inventory\Entities\StatusInventory;
 
 class TambahbarangController extends Controller
 {
@@ -51,7 +52,8 @@ class TambahbarangController extends Controller
      */
     public function store(Request $request)
     {
-
+        $hitung = Tambahbarang::select()->get()->count();
+        $id = $hitung + 1;
         $terbaru = Tambahbarang::select()->latest()->first();
         $cek = Carbon::parse($terbaru->tgl_beli);
 
@@ -67,6 +69,7 @@ class TambahbarangController extends Controller
             $lampiran;
         }
         Tambahbarang::create([
+            'id' => $id,
             'nomer_inventaris' => str_replace("/IN/SWB/" . $cek->format('m') . "/" . $cek->format('Y'), "", $request->nomer_inventaris),
             'nama_brg' => $request->nama_brg,
             'jumlah_brg' => $request->jumlah_brg,
@@ -83,6 +86,26 @@ class TambahbarangController extends Controller
             'umur_ekonomi' => $request->umur_ekonomi,
 
         ]);
+        HistoryInventory::create([
+            'tambahbarang_id' => $id,
+            'status' => $request->status,
+            'nomer_inventaris' => str_replace("/IN/SWB/" . $cek->format('m') . "/" . $cek->format('Y'), "", $request->nomer_inventaris),
+            'nama_brg' => $request->nama_brg,
+            'jumlah_brg' => $request->jumlah_brg,
+            'kategori_id' => $request->kategori_id,
+            'lampiran' => $lampiran,
+            'tipe_brg' => $request->tipe_brg,
+            'kategori_lokasi' => $request->kategori_lokasi,
+            'ruangan_lokasi' => $request->ruangan_lokasi,
+            'lantai_lokasi' => $request->lantai_lokasi,
+            'tgl_beli' => $request->tgl_beli,
+            'tgl_peremajaan' => $request->tgl_peremajaan,
+            'merk_brg' => $request->merk_brg,
+            'harga_brg' => $request->harga_brg,
+            'umur_ekonomi' => $request->umur_ekonomi,
+
+        ]);
+
 
         return redirect('/inventory')->with('success', 'Data sudah terinput');
     }
@@ -136,7 +159,11 @@ class TambahbarangController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $status = StatusInventory::select()->get()->first();
+
+
         $rules = [
+
             'nomer_inventaris' => '',
             'nama_brg' => 'required',
             'jumlah_brg' => 'required',
@@ -161,6 +188,8 @@ class TambahbarangController extends Controller
         }
         $input = $validatedData;
         Tambahbarang::where('id', $id)->update($input);
+
+
         return redirect('/inventory')->with('success', 'Data Berhasil Di Ubah');
     }
 

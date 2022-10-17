@@ -2,9 +2,12 @@
 
 namespace Modules\Inventory\Http\Controllers;
 
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Illuminate\Contracts\Support\Renderable;
+use Modules\Inventory\Entities\HistoryInventory;
+use Modules\Inventory\Entities\KategoriBarang;
 use Modules\Inventory\Entities\Tambahbarang;
 
 class HistorybarangController extends Controller
@@ -15,8 +18,22 @@ class HistorybarangController extends Controller
      */
     public function index()
     {
+        $terbaru = Tambahbarang::select()->latest()->first();
+        $cek = Carbon::parse($terbaru->tgl_beli);
+
+        if ($cek->format('Y') != Carbon::now()->format('Y')) {
+            $no = 1;
+        } elseif ($cek->format('Y') == Carbon::now()->format('Y')) {
+            $no = $terbaru->nomer_inventaris + 1;
+        }
+        $nomer_invetaris = $no . '/IN/SWB/' . $cek->format('m') . '/' . $cek->format('Y');
+
+
+        $jumlah_brg = Tambahbarang::all()->count();
         return view('inventory::History.index', [
+            'nomer_inventaris' => $nomer_invetaris,
             'barangs' => Tambahbarang::all(),
+            'kategori_barangs' => KategoriBarang::all(),
 
         ]);
     }
@@ -68,7 +85,12 @@ class HistorybarangController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        HistoryInventory::create([
+            'tambahbarang_id' => $id,
+            'status' => $request->status,
+
+        ]);
+        return redirect('/inventory')->with('success', 'Data Berhasil Di Ubah');
     }
 
     /**

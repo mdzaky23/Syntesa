@@ -69,6 +69,10 @@
                       <label class="form-label" for="nama_brg">Nama Barang</label>
                       <input type="text" id="nama_brg" class="form-control" name="nama_brg" placeholder=" Masukan Nama Barang" />
                     </div>
+                    
+                    <input type="hidden" id="status" name="status" class="form-control" value="1">
+
+
                     <div class="mb-1 col-md-6">
                       <label class="form-label" for="jumlah_brg">Jumlah barang</label>
                       <input type="string" id="jumlah_brg" class="form-control" name="jumlah_brg" placeholder=" Masukan Jumlah barang" />
@@ -90,7 +94,7 @@
                       <select class="select2 w-100" id="kategori_id" name="kategori_id">
                         <option label=" "></option>
                         <option value="1">Alat Kerja</option>
-                        <option value="2">Kebutuhan Oprasional</option>
+                        <option value="2">Amenities</option>
                         <option value="3">Elektronik</option>
                         <option value="4">Furniture</option>
                       </select>

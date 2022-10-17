@@ -3,6 +3,23 @@
 <body class="vertical-layout vertical-menu-modern  navbar-floating footer-static  " data-open="click" data-menu="vertical-menu-modern" data-col="">
 
   @section('content')
+
+
+  @php
+
+
+                                   $histori = Modules\Inventory\Entities\HistoryInventory::select()
+                                            ->where('tambahbarang_id', $barang->id)
+                                            ->orderby('created_at','desc')
+                                            ->get()
+                                            ->first();
+
+                          $tambah_barang = Modules\Inventory\Entities\Tambahbarang::select()
+                          ->where('id', $histori->tambahbarang_id)
+                          ->get()
+                          ->first();
+                          @endphp
+
   <div class="app-content content ">
     <div class="content-overlay"></div>
     <div class="header-navbar-shadow"></div>
@@ -28,7 +45,7 @@
         <!-- Modern Vertical Wizard -->
 
         <section class="modern-vertical-wizard">
-          <form class="needs-validation" method="POST" enctype="multipart/form-data" action="/inventory/tambahbarang/{{$barang->id}}">
+          <form class="needs-validation" method="POST" enctype="multipart/form-data" action="/inventory/tambahbarang/{{$tambah_barang->id}}">
             @method('PUT')
             @csrf
             <div class="bs-stepper vertical wizard-modern modern-vertical-wizard-example">
@@ -85,9 +102,9 @@
                     <div class="mb-1 col-md-6">
                       <label class="form-label" for="kategori_id">Kategori Barang</label>
                       <select class="select2 w-100" id="kategori_id" name="kategori_id" value="{{$barang->kategori_id}}">
-                        <option label=" ">{{$barang->kategori_id}}</option>
+                        <option label=" ">{{$tambah_barang->kategori_id}}</option>
                         <option value="1">Alat Kerja</option>
-                        <option value="2">Kebutuhan Oprasional</option>
+                        <option value="2">Amenities</option>
                         <option value="3">Elektronik</option>
                         <option value="4">furniture</option>
                       </select>
@@ -96,12 +113,12 @@
                   <div class=" row">
                     <div class="mb-1 col-md-6">
                       <label class="form-label" for="tgl_beli">Tanggal Beli</label>
-                      <input type="date" id="tgl_beli" class="form-control" name="tgl_beli" value="{{$barang->tgl_beli}}" placeholder=" Masukan Tanggal" />
+                      <input type="date" id="tgl_beli" class="form-control" name="tgl_beli" value="{{$tambah_barang->tgl_beli}}" placeholder=" Masukan Tanggal" />
                     </div>
                     <div class="mb-1 col-md-6">
                       <label class="form-label" for="umur_ekonomi">Umur Ekonomi</label>
                       <select class="select2 w-100" id="umur_ekonomi" name="umur_ekonomi">
-                        <option label=" ">{{$barang->umur_ekonomi}} Bulan</option>
+                        <option label=" ">{{$tambah_barang->umur_ekonomi}}</option>
                         <option value="1">1 Bulan</option>
                         <option value="2">2 Bulan</option>
                         <option value="3">3 Bulan</option>
@@ -178,13 +195,13 @@
                     </div>
                     <div class="mb-1 col-md-6">
                       <label class="form-label" for="tgl_peremajaan">Tanggal Peremajaan</label>
-                      <input type="date" id="tgl_peremajaan" class="form-control" name="tgl_peremajaan" value="{{$barang->tgl_peremajaan}}" placeholder=" Masukan Tanggal" />
+                      <input type="date" id="tgl_peremajaan" class="form-control" name="tgl_peremajaan" value="{{$tambah_barang->tgl_peremajaan}}" placeholder=" Masukan Tanggal" />
                     </div>
                     <div class="mb-1 col-md-6">
                       <label class="form-label" for="lampiran">Lampiran Foto</label>
-                      <input type="hidden" name="oldLampiran" value="{{$barang->lampiran}}">
-                      <label for="lampiran">{{$barang->lampiran}}</label>
-                      <input type="file" id="lampiran" class="form-control" name="lampiran" value="{{$barang->lampiran}}" />
+                      <input type="hidden" name="oldLampiran" value="{{$tambah_barang->lampiran}}">
+                      <label for="lampiran">{{$tambah_barang->lampiran}}</label>
+                      <input type="file" id="lampiran" class="form-control" name="lampiran" value="{{$tambah_barang->lampiran}}" />
                     </div>
                   </div>
                   <div class="d-flex justify-content-between mt-3">
@@ -192,11 +209,15 @@
                       <i data-feather="arrow-left" class="align-middle me-sm-25 me-0"></i>
                       <span class="align-middle d-sm-inline-block d-none">Previous</span>
                     </button>
+
                     <button type="button" class="btn btn-primary btn-next">
                       <span class="align-middle d-sm-inline-block d-none">Next</span>
                       <i data-feather="arrow-right" class="align-middle ms-sm-25 ms-0"></i>
                     </button>
                   </div>
+
+                
+
                 </div>
                 <div id="address-step-vertical-modern" class="content" role="tabpanel" aria-labelledby="address-step-vertical-modern-trigger">
                   <div class="content-header">
@@ -206,7 +227,7 @@
                     <div class="mb-1 col-md-6">
                       <label class="form-label" for="kategori_lokasi">Kategori Lokasi</label>
                       <select class="select2 w-100" id="kategori_lokasi" name="kategori_lokasi">
-                        <option label=" "> {{$barang->kategori_lokasi}}</option>
+                        <option label=" "> {{$tambah_barang->kategori_lokasi}}</option>
                         <option>Kantor Sayaga</option>
                         <option>Hotel Sayaga</option>
                         <option>Tirta Sayaga</option>
@@ -214,13 +235,13 @@
                     </div>
                     <div class="mb-1 col-md-6">
                       <label class="form-label" for="ruangan_lokasi">Ruangan </label>
-                      <input type="text" id="ruangan_lokasi" class="form-control" name="ruangan_lokasi" value="{{$barang->ruangan_lokasi}}" placeholder=" Masukan Ruangan " />
+                      <input type="text" id="ruangan_lokasi" class="form-control" name="ruangan_lokasi" value="{{$tambah_barang->ruangan_lokasi}}" placeholder=" Masukan Ruangan " />
                     </div>
                   </div>
                   <div class=" row">
                     <div class="mb-1 col-md-6">
                       <label class="form-label" for="lantai_lokasi">Lantai </label>
-                      <input type="text" id="lantai_lokasi" class="form-control" name="lantai_lokasi" value="{{$barang->lantai_lokasi}}" placeholder=" Masukan Lantai " />
+                      <input type="text" id="lantai_lokasi" class="form-control" name="lantai_lokasi" value="{{$tambah_barang->lantai_lokasi}}" placeholder=" Masukan Lantai " />
                     </div>
                   </div>
                   <div class="d-flex justify-content-between">
@@ -234,6 +255,18 @@
               </div>
             </div>
           </form>
+
+          <div>
+            <form method="POST" action="/inventory/history/{{$tambah_barang->id}} " >
+              @csrf
+              @method('put')
+
+          <button type="submit" class="btn btn-primary">
+            <span class="align-middle d-sm-inline-block d-none">Stop Barang</span>
+            <input type="hidden" name="status" id="status" value= 2 >
+          </button>
+            </form>
+          </div>
         </section>
       </div>
     </div>

@@ -52,6 +52,9 @@
                         '07' => '7',
                         '08' => '8',
                         '09' => '9',
+                        '10' => '10',
+                        '11' => '11',
+                        '12' => '12',
                         ];
                         $bln =$array_bln[$bulan];
 
@@ -59,7 +62,6 @@
                         <div>
 
                             <p class="card-title-left mb-1">No Inventaris : @if ($barang->kategori_id == 1)</p>
-
                             {{$barang->nomer_inventaris}}.1.{{$hari}}.{{ $bln}}.{{$tahun}}
                             @elseif ($barang->kategori_id == 2)
                             {{$barang->nomer_inventaris}}.2.{{$hari}}.{{ $bln}}.{{$tahun}}
@@ -72,7 +74,7 @@
                             <p class="card-text">Kategori Barang : @if ($barang->kategori_id == 1)
                                 Alat Kerja
                                 @elseif ($barang->kategori_id == 2)
-                                Kebutuhan Oprasional
+                                Amenities
                                 @elseif ($barang->kategori_id == 3)
                                 Elektronik
                                 @else

@@ -3,10 +3,9 @@
 namespace Modules\Inventory\Entities;
 
 use Illuminate\Database\Eloquent\Model;
-use Modules\Inventory\Entities\KategoriBarang;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
-class Tambahbarang extends Model
+class HistoryInventory extends Model
 {
     use HasFactory;
 
@@ -16,12 +15,12 @@ class Tambahbarang extends Model
     {
         // return \Modules\Inventory\Database\factories\TambahbarangFactory::new();
     }
-    public function kategoribarang()
-    {
-        return $this->hasMany(KategoriBarang::class);
-    }
     public function History()
     {
-        return $this->belongsTo(HistoryInventory::class);
+        return $this->hasMany(TambahBarang::class);
+    }
+    public function status()
+    {
+        return $this->hasMany(StatusInventory::class);
     }
 }

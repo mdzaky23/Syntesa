@@ -49,6 +49,9 @@
                                 '07' => '7',
                                 '08' => '8',
                                 '09' => '9',
+                                '10' => '10',
+                                '11' => '11',
+                                '12' => '12',
                                 ];
                                 $bln =$array_bln[$bulan];
                                 @endphp
@@ -77,7 +80,7 @@
                                         @if ($barang->kategori_id == 1)
                                         <td>Alat Kerja</td>
                                         @elseif ($barang->kategori_id == 2)
-                                        <td>Kebutuhan Oprasional</td>
+                                        <td>Amenities</td>
                                         @elseif ($barang->kategori_id == 3)
                                         <td>Elektronik</td>
                                         @else

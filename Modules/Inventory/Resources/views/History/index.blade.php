@@ -33,27 +33,32 @@
                                         <th></th>
 
                                         <th>No Inventaris</th>
-                                        <th>Nama Barang</th>
-                                        <th>Tipe Barang</th>
+                                        <th>Nama barang</th>
+                                        <th>Tipe barang</th>
                                         <th>Tanggal Beli</th>
                                         <th>Umur Ekonomi</th>
                                         <th>Tanggal Peremajaan</th>
                                         <th>Lokasi</th>
-                                        <th>Kategori Barang</th>
+                                        <th>Kategori barang</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     @if(!empty($barangs))
                                     @foreach ($barangs as $barang )
                                     @php
-                                    $barang = Modules\Inventory\Entities\Tambahbarang::select()
-                                    ->where('id', $barang->id)
+                                    $histori = Modules\Inventory\Entities\HistoryInventory::select()
+                                    ->where('tambahbarang_id', $barang->id)
+                                    ->orderby('created_at','desc')
                                     ->get()
                                     ->first();
-                                    $hari = Carbon\Carbon::parse($barang->tgl_beli)->format('d');
-                                    $bulan = Carbon\Carbon::parse($barang->tgl_beli)->format('m');
-                                    $tahun = Carbon\Carbon::parse($barang->tgl_beli)->format('y');
-                                    $tanggal = Carbon\Carbon::parse($barang->tgl_beli)->format('d-m-Y');
+                                    $tambah_barang = Modules\Inventory\Entities\Tambahbarang::select()
+                                    ->where('id', $histori->tambahbarang_id)
+                                    ->get()
+                                    ->first();
+                                    $hari = Carbon\Carbon::parse($tambah_barang->tgl_beli)->format('d');
+                                    $bulan = Carbon\Carbon::parse($tambah_barang->tgl_beli)->format('m');
+                                    $tahun = Carbon\Carbon::parse($tambah_barang->tgl_beli)->format('y');
+                                    $tanggal = Carbon\Carbon::parse($tambah_barang->tgl_beli)->format('d-m-Y');
                                     $array_bln = [
                                     '01' => '1',
                                     '02' => '2',
@@ -64,50 +69,66 @@
                                     '07' => '7',
                                     '08' => '8',
                                     '09' => '9',
+                                    '10' => '10',
+                                    '11' => '11',
+                                    '12' => '12',
                                     ];
                                     $bln =$array_bln[$bulan];
-                                    $umurekonomi = Carbon\Carbon::parse($barang->tgl_beli)->submonths($barang->umur_ekonomi);
+                                    $umurekonomi = Carbon\Carbon::parse($tambah_barang->tgl_beli)->submonths($tambah_barang->umur_ekonomi);
                                     $tanggalsekarang = Carbon\Carbon::now();
                                     $hitungumurekonomi = $umurekonomi -> diffasCarboninterval($tanggalsekarang);
                                     @endphp
+
+                                    @if ($histori->status==2)
+
                                     <tr>
                                         @if ($tanggalsekarang < $umurekonomi ) <td>
                                             </td>
 
-                                            @if ($barang->kategori_id == 1)
-                                            <td> {{$barang->nomer_inventaris}}.1.{{$hari}}.{{ $bln}}.{{$tahun}} </td>
-                                            @elseif ($barang->kategori_id == 2)
-                                            <td> {{$barang->nomer_inventaris}}.2.{{$hari}}.{{ $bln}}.{{$tahun}} </td>
-                                            @elseif ($barang->kategori_id == 3)
-                                            <td> {{$barang->nomer_inventaris}}.3.{{$hari}}.{{ $bln}}.{{$tahun}} </td>
+                                            @if ($tambah_barang->kategori_id == 1)
+                                            <td> {{$tambah_barang->nomer_inventaris}}.1.{{$hari}}.{{ $bln}}.{{$tahun}} </td>
+                                            @elseif ($tambah_barang->kategori_id == 2)
+                                            <td> {{$tambah_barang->nomer_inventaris}}.2.{{$hari}}.{{ $bln}}.{{$tahun}} </td>
+                                            @elseif ($tambah_barang->kategori_id == 3)
+                                            <td> {{$tambah_barang->nomer_inventaris}}.3.{{$hari}}.{{ $bln}}.{{$tahun}} </td>
                                             @else
-                                            <td> {{$barang->nomer_inventaris}}.4.{{$hari}}.{{ $bln}}.{{$tahun}} </td>
+                                            <td> {{$tambah_barang->nomer_inventaris}}.4.{{$hari}}.{{ $bln}}.{{$tahun}} </td>
                                             @endif
-                                            <td>{{$barang->nama_brg}}</td>
-                                            <td>{{$barang->tipe_brg}}</td>
+
+
+                                            <td>{{$tambah_barang->nama_brg}}</td>
+                                            <td>{{$tambah_barang->tipe_brg}}</td>
                                             <td>{{$tanggal}}</td>
-                                            <td>{{$barang->umur_ekonomi}}</td>
+                                            <td>{{$tambah_barang->umur_ekonomi}}</td>
                                             <td>Expired</td>
-                                            <td>{{$barang->kategori_lokasi}}</td>
-                                            @if ($barang->kategori_id == 1)
+                                            <td>{{$tambah_barang->kategori_lokasi}}</td>
+
+                                            @if ($tambah_barang->kategori_id == 1)
                                             <td>Alat Kerja</td>
-                                            @elseif ($barang->kategori_id == 2)
-                                            <td>Kebutuhan Oprasional</td>
-                                            @elseif ($barang->kategori_id == 3)
+                                            @elseif ($tambah_barang->kategori_id == 2)
+                                            <td>Amenities</td>
+                                            @elseif ($tambah_barang->kategori_id == 3)
                                             <td>Elektronik</td>
                                             @else
                                             <td>Furniture</td>
                                             @endif
+
+
+
                                             @endif
-                                            @endforeach
+
                                             @endif
                                     </tr>
+                                    @endforeach
+                                    @endif
+
 
                                 </tbody>
                             </table>
                         </div>
                     </div>
                 </div>
-                <!-- END: Content-->
+            </section>
+            <!-- END: Content-->
 
-                @endsection
+            @endsection
