@@ -43,6 +43,7 @@
  <script src="../../../app-assets/js/scripts/pages/app-invoice-list.min.js"></script>
  <script src="../../../app-assets/js/scripts/tables/table-datatables-basic.min.js"></script>
  <script src="../../../app-assets/js/scripts/forms/form-wizard.min.js"></script>
+ <script src="../../../app-assets/js/scripts/cards/card-statistics.min.js"></script>
  <!-- END: Page JS-->
  <!-- END: Page JS-->
 

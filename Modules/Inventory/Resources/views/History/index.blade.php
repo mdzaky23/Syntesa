@@ -39,6 +39,7 @@
                                         <th>Umur Ekonomi</th>
                                         <th>Tanggal Peremajaan</th>
                                         <th>Lokasi</th>
+                                        <th>Action</th>
                                         <th>Kategori barang</th>
                                     </tr>
                                 </thead>
@@ -82,42 +83,67 @@
                                     @if ($histori->status==2)
 
                                     <tr>
-                                        @if ($tanggalsekarang < $umurekonomi ) <td>
-                                            </td>
+                                        <td></td>
 
-                                            @if ($tambah_barang->kategori_id == 1)
-                                            <td> {{$tambah_barang->nomer_inventaris}}.1.{{$hari}}.{{ $bln}}.{{$tahun}} </td>
-                                            @elseif ($tambah_barang->kategori_id == 2)
-                                            <td> {{$tambah_barang->nomer_inventaris}}.2.{{$hari}}.{{ $bln}}.{{$tahun}} </td>
-                                            @elseif ($tambah_barang->kategori_id == 3)
-                                            <td> {{$tambah_barang->nomer_inventaris}}.3.{{$hari}}.{{ $bln}}.{{$tahun}} </td>
-                                            @else
-                                            <td> {{$tambah_barang->nomer_inventaris}}.4.{{$hari}}.{{ $bln}}.{{$tahun}} </td>
-                                            @endif
-
-
-                                            <td>{{$tambah_barang->nama_brg}}</td>
-                                            <td>{{$tambah_barang->tipe_brg}}</td>
-                                            <td>{{$tanggal}}</td>
-                                            <td>{{$tambah_barang->umur_ekonomi}}</td>
-                                            <td>Expired</td>
-                                            <td>{{$tambah_barang->kategori_lokasi}}</td>
-
-                                            @if ($tambah_barang->kategori_id == 1)
-                                            <td>Alat Kerja</td>
-                                            @elseif ($tambah_barang->kategori_id == 2)
-                                            <td>Amenities</td>
-                                            @elseif ($tambah_barang->kategori_id == 3)
-                                            <td>Elektronik</td>
-                                            @else
-                                            <td>Furniture</td>
-                                            @endif
+                                        @if ($tambah_barang->kategori_id == 1)
+                                        <td> {{$tambah_barang->nomer_inventaris}}.1.{{$hari}}.{{ $bln}}.{{$tahun}} </td>
+                                        @elseif ($tambah_barang->kategori_id == 2)
+                                        <td> {{$tambah_barang->nomer_inventaris}}.2.{{$hari}}.{{ $bln}}.{{$tahun}} </td>
+                                        @elseif ($tambah_barang->kategori_id == 3)
+                                        <td> {{$tambah_barang->nomer_inventaris}}.3.{{$hari}}.{{ $bln}}.{{$tahun}} </td>
+                                        @else
+                                        <td> {{$tambah_barang->nomer_inventaris}}.4.{{$hari}}.{{ $bln}}.{{$tahun}} </td>
+                                        @endif
 
 
+                                        <td>{{$tambah_barang->nama_brg}}</td>
+                                        <td>{{$tambah_barang->tipe_brg}}</td>
+                                        <td>{{$tanggal}}</td>
+                                        <td>{{$tambah_barang->umur_ekonomi}}</td>
+                                        <td>Expired</td>
 
-                                            @endif
+                                        <td>{{$tambah_barang->kategori_lokasi}}</td>
+                                        <td>
+                                            <div class="dropdown">
+                                                <button type="button" class="btn btn-sm dropdown-toggle hide-arrow py-0" data-bs-toggle="dropdown">
+                                                    <i data-feather="more-vertical"></i>
+                                                </button>
+                                                <div class="dropdown-menu dropdown-menu-end">
+                                                    <a class="dropdown-item" href="/inventory/tambahbarang/{{$tambah_barang->id}}">
+                                                        <i data-feather="eye" class="me-50"></i>
+                                                        <span>Lihat</span>
+                                                    </a>
+                                                    <a class="dropdown-item" href="/inventory/tambahbarang/{{$tambah_barang->id}}/edit">
+                                                        <i data-feather="edit-2" class="me-50"></i>
+                                                        <span>Edit</span>
+                                                    </a>
+                                                    <form action="/inventory/tambahbarang/{{$tambah_barang->id}}" method="POST">
+                                                        @method ('delete')
+                                                        @csrf
+                                                        <button class="dropdown-item" onclick="return confirm('Apakah Anda Yakin Ingin Menghapus?')">
+                                                            <i data-feather="trash" class="me-50"></i>
+                                                            <span>Delete</span>
+                                                        </button>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </td>
 
-                                            @endif
+                                        @if ($tambah_barang->kategori_id == 1)
+                                        <td>Alat Kerja</td>
+                                        @elseif ($tambah_barang->kategori_id == 2)
+                                        <td>Amenities</td>
+                                        @elseif ($tambah_barang->kategori_id == 3)
+                                        <td>Elektronik</td>
+                                        @else
+                                        <td>Furniture</td>
+                                        @endif
+
+
+
+
+
+                                        @endif
                                     </tr>
                                     @endforeach
                                     @endif

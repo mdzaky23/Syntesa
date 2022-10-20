@@ -55,48 +55,48 @@
                                 ];
                                 $bln =$array_bln[$bulan];
                                 @endphp
-                                @if ($tanggalsekarang < $barang->tgl_peremajaan )
-                                    <tr>
+
+                                <tr>
 
 
-                                        <td></td>
-                                        @if ($barang->kategori_id == 1)
-                                        <td> {{$barang->nomer_inventaris}}.1.{{$hari}}.{{ $bln}}.{{$tahun}} </td>
-                                        @elseif ($barang->kategori_id == 2)
-                                        <td> {{$barang->nomer_inventaris}}.2.{{$hari}}.{{ $bln}}.{{$tahun}} </td>
-                                        @elseif ($barang->kategori_id == 3)
-                                        <td> {{$barang->nomer_inventaris}}.3.{{$hari}}.{{ $bln}}.{{$tahun}} </td>
-                                        @else
-                                        <td> {{$barang->nomer_inventaris}}.4.{{$hari}}.{{ $bln}}.{{$tahun}} </td>
-                                        @endif
-                                        <td>{{$barang->nama_brg}}</td>
-                                        <td>{{$barang->tipe_brg}}</td>
-                                        <td>{{$tanggal}}</td>
-                                        <td>{{$barang->umur_ekonomi}} Bulan</td>
-                                        <td>{{$barang->tgl_peremajaan}}</td>
-                                        <td>{{$barang->kategori_lokasi}}</td>
-                                        <td>{{$barang->ruangan_lokasi}}</td>
-                                        <td>{{$barang->lantai_lokasi}}</td>
-                                        @if ($barang->kategori_id == 1)
-                                        <td>Alat Kerja</td>
-                                        @elseif ($barang->kategori_id == 2)
-                                        <td>Amenities</td>
-                                        @elseif ($barang->kategori_id == 3)
-                                        <td>Elektronik</td>
-                                        @else
-                                        <td>Furniture</td>
-                                        @endif
-                                        <td>
-                                            <a class="btn btn-success" target="blank" href="{{ asset('storage/' . $barang->lampiran)}}">Lihat</a>
-                                        </td>
-                                        <td>
-                                            <a class="btn btn-secondary" href="/inventory/tambahbarang/{{$barang->id}}">Detail</a>
-                                        </td>
-                                    </tr>
+                                    <td></td>
+                                    @if ($barang->kategori_id == 1)
+                                    <td> {{$barang->nomer_inventaris}}.1.{{$hari}}.{{ $bln}}.{{$tahun}} </td>
+                                    @elseif ($barang->kategori_id == 2)
+                                    <td> {{$barang->nomer_inventaris}}.2.{{$hari}}.{{ $bln}}.{{$tahun}} </td>
+                                    @elseif ($barang->kategori_id == 3)
+                                    <td> {{$barang->nomer_inventaris}}.3.{{$hari}}.{{ $bln}}.{{$tahun}} </td>
+                                    @else
+                                    <td> {{$barang->nomer_inventaris}}.4.{{$hari}}.{{ $bln}}.{{$tahun}} </td>
                                     @endif
-
-                                    @endforeach
+                                    <td>{{$barang->nama_brg}}</td>
+                                    <td>{{$barang->tipe_brg}}</td>
+                                    <td>{{$tanggal}}</td>
+                                    <td>{{$barang->umur_ekonomi}} Bulan</td>
+                                    <td>{{$barang->tgl_peremajaan}}</td>
+                                    <td>{{$barang->kategori_lokasi}}</td>
+                                    <td>{{$barang->ruangan_lokasi}}</td>
+                                    <td>{{$barang->lantai_lokasi}}</td>
+                                    @if ($barang->kategori_id == 1)
+                                    <td>Alat Kerja</td>
+                                    @elseif ($barang->kategori_id == 2)
+                                    <td>Amenities</td>
+                                    @elseif ($barang->kategori_id == 3)
+                                    <td>Elektronik</td>
+                                    @else
+                                    <td>Furniture</td>
                                     @endif
+                                    <td>
+                                        <a class="btn btn-success" target="blank" href="{{ asset('storage/' . $barang->lampiran)}}">Lihat</a>
+                                    </td>
+                                    <td>
+                                        <a class="btn btn-secondary" href="/inventory/tambahbarang/{{$barang->id}}">Detail</a>
+                                    </td>
+                                </tr>
+
+
+                                @endforeach
+                                @endif
                             </tbody>
                         </table>
                     </div>

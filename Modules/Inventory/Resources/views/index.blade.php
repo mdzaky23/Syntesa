@@ -55,30 +55,25 @@
         <section id="dashboard-analytics">
           <div class="row match-height">
             <!-- Greetings Card starts -->
-            <div class="col-lg-6 col-md-12 col-sm-12">
-              <div class="card card-congratulations">
-                <div class="card-body text-center">
-                  <img src="../../../app-assets/images/elements/decore-left.png" class="congratulations-img-left" alt="card-img-left" />
-                  <img src="../../../app-assets/images/elements/decore-right.png" class="congratulations-img-right" alt="card-img-right" />
-                  <div class="avatar avatar-xl bg-primary shadow">
+
+            <div class="col-lg-4 col-sm-6 col-12">
+              <div class="card">
+                <div class="card-header flex-column align-items-start pb-0">
+                  <div class="avatar bg-light-success p-50 m-0">
                     <div class="avatar-content">
-                      <i data-feather="award" class="font-large-1"></i>
+                      <i data-feather="box" class="font-medium-5"></i>
                     </div>
                   </div>
-                  <div class="text-center">
-                    <h1 class="mb-1 text-white">Laptop Asus</h1>
-                    <p class="card-text m-auto w-75">
-                      Sudah Memasuki Tanggal Peremajaan <strong>22-02-2020</strong> Silahkan Untuk Mengecek Barang.
-                    </p>
-                    <a class="btn btn-success mt-1" hidden href="">Perbaharui</a>
-                    <a class="btn btn-danger mt-1" hidden href="">Masukan Barang Ke History</a>
-                  </div>
+                  <h2 class="fw-bolder mt-1">{{$jumlah_brg}}</h2>
+                  <p class="card-text">Jumlah Data Keseluruhan </p>
                 </div>
+                <div id="line-area-chart-2"></div>
               </div>
             </div>
+
             <!-- Greetings Card ends -->
             <!-- Orders Chart Card starts -->
-            <div class="col-lg-3 col-sm-6 col-12">
+            <div class="col-lg-4 col-sm-6 col-12">
               <div class="card">
                 <div class="card-header flex-column align-items-start pb-0">
                   <div class="avatar bg-light-warning p-50 m-0">
@@ -92,7 +87,7 @@
                 <div id="order-chart"></div>
               </div>
             </div>
-            <div class="col-lg-3 col-sm-6 col-12">
+            <div class="col-lg-4 col-sm-6 col-12">
               <div class="card">
                 <div class="card-header flex-column align-items-start pb-0">
                   <div class="avatar bg-light-primary p-50 m-0">
@@ -100,19 +95,9 @@
                       <i data-feather="box" class="font-medium-5"></i>
                     </div>
                   </div>
-                  @foreach ($barangs as $barang )
-                  @php
-                  $umurekonomi = Carbon\Carbon::parse($barang->tgl_beli)->submonths($barang->umur_ekonomi);
-                  $tanggalsekarang = Carbon\Carbon::now();
-                  $hitungumurekonomi = $umurekonomi -> diffAsCarboninterval($tanggalsekarang);
-                  $barangnonaktif = ($tanggalsekarang > $umurekonomi);
-                  @endphp
-                  @endforeach
-                  @if ($tanggalsekarang > $umurekonomi)
-
                   <h2 class="fw-bolder mt-1">{{$nonaktif}}</h2>
                   <p class="card-text">Jumlah Data Barang Non-Aktif</p>
-                  @endif
+
                 </div>
                 <div id="gained-chart"></div>
               </div>

@@ -34,6 +34,7 @@ class HistorybarangController extends Controller
             'nomer_inventaris' => $nomer_invetaris,
             'barangs' => Tambahbarang::all(),
             'kategori_barangs' => KategoriBarang::all(),
+            'history' => HistoryInventory::all(),
 
         ]);
     }
@@ -64,7 +65,7 @@ class HistorybarangController extends Controller
      */
     public function show($id)
     {
-        return view('inventory::show');
+        return view('inventory::History.index');
     }
 
     /**
